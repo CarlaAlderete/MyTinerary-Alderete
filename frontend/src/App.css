@@ -38,3 +38,12 @@ header{
 header p{
     margin: 1vw;
 }
+
+.contenido{
+    margin-top: 90vh;
+    background-color: beige;
+}
+
+footer{
+    background: red;
+}
