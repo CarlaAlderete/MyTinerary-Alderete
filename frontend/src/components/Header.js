@@ -1,8 +1,10 @@
+import React from 'react'
+import {NavLink} from 'react-router-dom'
 const Header = () =>{
     return(
         <header>
-            <p>HOME</p>
-            <p>CITIES</p>
+            <NavLink exact to='/'>HOME</NavLink>
+            <NavLink to='/cities'>CITIES</NavLink>
         </header>
     )
 }

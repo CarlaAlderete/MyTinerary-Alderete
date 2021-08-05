@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+p{
+    margin: 0;
+}
 .video{
     position: absolute;
     width: 100%;
@@ -35,13 +38,13 @@ header{
     background: #71747462;
     height: 10vh;
 }
-header p{
+header a{
+    text-decoration: none;
+    color: #fff;
     margin: 1vw;
 }
-
 .contenido{
     margin-top: 90vh;
-    background-color: beige;
 }
 
 footer{
