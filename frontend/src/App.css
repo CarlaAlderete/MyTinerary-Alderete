@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.video{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+}
+.logo{
+    position: absolute;
+    background: #71747431;
+    height: 90vh;
+    width: 100%;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    color: #fff;
+}
+.logo img{
+    width: 30vw;
+}
+header{
+    display: flex;
+    color: #fff;
+    padding: 2vw;
+    background: #71747431;
+    height: 10vh;
+}
+header p{
+    margin: 1vw;
+}
