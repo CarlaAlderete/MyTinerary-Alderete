@@ -3,8 +3,10 @@ import {NavLink} from 'react-router-dom'
 const Header = () =>{
     return(
         <header>
-            <NavLink exact to='/'>HOME</NavLink>
-            <NavLink to='/cities'>CITIES</NavLink>
+            <nav>
+                <NavLink exact to='/'>HOME</NavLink>
+                <NavLink to='/cities'>CITIES</NavLink>
+            </nav>
         </header>
     )
 }
