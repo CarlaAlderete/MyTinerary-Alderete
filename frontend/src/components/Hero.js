@@ -8,7 +8,7 @@ const Hero = () => {
             <img src={logo}></img>
             <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
         </div>
-        <video loop muted autoPlay className='video'>
+        <video muted autoPlay loop className='video'>
             <source src={videoHero} type='video/mp4'/>
         </video>
         </>

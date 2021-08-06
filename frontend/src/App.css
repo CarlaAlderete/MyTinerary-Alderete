@@ -46,7 +46,20 @@ header a{
 .contenido{
     margin-top: 90vh;
 }
-
+.carousel-item{
+    background-color: black;
+}
+.carouselDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 80vw;
+    margin: 0 auto;
+}
+.fotoCarousel{
+    width: 35vw;
+    margin: 1.5vw 0;
+}
 footer{
     background: red;
 }
