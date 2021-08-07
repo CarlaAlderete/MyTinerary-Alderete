@@ -41,7 +41,6 @@ const MyCarousel = () => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
-
   const slides = items.map((item) => {
     return (
       <CarouselItem

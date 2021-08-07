@@ -6,6 +6,28 @@
 p{
     margin: 0;
 }
+header{
+    color: #fff;
+    background: #71747462;
+    height: 10vh;
+}
+header a , header p{
+    text-decoration: none;
+    color: #fff;
+    margin: 1vw;
+    font-size: x-large;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw;
+}
+nav div {
+    display: flex;
+}
+nav .bi{
+    width: 4vw;
+}
 .video{
     position: absolute;
     width: 100%;
@@ -31,18 +53,12 @@ p{
 .logo img{
     width: 30vw;
 }
-header{
-    display: flex;
-    color: #fff;
-    padding: 2vw;
-    background: #71747462;
-    height: 10vh;
+.logo p{
+    width: 75%;
+    text-align: center;
 }
-header a{
-    text-decoration: none;
-    color: #fff;
-    margin: 1vw;
-}
+
+
 .contenido{
     margin-top: 90vh;
 }
