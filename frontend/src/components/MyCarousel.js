@@ -12,11 +12,11 @@ const items = [
           { foto:'Rio.jpg', city: 'Rio de Janeiro'},
           { foto:'Reykjavik.jpg',city: 'Reykjavik'}],
         [{ foto:'amsterdam.jpg',city: 'Amsterdam'},
-          { foto:'londres.jpg',city: 'Londres'},
+          { foto:'londres.jpg',city: 'Londron'},
           { foto:'Mykonos.jpg',city: 'Mykonos'},
           { foto:'toronto.jpg',city: 'Toronto'}],
         [{ foto:'telaviv.jpg',city: 'Tel aviv'},
-          { foto:'losangeles.jpg',city: 'los Angeles'},
+          { foto:'losangeles.jpg',city: 'Los Angeles'},
           { foto:'ny.jpg',city: 'New York'},
           { foto:'sanfrancisco.jpg',city: 'San Francisco'}]
 ];
@@ -41,26 +41,28 @@ const MyCarousel = () => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
-  const slides = items.map((item) => {
+  const slides = items.map((item, index) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item}
+        key={index}
         >
-        <div className='myCarousel'style={{backgroundImage:`url("/assets/carouselFondo.png")`,}}>
-          <h2>Popular MYtineraries</h2>
-          <div className='carouselGr'>
-            {(item).map((obj) => 
-              <div className='carouselDiv' style={{backgroundImage:`url("/assets/${obj.foto}")`,}}>
-                <h3>{obj.city}</h3>
-              </div> 
-            )}
+          <div className='carouselTodo' style={{backgroundImage:`url("/assets/fondo1.png")`,}}>
+            <h2 >Popular MyTineraries</h2>
+            <div className='carouselGr'>
+              {(item).map((obj) => 
+                  <div className='carouselDiv' key={obj.city} style={{backgroundImage:`url("/assets/${obj.foto}")`,}}>
+                    <h3>{obj.city}</h3>
+                  </div>
+              )}
+
+            </div>
           </div>
-        </div>
       </CarouselItem>
     );
   });
+
 
   return (
     <Carousel

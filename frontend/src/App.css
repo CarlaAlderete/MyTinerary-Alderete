@@ -9,7 +9,7 @@ p{
 header{
     color: #fff;
     background: #71747462;
-    height: 10vh;
+    height: 13vh;
 }
 header a , header p{
     text-decoration: none;
@@ -20,7 +20,7 @@ header a , header p{
 nav{
     display: flex;
     justify-content: space-between;
-    padding: 2vw;
+    padding: 1vw;
 }
 nav div {
     display: flex;
@@ -40,7 +40,7 @@ nav .bi{
 .logo{
     position: absolute;
     background: #71747462;
-    height: 90vh;
+    height: 87vh;
     width: 100%;
     z-index: -1;
     display: flex;
@@ -51,42 +51,41 @@ nav .bi{
     color: #fff;
 }
 .logo img{
-    width: 30vw;
+    width: 15vw;
 }
 .logo p{
     width: 75%;
     text-align: center;
 }
 .contenido{
-    margin-top: 90vh;
+    margin-top: 87vh;
 }
 .tarjetaGr{
-    background: #9e9999da;
+    background: #4e4949;;
 }
 .tarjeta{
     width: 20vh;
     height: 20vh;
-    background: #fff;
 }
-.myCarousel{
-    height: 95vh;
+.carouselTodo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    color: black;
-    text-transform: uppercase;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.myCarousel h2{
-    padding: 1vw;;
+.carouselTodo h2{
+    padding: 1vw;
+    color:black;
+    text-transform: uppercase;
 }
 .carouselGr{
     display: flex;
-    align-items: flex-end;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 2vh auto;
-    width: 80vw;
+    justify-content: space-between;
+    width: 80%;
 }
 .carouselDiv{
     height: 35vh;
@@ -97,9 +96,11 @@ nav .bi{
     background-size: cover;
     margin: 1vw auto;
     border:1px solid #080707;
+    border-radius: 2%;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
 }
 .carouselDiv h3{
+    font-size: 2.5vw;
     flex-grow: 1;
     text-align: center;
     background: #d3d0c96e;
@@ -110,5 +111,63 @@ nav .bi{
     font-size: 4vw;
 }
 footer{
-    background: black;
+    display: flex;
+    background: #4e4949;
+    padding: 1vw;
+    justify-content: space-between;
+    align-items: center;
+}
+footer img{
+    width: 5vw;
+}
+footer div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer a{
+    text-decoration: none;
+    color: #ffffff; 
+    margin: .5vw;
+}
+footer .bi{
+    width: 2vw;
+    margin: 0.2vw;
+}
+.footerText{
+    width: 40%;
+    text-align: center;
+    font-size: 1.5vw;
+}
+.cities{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #b3a8a8;
+}
+.mainCities{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.callAction{
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #b3a8a8;
+    text-align: center;
+}
+.callAction div{
+    width: 75%;
+}
+.callAction button{
+    font-size: 2.5vw;
+    border-radius: 50%;
+    border:1px solid #3635359a;
+    margin: 1vw;
+    padding: 1vw;
+    background-image: linear-gradient(to bottom right,black, #ff0000,orange, green,blue, purple);
 }
