@@ -46,12 +46,17 @@ const MyCarousel = () => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item}>
-        <div className='carouselGr'>
-          {(item).map((obj) => 
-            <div className='carouselDiv' style={{backgroundImage:`url("/assets/${obj.foto}")`,}}>
-            </div> 
-          )}
+        key={item}
+        >
+        <div className='myCarousel'style={{backgroundImage:`url("/assets/carouselFondo.png")`,}}>
+          <h2>Popular MYtineraries</h2>
+          <div className='carouselGr'>
+            {(item).map((obj) => 
+              <div className='carouselDiv' style={{backgroundImage:`url("/assets/${obj.foto}")`,}}>
+                <h3>{obj.city}</h3>
+              </div> 
+            )}
+          </div>
         </div>
       </CarouselItem>
     );
