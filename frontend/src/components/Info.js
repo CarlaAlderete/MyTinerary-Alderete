@@ -1,9 +1,15 @@
 const Info = () =>{
     return(
         <div className='contenido'>
-            <p>dgsthijdfovjvnxcvbgdfg</p>
-            <p>m,vcxkjbgieruthwokmsvndghisokmxvndfugjiskdvmxbngdskm,vnbgjifkmvngjfidl,hgdl,ngjidlx,vnfidl</p>
-            <p>m,vcxkjbgieruthwokmsvndghisokmxvndfugjiskdvmxbngdskm,vnbgjifkmvngjfidl,hgdl,ngjidlx,vnfidl</p>
+            <div className='tarjetaGr'>
+                <div className='tarjeta'></div>
+            </div>
+            <div className='tarjetaGr'>
+                <div className='tarjeta'></div>
+            </div>
+            <div className='tarjetaGr'>
+                <div className='tarjeta'></div>
+            </div>
         </div>
     )
 }

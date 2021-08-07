@@ -1,48 +1,75 @@
+import React, { useState } from 'react';
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+} from 'reactstrap';
+
+const items = [
+        [{ foto:'copenhagen.jpg',city: 'Copenhagen'},
+          { foto:'Boracay.jpg', city: 'Boracay'},
+          { foto:'Rio.jpg', city: 'Rio de Janeiro'},
+          { foto:'Reykjavik.jpg',city: 'Reykjavik'}],
+        [{ foto:'amsterdam.jpg',city: 'Amsterdam'},
+          { foto:'londres.jpg',city: 'Londres'},
+          { foto:'Mykonos.jpg',city: 'Mykonos'},
+          { foto:'toronto.jpg',city: 'Toronto'}],
+        [{ foto:'telaviv.jpg',city: 'Tel aviv'},
+          { foto:'losangeles.jpg',city: 'los Angeles'},
+          { foto:'ny.jpg',city: 'New York'},
+          { foto:'sanfrancisco.jpg',city: 'San Francisco'}]
+];
 
 const MyCarousel = () => {
-    return(
-        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <div className='carouselDiv'>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                    </div>
-                </div>
-                <div className="carousel-item">
-                    <div className='carouselDiv'>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        </div>
-                    </div>
-                <div className="carousel-item">
-                    <div className='carouselDiv'>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                        <img src='https://ecoosfera.com/wp-content/imagenes/2018/07/2-5.jpg' className="fotoCarousel" alt="foto"/>
-                    </div>
-                </div>
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-            </button>
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  const next = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  }
+
+  const previous = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    setActiveIndex(nextIndex);
+  }
+
+  const goToIndex = (newIndex) => {
+    if (animating) return;
+    setActiveIndex(newIndex);
+  }
+
+  const slides = items.map((item) => {
+    return (
+      <CarouselItem
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item}>
+        <div className='carouselGr'>
+          {(item).map((obj) => 
+            <div className='carouselDiv' style={{backgroundImage:`url("/assets/${obj.foto}")`,}}>
+            </div> 
+          )}
         </div>
-    )
+      </CarouselItem>
+    );
+  });
+
+  return (
+    <Carousel
+      activeIndex={activeIndex}
+      next={next}
+      previous={previous}
+    >
+      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      {slides}
+      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+    </Carousel>
+  );
 }
 
-export default MyCarousel
+export default MyCarousel;

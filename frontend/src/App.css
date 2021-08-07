@@ -46,14 +46,31 @@ header a{
 .contenido{
     margin-top: 90vh;
 }
+.tarjetaGr{
+    background: #9e9999da;
+}
+.tarjeta{
+    width: 20vh;
+    height: 20vh;
+    background: #fff;
+}
 .carousel-item{
     background-color: black;
+    height: 80vh;
 }
-.carouselDiv{
+.carouselGr{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin: 2.5vh auto;
     width: 80vw;
+    height: 75vh;
+}
+.carouselDiv{
+    height: 35vh;
+    width: 35vw;
+    background-position: center;
+    background-size: cover;
     margin: 0 auto;
 }
 .fotoCarousel{
