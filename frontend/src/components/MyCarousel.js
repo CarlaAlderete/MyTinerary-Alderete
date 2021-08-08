@@ -48,7 +48,7 @@ const MyCarousel = () => {
         onExited={() => setAnimating(false)}
         key={index}
         >
-          <div className='carouselTodo' style={{backgroundImage:`url("/assets/fondo1.png")`,}}>
+          <div className='carouselTodo'>
             <h2 >Popular MyTineraries</h2>
             <div className='carouselGr'>
               {(item).map((obj) => 
@@ -70,7 +70,7 @@ const MyCarousel = () => {
       next={next}
       previous={previous}
     >
-      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      <CarouselIndicators items={slides} activeIndex={activeIndex} onClickHandler={goToIndex} />
       {slides}
       <CarouselControl direction="prev" directionText=" " onClickHandler={previous} />
       <CarouselControl direction="next" directionText=" " onClickHandler={next} />

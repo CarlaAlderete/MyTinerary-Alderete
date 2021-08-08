@@ -67,14 +67,17 @@ nav .bi{
     width: 20vh;
     height: 20vh;
 }
+.carouselFondo{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 95vh;
+}
 .carouselTodo{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 .carouselTodo h2{
     padding: 1vw;

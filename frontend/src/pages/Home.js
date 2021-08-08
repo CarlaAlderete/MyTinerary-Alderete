@@ -12,7 +12,9 @@ const Home = () =>{
         <Header/>
         <Hero />
         <Info/>
-        <MyCarousel/>
+        <div className='carouselFondo'style={{backgroundImage:`url("/assets/fondo2.png")`,}}>
+            <MyCarousel/>
+        </div>
         <CallAction/>
         <Footer/>
         </>

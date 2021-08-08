@@ -3,9 +3,10 @@ const Footer = () => {
     return(
         <footer>
             <div className='navF'>
-                <Link exact to='/'>HOME</Link>
+                <Link to='/'>HOME</Link>
                 <Link to='/cities'>CITIES</Link>
-                <Link >SIGN UP</Link>
+                <Link to='/'>SIGN UP</Link>
+                <Link to='/'>SIGN IN</Link>
             </div>
             <div className='footerText'>
                 <img src='./assets/logo.png' alt='logo'/>
