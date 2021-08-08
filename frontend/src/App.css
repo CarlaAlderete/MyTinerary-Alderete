@@ -65,7 +65,6 @@ nav .bi{
 }
 .contenido{
     margin-top: 87vh;
-    background: #ffccccea;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -73,7 +72,7 @@ nav .bi{
 .cardGr{
     display: flex;
     justify-content: space-evenly;
-    padding: 3vw;
+    padding: 2vw;
 }
 .card{
     width: 45vh;
@@ -88,10 +87,15 @@ nav .bi{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 45vh;
+    width: 50vh;
     height: 45vh;
     text-align: center;
-    color: #333030;
+    color:#000;
+    font-size: 1.5vw;
+}
+.cardInfo h3{
+    font-size: 3vw;
+    font-family: 'Acme', sans-serif;
 }
 .carouselFondo{
     background-position: center;
@@ -103,12 +107,16 @@ nav .bi{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    height: 95vh;
 }
 .carouselTodo h2{
     padding: 1vw;
+    font-size: 3.5vw;
     color:black;
     text-transform: uppercase;
+    font-family: 'Acme', sans-serif;
 }
 .carouselGr{
     display: flex;
@@ -123,10 +131,14 @@ nav .bi{
     align-items: flex-end;
     background-position: center;
     background-size: cover;
-    margin: 1vw auto;
+    margin: 1.5vw auto;
     border:1px solid #080707;
     border-radius: 2%;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
+    transition: all 600ms;
+}
+.carouselDiv:hover{
+    transform: scale(1.2);
 }
 .carouselDiv h3{
     font-size: 2.5vw;
@@ -135,9 +147,6 @@ nav .bi{
     background: #d3d0c96e;
     color: #000;
     text-transform: uppercase;
-}
-.carouselDiv h3:hover{
-    font-size: 4vw;
 }
 footer{
     display: flex;
@@ -156,7 +165,7 @@ footer div{
 }
 footer a{
     text-decoration: none;
-    color: #080707; 
+    color: #000; 
     margin: .5vw;
 }
 footer .bi{
@@ -173,7 +182,7 @@ footer .bi{
     flex-direction: column;
     min-height: 100vh;
     background: #ffccccea;
-    color: #333030;
+    color: #000;
 }
 .mainCities{
     flex-grow: 1;
@@ -191,34 +200,46 @@ footer .bi{
     justify-content: center;
     background: #ffccccea;
     text-align: center;
-    color: #333030;
+    color: #000;
 }
 .callAction div{
     width: 75%;
+}
+.callAction h3, .callAction button{
+    font-size: 3.5vw;
+    font-family: 'Acme', sans-serif;
+}
+.callAction p{
+    padding: 1vw;
 }
 .callAction button{
     font-size: 2.5vw;
     border-radius: 50%;
     border:1px solid #3635359a;
-    margin: 1vw;
     padding: 1vw;
-    
+    transition: all 500ms;
+}
+.callAction button:hover{
+    background: red;
+    transform: scale(1.2);
 }
 .error{
-    background-position: 100% 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+}
+.error img{
+    width: 20%;
 }
 .error button{
-    margin:3vw;
-    border: 1px solid red;
+    margin:2vw;
+    border: 1px solid yellow;
     background: black;
     color: blanchedalmond;
     font-size: 2.5vw;
-    padding: 1vw;
+    padding: .5vw;
+    font-family: 'Acme', sans-serif;
 }

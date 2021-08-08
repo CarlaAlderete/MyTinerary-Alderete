@@ -4,8 +4,8 @@ import 'aos/dist/aos.css';
 
 const Info = () =>{
     useEffect(() =>{
-        AOS.init({duration: 2500});
-    },)
+        AOS.init({duration: 3000});
+    },[])
     return(
         <div className='contenido' style={{backgroundImage:`url("/assets/fondomain.jpg")`}} >
             <div className='cardGr'>

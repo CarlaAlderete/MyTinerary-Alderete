@@ -6,7 +6,7 @@ import {
   CarouselIndicators,
 } from 'reactstrap';
 
-const items = [
+const cities = [
         [{ foto:'copenhagen.jpg',city: 'Copenhagen'},
           { foto:'Boracay.jpg', city: 'Boracay'},
           { foto:'Rio.jpg', city: 'Rio de Janeiro'},
@@ -27,13 +27,13 @@ const MyCarousel = () => {
 
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === cities.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   }
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? cities.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   }
 
@@ -41,7 +41,7 @@ const MyCarousel = () => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
-  const slides = items.map((item, index) => {
+  const slides = cities.map((item, index) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
