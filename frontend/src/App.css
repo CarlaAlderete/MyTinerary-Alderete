@@ -37,18 +37,24 @@ nav .bi{
     object-fit: cover;
     z-index: -2;
 }
-.logo{
-    position: absolute;
-    background: #71747462;
-    height: 87vh;
-    width: 100%;
-    z-index: -1;
+.logoCh{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: x-large;
     color: #fff;
+}
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: #71747462;
+    height: 87vh;
+    width: 100%;
+    z-index: -1;;
 }
 .logo img{
     width: 15vw;
@@ -59,13 +65,30 @@ nav .bi{
 }
 .contenido{
     margin-top: 87vh;
+    background: #b3a4a4;
 }
-.tarjetaGr{
-    background: #4e4949;;
+.cardGr{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3vw;
 }
-.tarjeta{
-    width: 20vh;
-    height: 20vh;
+.card{
+    width: 45vh;
+    height: 45vh;
+    border: 1vw solid #fff;
+    border-bottom: 3vw solid #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.cardInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45vh;
+    height: 45vh;
+    text-align: center;
+    color: #333030;
 }
 .carouselFondo{
     background-position: center;
@@ -107,7 +130,7 @@ nav .bi{
     flex-grow: 1;
     text-align: center;
     background: #d3d0c96e;
-    color:#000;
+    color: #000;
     text-transform: uppercase;
 }
 .carouselDiv h3:hover{
@@ -115,13 +138,12 @@ nav .bi{
 }
 footer{
     display: flex;
-    background: #4e4949;
-    padding: 1vw;
+    background: #666464;
     justify-content: space-between;
     align-items: center;
 }
 footer img{
-    width: 5vw;
+    width: 4vw;
 }
 footer div{
     display: flex;
@@ -130,7 +152,7 @@ footer div{
 }
 footer a{
     text-decoration: none;
-    color: #ffffff; 
+    color: #080707; 
     margin: .5vw;
 }
 footer .bi{
@@ -140,13 +162,14 @@ footer .bi{
 .footerText{
     width: 40%;
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 .cities{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #b3a8a8;
+    background: #b3a4a4;
+    color: #333030;
 }
 .mainCities{
     flex-grow: 1;
@@ -157,11 +180,14 @@ footer .bi{
 }
 .callAction{
     padding: 3vw;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #b3a8a8;
+    justify-content: center;
+    background: #b3a4a4;
     text-align: center;
+    color: #333030;
 }
 .callAction div{
     width: 75%;
@@ -172,5 +198,23 @@ footer .bi{
     border:1px solid #3635359a;
     margin: 1vw;
     padding: 1vw;
-    background-image: linear-gradient(to bottom right,black, #ff0000,orange, green,blue, purple);
+    
+}
+.error{
+    background-position: 100% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.error button{
+    margin:3vw;
+    border: 1px solid red;
+    background: black;
+    color: blanchedalmond;
+    font-size: 2.5vw;
+    padding: 1vw;
 }

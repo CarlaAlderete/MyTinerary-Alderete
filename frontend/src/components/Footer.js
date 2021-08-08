@@ -5,8 +5,8 @@ const Footer = () => {
             <div className='navF'>
                 <Link to='/'>HOME</Link>
                 <Link to='/cities'>CITIES</Link>
-                <Link to='/'>SIGN UP</Link>
                 <Link to='/'>SIGN IN</Link>
+                <Link to='/'>SIGN OUT</Link>
             </div>
             <div className='footerText'>
                 <img src='./assets/logo.png' alt='logo'/>
