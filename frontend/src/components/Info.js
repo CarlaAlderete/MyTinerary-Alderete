@@ -7,7 +7,7 @@ const Info = () =>{
         AOS.init({duration: 2500});
     },)
     return(
-        <div className='contenido'>
+        <div className='contenido' style={{backgroundImage:`url("/assets/fondomain.jpg")`}} >
             <div className='cardGr'>
                 <div className='card' data-aos="fade-right" style={{backgroundImage:`url("/assets/remo.jpg")`}}></div>
                 <div className='cardInfo' data-aos="fade-left">
