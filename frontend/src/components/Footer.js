@@ -10,7 +10,7 @@ const Footer = () => {
             </div>
             <div className='footerText'>
                 <img src='./assets/logo.png' alt='logo'/>
-                <p>© Copyright 2021 MidHub by Alderete Carla.All Rights Reserved.</p>
+                <p>© Copyright 2021 Proyect MidHub by Alderete Carla.All Rights Reserved.</p>
             </div>
             <div>
                 <a href='https://www.instagram.com/' target='_blank'>

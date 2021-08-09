@@ -75,8 +75,8 @@ nav .bi{
     padding: 2vw;
 }
 .card{
-    width: 45vh;
-    height: 45vh;
+    width: 25vw;
+    height: 25vw;
     border: 1vw solid #fff;
     border-bottom: 3vw solid #fff;
     background-position: center;
@@ -87,8 +87,8 @@ nav .bi{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50vh;
-    height: 45vh;
+    width: 40vw;
+    height: 25vw;
     text-align: center;
     color:#000;
     font-size: 1.5vw;
@@ -125,8 +125,8 @@ nav .bi{
     width: 80%;
 }
 .carouselDiv{
-    height: 35vh;
-    width: 35vw;
+    height: 33vh;
+    width: 33vw;
     display: flex;
     align-items: flex-end;
     background-position: center;
@@ -193,7 +193,7 @@ footer .bi{
 }
 .callAction{
     padding: 3vw;
-    height: 60vh;
+    height: 55vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -202,15 +202,14 @@ footer .bi{
     text-align: center;
     color: #000;
 }
-.callAction div{
+.callActionP{
+    padding: 1vw;
+    text-align: center;
     width: 75%;
 }
 .callAction h3, .callAction button{
     font-size: 3.5vw;
     font-family: 'Acme', sans-serif;
-}
-.callAction p{
-    padding: 1vw;
 }
 .callAction button{
     font-size: 2.5vw;
@@ -218,9 +217,10 @@ footer .bi{
     border:1px solid #3635359a;
     padding: 1vw;
     transition: all 500ms;
+    background-color: #fa9e9e;
 }
 .callAction button:hover{
-    background: red;
+    background: #fc3c3c;
     transform: scale(1.2);
 }
 .error{
@@ -242,4 +242,11 @@ footer .bi{
     font-size: 2.5vw;
     padding: .5vw;
     font-family: 'Acme', sans-serif;
+}
+
+@media screen and (max-width: 600px){
+    .callAction{
+        height: 40vh;
+    }
+    
 }
