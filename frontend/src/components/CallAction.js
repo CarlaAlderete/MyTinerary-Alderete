@@ -12,7 +12,5 @@ const CallAction = () =>{
             <img src='/assets/Transvida.gif' alt='gif'/>
         </div>
     )
-    
 }
-
 export default CallAction

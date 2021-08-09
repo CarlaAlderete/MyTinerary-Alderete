@@ -93,6 +93,9 @@ nav .bi{
     color:#000;
     font-size: 1.5vw;
 }
+#impar{
+    order: 1;
+}
 .cardInfo h3{
     font-size: 3vw;
     font-family: 'Acme', sans-serif;
@@ -250,11 +253,17 @@ footer .bi{
     font-family: 'Acme', sans-serif;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 700px){
     .callAction{
         height: 40vh;
     }
     nav .bi{
         width: 5vw;
+    }
+    .logo img{
+        width: 25vw;
+    }
+    .cardInfo p{
+        font-size: 2.5vw;
     }
 }
