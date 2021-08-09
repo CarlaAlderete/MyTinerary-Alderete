@@ -182,7 +182,7 @@ footer .bi{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #ffccccea;
+    background: #F2A2C0;
     color: #000;
 }
 .mainCities{
@@ -192,21 +192,26 @@ footer .bi{
     justify-content: center;
     align-items: center;
 }
+.callActionTotal{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #F2A2C0
+}
+.callActionTotal img{
+    width: 15vw;
+}
 .callAction{
     padding: 3vw;
     height: 55vh;
+    width: 55vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #ffccccea;
+    background: #F2A2C0;
     text-align: center;
     color: #000;
-}
-.callActionP{
-    padding: 1vw;
-    text-align: center;
-    width: 75%;
 }
 .callAction h3, .callAction button{
     font-size: 3.5vw;
