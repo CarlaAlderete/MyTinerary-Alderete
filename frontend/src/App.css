@@ -240,7 +240,7 @@ footer .bi{
     border: 1px solid yellow;
     background: black;
     color: blanchedalmond;
-    font-size: 2.5vw;
+    font-size: 3vw;
     padding: .5vw;
     font-family: 'Acme', sans-serif;
 }
@@ -249,5 +249,7 @@ footer .bi{
     .callAction{
         height: 40vh;
     }
-    
+    nav .bi{
+        width: 5vw;
+    }
 }
