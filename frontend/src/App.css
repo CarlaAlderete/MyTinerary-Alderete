@@ -28,6 +28,10 @@ nav div {
 nav .bi{
     width: 4vw;
 }
+nav .active{
+    color:  #302f2f;
+    text-shadow:-1px 0 #a7a5a5, 0 1px #a7a5a5, 1px 0 #a7a5a5, 0 -1px #a7a5a5
+}
 .video{
     position: absolute;
     width: 100%;
@@ -76,6 +80,7 @@ nav .bi{
     height: 25vw;
     border: 1vw solid #fff;
     border-bottom: 3vw solid #fff;
+    box-shadow: 1px 1px 5px 5px #cac9c9b7;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -94,7 +99,7 @@ nav .bi{
     order: 1;
 }
 .cardInfo h3{
-    font-size: 3vw;
+    font-size: 3.5vw;
     font-family: 'Acme', sans-serif;
 }
 .carouselFondo{
@@ -199,12 +204,12 @@ footer .bi{
     background: #f8afca85;
 }
 .callActionTotal img{
-    width: 15vw;
+    width: 18vw;
 }
 .callAction{
     padding: 3vw;
     height: 55vh;
-    width: 55vw;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -272,5 +277,21 @@ footer .bi{
     }
     .carouselTodo h2{
         font-size: 6vw;
+    }
+    footer{
+        justify-content: center;
+        font-weight: bold;
+    }
+    footer div{
+        flex-direction: row;
+        justify-content: center;
+        padding: 1vw 3vw;
+    }
+    .footerText{
+        flex-direction: column;
+    }
+    footer .bi{
+        width: 4vw;
+        margin: 1vw;
     }
 }
