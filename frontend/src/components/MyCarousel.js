@@ -12,7 +12,7 @@ const cities = [
           { foto:'Rio.jpg', city: 'Rio de Janeiro'},
           { foto:'Reykjavik.jpg',city: 'Reykjavik'}],
         [{ foto:'amsterdam.jpg',city: 'Amsterdam'},
-          { foto:'londres.jpg',city: 'Londron'},
+          { foto:'londres.jpg',city: 'London'},
           { foto:'Mykonos.jpg',city: 'Mykonos'},
           { foto:'toronto.jpg',city: 'Toronto'}],
         [{ foto:'telaviv.jpg',city: 'Tel aviv'},
