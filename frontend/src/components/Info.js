@@ -1,7 +1,3 @@
-import {useEffect} from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
 const info = [
     { foto:'remo.jpg',h3: 'Why us?', text:'A short-term rental service by and for gay travelers is needed to help provide a comfortable and safe experience.', id: 'par'},
       { foto:'hotel.jpg', h3: 'The best destinations', text:'We have information on all the selected destinations with the best activities for your satisfaction', id: 'impar'},
@@ -9,10 +5,6 @@ const info = [
 ];
 
 const Info = () =>{
-    useEffect(() =>{
-        AOS.init({duration: 3000});
-    },[])
-
     const infoContenido =info.map((obj, index) =>{
         return(
             <div className='cardGr' key={index}>
