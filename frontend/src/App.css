@@ -253,9 +253,20 @@ footer .bi{
     /* background: #ec555550; */
     color: #000;
 }
+.mainCities h2, .mainCities p{
+    padding: 1.5vw 4vw 0vw;
+    font-size: 2vw;
+    text-align: center;
+}
+.mainCities h2{
+    font-size: 3vw;
+    font-family: 'Acme', sans-serif;
+}
 .mainCities{
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 .citiesGr{

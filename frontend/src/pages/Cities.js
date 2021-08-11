@@ -25,7 +25,9 @@ const city =newcities.map((obj, index) =>{
     )
 });
 export default class Cities extends Component{
-    
+    componentDidMount() {
+       window.scroll(0, 0)
+    }
     render(){
         return(
             <>
@@ -37,6 +39,8 @@ export default class Cities extends Component{
                     </div>
                 </div>
                 <div className='mainCities'>
+                <h2>Destinations</h2>
+                <p>In our tours we try to show you the best of each area for our clients in a unique LGTBIQ+ experience.</p>
                     <div className='citiesGr'>
                         {city}
                     </div>
