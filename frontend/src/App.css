@@ -247,7 +247,10 @@ footer .bi{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #ec555550;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background: #ec555550; */
     color: #000;
 }
 .mainCities{
@@ -358,5 +361,8 @@ footer .bi{
     footer .bi{
         width: 4vw;
         margin: 1vw;
+    }
+    .heroCities{
+        background-position:10% 25%;
     }
 }

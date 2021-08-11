@@ -29,7 +29,7 @@ export default class Cities extends Component{
     render(){
         return(
             <>
-            <div className='cities'>
+            <div className='cities' style={{backgroundImage:`url("/assets/fondomain2.png")`}}>
                 <div className='heroCities' style={{backgroundImage:`url("/assets/tres.jpg")`}}>
                     <Header/>
                     <div className='herocitiesLogo'>
