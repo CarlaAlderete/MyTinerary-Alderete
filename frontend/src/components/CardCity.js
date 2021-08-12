@@ -21,7 +21,7 @@ const CardCity = () =>{
         return(
             obj.city.startsWith(filteredCity) &&
             <Link to={`/itinerary/${obj.id}`} key={index}>
-                <div className={`item${index}`} data-aos="zoom-in-up" style={{backgroundImage:`url("/assets/${obj.foto}")`}}>
+                <div className={`item${index}`} data-aos="zoom-in-up" style={{backgroundImage:`url("/assets/${obj.photo}")`}}>
                     <h3>{obj.city.toUpperCase()}</h3>
                     <p>{obj.country.toUpperCase()}</p>
                 </div>
