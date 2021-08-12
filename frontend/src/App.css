@@ -188,6 +188,9 @@ footer .bi{
     font-size: 1vw;
 }
 /* CALL ACTION */
+input{
+    margin: 1vw;
+}
 .callActionTotal{
     display: flex;
     justify-content: space-evenly;
@@ -276,8 +279,12 @@ footer .bi{
     grid-template-columns: repeat(2,calc(100% /2));
     grid-template-rows: auto;
 }
-
-.citiesGr div {
+.citiesGr h1{
+    font-family: 'Acme', sans-serif;
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+.citiesGr a div{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -286,14 +293,17 @@ footer .bi{
     margin:1vw;
     font-size: 30px;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
+    color:#000;
+    text-decoration: none;
 }
-.citiesGr div:nth-child(3n-2){
+
+.citiesGr a:nth-child(3n-2){
     grid-column: 1 / span 2;
 }
-.citiesGr div:nth-child(3n-1){
+.citiesGr a:nth-child(3n-1){
     grid-column: 1;
 }
-.citiesGr div:nth-child(3n){
+.citiesGr a:nth-child(3n){
     grid-column: 2;
 }
 

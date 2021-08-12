@@ -6,18 +6,21 @@ const app = express()
 app.use(cors())
 
 const cities= [
-    { foto:'copenhagen.jpg',city: 'Copenhagen', country:'Denmark'},
-    { foto:'Boracay.jpg', city: 'Boracay', country:'Philippines'},
-    { foto:'Rio.jpg', city: 'Rio de Janeiro', country:'Brazil'},
-    { foto:'Reykjavik.jpg',city: 'Reykjavik', country:'Iceland'},
-    { foto:'amsterdam.jpg',city: 'Amsterdam', country:'Netherlands'},
-    { foto:'londres.jpg',city: 'London', country:'United Kingdom'},
-    { foto:'Mykonos.jpg',city: 'Mykonos', country:'Greece'},
-    { foto:'toronto.jpg',city: 'Toronto', country:'Canada'},
-    { foto:'telaviv.jpg',city: 'Tel aviv', country:'Israel'},
-    { foto:'losangeles.jpg',city: 'Los Angeles', country:'United States'},
-    { foto:'ny.jpg',city: 'New York', country:'United States'},
-    { foto:'sanfrancisco.jpg',city: 'San Francisco',country:'United States'}
+    { foto:'copenhagen.jpg',city: 'copenhagen', country:'Denmark',id:'100'},
+    { foto:'Boracay.jpg', city: 'boracay', country:'Philippines',id:'101'},
+    { foto:'Rio.jpg', city: 'rio de Janeiro', country:'Brazil',id:'102'},
+    { foto:'Reykjavik.jpg',city: 'reykjavik', country:'Iceland',id:'103'},
+    { foto:'amsterdam.jpg',city: 'amsterdam', country:'Netherlands',id:'104'},
+    { foto:'londres.jpg',city: 'london', country:'United Kingdom',id:'105'},
+    { foto:'Mykonos.jpg',city: 'mykonos', country:'Greece',id:'106'},
+    { foto:'toronto.jpg',city: 'toronto', country:'Canada',id:'107'},
+    { foto:'telaviv.jpg',city: 'tel aviv', country:'Israel',id:'108'},
+    { foto:'losangeles.jpg',city: 'los Angeles', country:'United States',id:'109'},
+    { foto:'ny.jpg',city: 'new York', country:'United States',id:'110'},
+    { foto:'sanfrancisco.jpg',city: 'san Francisco',country:'United States',id:'111'}
 ];
 
+app.get('/city', (req, res)=>{
+    res.json({res : cities})
+})
 app.listen(4000, () => console.log('Server listening on port 4000'))

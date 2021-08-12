@@ -5,7 +5,7 @@ const Hero = () => {
         <>
         <div className='logo'>
             <div className='logoCh' data-aos="flip-right">
-                <img src='./assets/logo.png'></img>
+                <img src='./assets/logo.png' alt='logo'></img>
                 <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
             </div>
         </div>
