@@ -15,7 +15,10 @@ export default class City extends Component{
     render(){
         return(
             <>
-            <Header/>
+            <div className='cityFoto' style={{backgroundImage:`url("/assets/${this.state.city.foto}")`,}}>
+                <Header/>
+                <div className='herocitiesLogo'></div>
+            </div>
             <h1>{this.state.city.city}</h1>
             <Footer/>
             </>
