@@ -9,7 +9,7 @@ const Footer = () => {
                 <Link to='/'>SIGN UP</Link>
             </div>
             <div className='footerText'>
-                <img src='./assets/logo.png' alt='logo'/>
+                <img src='/assets/logo.png' alt='logo'/>
                 <p>© Copyright 2021 Project MidHub by Alderete Carla</p>
             </div>
             <div>

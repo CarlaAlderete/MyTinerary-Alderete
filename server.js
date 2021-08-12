@@ -4,6 +4,7 @@ const cors = require('cors')
 
 const app = express()
 app.use(cors())
+app.use(express.json())
 
 const cities= [
     { foto:'copenhagen.jpg',city: 'copenhagen', country:'Denmark',id:'100'},
@@ -23,9 +24,10 @@ const cities= [
 app.get('/api/cities', (req, res)=>{
     res.json({res : cities})
 })
-// app.get('/api/city/:id', (req, res)=>{
-//     const city = cities.find(city =>city)
-//     res.json({res : city})
-// })
+
+app.get('/api/city/:id', (req, res)=>{
+    const city = cities.find(destino => destino.id === req.params.id)
+    res.json({res : city})
+})
 
 app.listen(4000, () => console.log('Server listening on port 4000'))

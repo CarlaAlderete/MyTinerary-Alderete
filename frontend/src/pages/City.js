@@ -4,18 +4,19 @@ import Footer from "../components/Footer"
 import axios from 'axios'
 
 export default class City extends Component{
-    state = {city: []}
+    state = {city: {}}
+    
     componentDidMount() {
         window.scroll(0, 0)
-        // axios.get(`http://localhost:4000/api/city/${}`)
-        // .then(res => this.setState({city:res.data.res}))
-        // console.log(this.state.city)
+        axios.get(`http://localhost:4000/api/city/${this.props.match.params.id}`)
+        .then(res => this.setState({city:res.data.res}))
     };
+    
     render(){
         return(
             <>
             <Header/>
-            {this.state.city.map(obj =><h1>hola</h1>)}
+            <h1>{this.state.city.city}</h1>
             <Footer/>
             </>
         )
