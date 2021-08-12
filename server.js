@@ -20,7 +20,12 @@ const cities= [
     { foto:'sanfrancisco.jpg',city: 'san Francisco',country:'United States',id:'111'}
 ];
 
-app.get('/city', (req, res)=>{
+app.get('/api/cities', (req, res)=>{
     res.json({res : cities})
 })
+// app.get('/api/city/:id', (req, res)=>{
+//     const city = cities.find(city =>city)
+//     res.json({res : city})
+// })
+
 app.listen(4000, () => console.log('Server listening on port 4000'))
