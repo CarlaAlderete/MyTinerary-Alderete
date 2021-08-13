@@ -8,7 +8,7 @@ export default class City extends Component{
     
     componentDidMount() {
         window.scroll(0, 0)
-        axios.get(`http://localhost:4000/api/city/${this.props.match.params.id}`)
+        axios.get(`http://localhost:4000/api/cities/${this.props.match.params.id}`)
         .then(res => this.setState({city:res.data.res}))
     };
     

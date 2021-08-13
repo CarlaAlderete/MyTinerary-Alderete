@@ -1,27 +1,35 @@
-// const City = require('../models/City')
-const cities= [
-    { photo:'copenhagen.jpg',city: 'copenhagen', country:'Denmark',id:'100'},
-    { photo:'Boracay.jpg', city: 'boracay', country:'Philippines',id:'101'},
-    { photo:'Rio.jpg', city: 'rio de Janeiro', country:'Brazil',id:'102'},
-    { photo:'Reykjavik.jpg',city: 'reykjavik', country:'Iceland',id:'103'},
-    { photo:'amsterdam.jpg',city: 'amsterdam', country:'Netherlands',id:'104'},
-    { photo:'londres.jpg',city: 'london', country:'United Kingdom',id:'105'},
-    { photo:'Mykonos.jpg',city: 'mykonos', country:'Greece',id:'106'},
-    { photo:'toronto.jpg',city: 'toronto', country:'Canada',id:'107'},
-    { photo:'telaviv.jpg',city: 'tel aviv', country:'Israel',id:'108'},
-    { photo:'losangeles.jpg',city: 'los Angeles', country:'United States',id:'109'},
-    { photo:'ny.jpg',city: 'new York', country:'United States',id:'110'},
-    { photo:'sanfrancisco.jpg',city: 'san Francisco',country:'United States',id:'111'}
-];
+const City = require('../models/City')
 
 const citiesControllers = {
-    citiesGet : (req, res)=>{
-        res.json({res : cities})
+    showCities : (req, res)=>{
+        City.find()
+        .then((cities)=> res.json({ res: cities }))
+        .catch((err) => console.log(err))
     },
-    cityGet : (req, res)=>{
-        const city = cities.find(destino => destino.id === req.params.id)
-        res.json({res : city})
-    }
+    showCity : (req, res)=>{
+        City.findOne({_id : req.params.id})
+        .then((city)=> res.json({res : city}))
+    },
+
+    addNewCities : (req, res)=>{
+        const cityNew = new City ({
+            photo: req.body.photo,
+            city: req.body.city,
+            country: req.body.country,
+            description: req.body.description,
+            photoDescription: req.body.photoDescription,
+            flag: req.body.flag
+        })
+        cityNew
+         .save()
+         .then(() => res.json({ success: true }))
+         .catch((err) => res.json({ success: false, error: err }))
+    },
+    
+    removeCity: (req, res)=>{
+     City.findOneAndDelete({_id : req.params.id})
+     .then(()=> res.json({success: true}))  
+    },
 }
 
 module.exports = citiesControllers
