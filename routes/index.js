@@ -9,5 +9,6 @@ router.route('/cities')
 router.route('/cities/:id')
 .get(citiesControllers.showCity)
 .delete(citiesControllers.removeCity)
+.put(citiesControllers.changeCity)
 
 module.exports = router

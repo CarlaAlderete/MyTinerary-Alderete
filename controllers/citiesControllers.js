@@ -1,14 +1,21 @@
 const City = require('../models/City')
 
 const citiesControllers = {
-    showCities : (req, res)=>{
-        City.find()
-        .then((cities)=> res.json({ res: cities }))
-        .catch((err) => console.log(err))
+    showCities : async (req, res)=>{
+        try {
+            var cities = await City.find()
+            res.json({res:cities})
+        }catch (err){
+            res.json({success:false, res:err.message})
+        }
     },
-    showCity : (req, res)=>{
-        City.findOne({_id : req.params.id})
-        .then((city)=> res.json({res : city}))
+    showCity : async (req, res)=>{
+        try {
+            var city = await City.findOne({_id:req.params.id})
+            res.json({res:city})
+        } catch (err){
+            res.json({success:false, res:err.message})
+        }
     },
 
     addNewCities : (req, res)=>{
@@ -20,16 +27,22 @@ const citiesControllers = {
             photoDescription: req.body.photoDescription,
             flag: req.body.flag
         })
-        cityNew
-         .save()
-         .then(() => res.json({ success: true }))
+        cityNew.save()
+         .then(() => res.json({success: true}))
          .catch((err) => res.json({ success: false, error: err }))
     },
     
     removeCity: (req, res)=>{
-     City.findOneAndDelete({_id : req.params.id})
-     .then(()=> res.json({success: true}))  
+        City.findOneAndDelete({_id : req.params.id})
+        .then(()=> res.json({success: true}))  
     },
+
+    changeCity: (req, res)=>{
+        City.findOneAndUpdate({_id : req.params.id}, {...req.body})
+        .then(()=> res.jon({success : true}))
+        .catch((err) => res.json({sucess: false, error:err}))
+    }
+
 }
 
 module.exports = citiesControllers

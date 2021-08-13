@@ -6,6 +6,7 @@ const CardCity = () =>{
     const [newcities, setNewCities] = useState([])
     const [filteredCity, setFilteredCity] = useState('')
     const [loading, setLoading] = useState(true)
+
     useEffect(()=>{
         axios.get('http://localhost:4000/api/cities')
         .then(res => {
@@ -14,10 +15,9 @@ const CardCity = () =>{
         })
     },[])
 
-    const filterCityHandler = (e) => {
-        setFilteredCity(e.target.value.toLowerCase().trim().replace(/\s+/g, ''))
-    };
-    const city =newcities.map((obj, index) =>{
+    const filterCityHandler = (e) => setFilteredCity(e.target.value.toLowerCase().trim().replace(/\s+/g, ''));
+
+    const city = newcities.map((obj, index) =>{
         return(
             obj.city.startsWith(filteredCity) &&
             <Link to={`/itinerary/${obj._id}`} key={index}>
@@ -28,6 +28,7 @@ const CardCity = () =>{
             </Link>
         )  
     });
+    
     const emptyCity = (value) => {
         return typeof value === 'boolean'
     }
