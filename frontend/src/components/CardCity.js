@@ -38,10 +38,10 @@ const CardCity = () =>{
     }
     if(loading.condition){
         return (
-            <>
+            <div className='mainCities'>
             <h1>{loading.text}</h1>
             <Link to='/'>{loading.back}</Link>
-            </>
+            </div>
             )
         }
     return(

@@ -27,7 +27,7 @@ export default class City extends Component{
     render(){
         if(this.state.loading){
             return(
-                <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoo.png")`}}>
+                <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoFooter.jpg")`}}>
                 <h1>{this.state.title}</h1>
                 <Link to='/cities'>{this.state.back}</Link>
                 </div>

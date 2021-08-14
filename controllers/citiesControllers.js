@@ -6,14 +6,18 @@ const citiesControllers = {
             var cities = await City.find()
             res.json({success: true, res:cities})
         }catch (err){
-            res.json({success:false, res:err.message})
+            res.json({success:false, res: err.message})
         }
     },
     showCity : async (req, res)=>{
         try {
             var city = await City.findOne({_id:req.params.id})
-            res.json({success: true, res:city})
-        } catch (err){
+            if(city){
+                res.json({success: true, res:city})
+            }else{
+                res.json({success: false, res:city})
+            }
+        }catch (err){
             res.json({success:false, res:err.message})
         }
     },
@@ -27,20 +31,31 @@ const citiesControllers = {
             photoDescription: req.body.photoDescription,
             flag: req.body.flag
         })
-        cityNew.save()
-        .then(() => res.json({success: true}))
-        .catch((err) => res.json({ success: false, error: err }))
+        try{
+            await cityNew.save()
+            res.json({success: true})
+        }catch(err){
+            res.json({ success: false, res:err.message})
+            console.log(err)
+        }
     },
     
-    removeCity: (req, res)=>{
-        City.findOneAndDelete({_id : req.params.id})
-        .then(()=> res.json({success: true}))  
+    removeCity: async (req, res)=>{
+        try{
+            var cityDelete = await City.findOneAndDelete({_id : req.params.id})
+            res.json({success: true, res: cityDelete})
+        }catch(err){
+            res.json({sucess: false, res:err.message})
+        }
     },
 
-    changeCity: (req, res)=>{
-        City.findOneAndUpdate({_id : req.params.id}, {...req.body})
-        .then(()=> res.json({success : true}))
-        .catch((err) => res.json({sucess: false, error:err}))
+    changeCity: async (req, res)=>{
+        try{
+            var changedCity = await City.findOneAndUpdate({_id : req.params.id}, {...req.body})
+            res.json({success : true, res: changedCity})
+        }catch(err){
+            res.json({sucess: false, res:err.message})
+        }
     }
 
 }
