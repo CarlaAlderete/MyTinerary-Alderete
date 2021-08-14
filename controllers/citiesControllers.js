@@ -36,7 +36,6 @@ const citiesControllers = {
             res.json({success: true})
         }catch(err){
             res.json({ success: false, res:err.message})
-            console.log(err)
         }
     },
     

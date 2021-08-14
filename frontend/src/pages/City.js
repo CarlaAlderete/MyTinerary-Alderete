@@ -19,9 +19,9 @@ export default class City extends Component{
             if(res.data.success){
             this.setState({city:res.data.res, loading:false})
         }else{
-            this.setState({title:'No information to show', back:'Barck to the Cities'})}
+            this.setState({title:'No information to show', back:'Back to the Cities'})}
         })
-        .catch(err=> this.setState({title:err.message, back:'Barck to the Cities'}))
+        .catch(err=> this.setState({title:err.message, back:'Back to the Cities'}))
     };
 
     render(){
@@ -45,6 +45,7 @@ export default class City extends Component{
                     <p data-aos="fade-right">{this.state.city.description}</p>
                     <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.state.city.photoDescription}")`,}}></div>
                 </div>
+                <h2>Under construction</h2>
                 <Link to='/cities'>
                     <button>Back to the Cities</button>
                 </Link>
