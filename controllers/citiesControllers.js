@@ -18,7 +18,7 @@ const citiesControllers = {
         }
     },
 
-    addNewCities : (req, res)=>{
+    addNewCities : async (req, res)=>{
         const cityNew = new City ({
             photo: req.body.photo,
             city: req.body.city,
@@ -28,8 +28,8 @@ const citiesControllers = {
             flag: req.body.flag
         })
         cityNew.save()
-         .then(() => res.json({success: true}))
-         .catch((err) => res.json({ success: false, error: err }))
+        .then(() => res.json({success: true}))
+        .catch((err) => res.json({ success: false, error: err }))
     },
     
     removeCity: (req, res)=>{
@@ -39,7 +39,7 @@ const citiesControllers = {
 
     changeCity: (req, res)=>{
         City.findOneAndUpdate({_id : req.params.id}, {...req.body})
-        .then(()=> res.jon({success : true}))
+        .then(()=> res.json({success : true}))
         .catch((err) => res.json({sucess: false, error:err}))
     }
 

@@ -72,12 +72,12 @@ nav .active{
     background-size: cover;
     background-repeat: no-repeat;
 }
-.cardGr{
+.cardGr, .descrGr{
     display: flex;
     justify-content: space-evenly;
     padding: 2vw;
 }
-.card{
+.card, .descr{
     width: 25vw;
     height: 25vw;
     border: 1vw solid #fff;
@@ -297,6 +297,7 @@ input{
     height: 40vh;
     margin:1vw;
     font-size: 30px;
+    border: 1px solid black;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
     color:#000;
     text-decoration: none;
@@ -336,11 +337,39 @@ input{
     padding: .5vw;
     font-family: 'Acme', sans-serif;
 }
-
+/* CITIONLY */
+.descrGr p{
+    align-self: center;
+    font-size: 2vw;
+    margin: 3vw;
+    width: 40vw;
+}
+.cityOnly{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ec555550 ; 
+}
+.cityOnly h1{
+    font-family: 'Acme', sans-serif;
+    font-size: 4.5vw;
+    padding: 1vw;
+    text-transform: uppercase;
+}
+.cityOnly button{
+    border:none;
+    font-size: 4vw;
+    padding: 0.5vw;
+    margin: 1vw;
+    background-color: #ec555500 ;  
+}
 
 @media screen and (max-width: 700px){
     .callAction{
         height: 40vh;
+    }
+    .callAction button{
+        font-size: 5vw;
     }
     nav .bi{
         width: 5vw;
@@ -393,5 +422,16 @@ input{
     }
     .heroCities{
         background-position:20% 25%;
+    }
+    .mainCities h2{
+        font-size: 6vw;
+    }
+    .mainCities p{
+        font-size: 4vw;
+    }
+    .descrGr p{
+        margin: 1.5vw;
+        width: 55vw;
+        font-size: 3vw;
     }
 }

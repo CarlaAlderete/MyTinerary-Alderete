@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const citySchema = new mongoose.Schema({
-    photo: {type: String, require:true},
-    city: {type: String, require:true},
-    country: {type: String, require:true},
-    description: {type: String, require:true},
-    photoDescription: {type: String, require:true},
-    flag: {type: String, require:true}
+    photo: {type: String, required:true},
+    city: {type: String, required:true},
+    country: {type: String, required:true},
+    description: {type: String, required:true},
+    photoDescription: {type: String, required:true},
+    flag: {type: String, required:true}
 })
 
 const City = mongoose.model('city', citySchema)
