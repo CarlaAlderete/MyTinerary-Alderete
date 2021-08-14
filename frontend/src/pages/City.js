@@ -12,14 +12,14 @@ export default class City extends Component{
             back: ''
         }
     
-        componentDidMount() {
+    componentDidMount() {
         window.scroll(0, 0)
         axios.get(`http://localhost:4000/api/cities/${this.props.match.params.id}`)
         .then(res => {
             if(res.data.success){
-            this.setState({city:res.data.res, loading:false})
-        }else{
-            this.setState({title:'No information to show', back:'Back to the Cities'})}
+                this.setState({city:res.data.res, loading:false})
+            }else{
+                this.setState({title:'No information to show', back:'Back to the Cities'})}
         })
         .catch(err=> this.setState({title:err.message, back:'Back to the Cities'}))
     };
