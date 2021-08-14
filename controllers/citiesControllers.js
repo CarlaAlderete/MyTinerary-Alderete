@@ -4,7 +4,7 @@ const citiesControllers = {
     showCities : async (req, res)=>{
         try {
             var cities = await City.find()
-            res.json({res:cities})
+            res.json({success: true, res:cities})
         }catch (err){
             res.json({success:false, res:err.message})
         }
@@ -12,7 +12,7 @@ const citiesControllers = {
     showCity : async (req, res)=>{
         try {
             var city = await City.findOne({_id:req.params.id})
-            res.json({res:city})
+            res.json({success: true, res:city})
         } catch (err){
             res.json({success:false, res:err.message})
         }

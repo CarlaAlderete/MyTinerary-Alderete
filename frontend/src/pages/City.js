@@ -5,16 +5,34 @@ import Footer from "../components/Footer"
 import axios from 'axios'
 
 export default class City extends Component{
-    state = {city: {}}
-
-    componentDidMount() {
+    state = {
+            city: {},
+            loading: true,
+            title: 'Loading...',
+            back: ''
+        }
+    
+        componentDidMount() {
         window.scroll(0, 0)
         axios.get(`http://localhost:4000/api/cities/${this.props.match.params.id}`)
-        .then(res => this.setState({city:res.data.res}))
-        .catch(err=> alert(err.message))
+        .then(res => {
+            if(res.data.success){
+            this.setState({city:res.data.res, loading:false})
+        }else{
+            this.setState({title:'No information to show', back:'Barck to the Cities'})}
+        })
+        .catch(err=> this.setState({title:err.message, back:'Barck to the Cities'}))
     };
 
     render(){
+        if(this.state.loading){
+            return(
+                <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoo.png")`}}>
+                <h1>{this.state.title}</h1>
+                <Link to='/cities'>{this.state.back}</Link>
+                </div>
+            )
+        }
         return(
             <>
             <div className='cityFoto' style={{backgroundImage:`url("/assets/${this.state.city.photo}")`,}}>
@@ -28,7 +46,7 @@ export default class City extends Component{
                     <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.state.city.photoDescription}")`,}}></div>
                 </div>
                 <Link to='/cities'>
-                    <button>Back</button>
+                    <button>Back to the Cities</button>
                 </Link>
             </div>
             <Footer/>

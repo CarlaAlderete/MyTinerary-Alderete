@@ -5,15 +5,18 @@ import axios from 'axios'
 const CardCity = () =>{
     const [newcities, setNewCities] = useState([])
     const [filteredCity, setFilteredCity] = useState('')
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState({condition: true, text: 'Loaging..', back: ''})
 
     useEffect(()=>{
         axios.get('http://localhost:4000/api/cities')
         .then(res => {
+            if(res.data.success){
             setNewCities(res.data.res)
-            setLoading(false)
-        })
-        .catch(err=> alert(err.message))
+            setLoading({condition: false,})
+        }else{
+            setLoading({text: 'No information to show', back: 'Back Home'})}
+    })
+        .catch(err=> setLoading({condition: true, text: err.message, back: 'Back Home'}))
     },[])
 
     const filterCityHandler = (e) => setFilteredCity(e.target.value.toLowerCase().trim().replace(/\s+/g, ''));
@@ -33,9 +36,14 @@ const CardCity = () =>{
     const emptyCity = (value) => {
         return typeof value === 'boolean'
     }
-    if(loading){
-        return <h1>Loading...</h1>
-    }
+    if(loading.condition){
+        return (
+            <>
+            <h1>{loading.text}</h1>
+            <Link to='/'>{loading.back}</Link>
+            </>
+            )
+        }
     return(
         <div className='mainCities'>
             <h2>Destinations</h2>
