@@ -5,14 +5,14 @@ import axios from 'axios'
 const CardCity = () =>{
     const [newcities, setNewCities] = useState([])
     const [filteredCity, setFilteredCity] = useState('')
-    const [loading, setLoading] = useState({condition: true, text: 'Loaging..', back: ''})
+    const [loading, setLoading] = useState({condition: true, text: 'Loading..', back: ''})
 
     useEffect(()=>{
         axios.get('http://localhost:4000/api/cities')
         .then(res => {
             if(res.data.success){
             setNewCities(res.data.res)
-            setLoading({condition: false,})
+            setLoading({condition: false})
         }else{
             setLoading({text: 'No information to show', back: 'Back Home'})}
     })
@@ -26,8 +26,7 @@ const CardCity = () =>{
             (obj.city).toLowerCase().replace(/\s+/g, '').startsWith(filteredCity) &&
             <Link to={`/itinerary/${obj._id}`} key={index}>
                 <div className={`item${index}`} data-aos="zoom-in-up" style={{backgroundImage:`url("/assets/${obj.photo}")`}}>
-                    <h3>{obj.city.toUpperCase()}</h3>
-                    <p>{obj.country.toUpperCase()}</p>
+                    <h3>{`${obj.city.toUpperCase()} - ${obj.country.toUpperCase()}`}</h3>
                 </div>
             </Link>
         )  

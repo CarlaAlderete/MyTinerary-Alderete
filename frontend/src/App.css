@@ -267,7 +267,8 @@ input{
 }
 .mainCities input{
     width: 50vw;
-    padding: 0 1vw;
+    padding: 0.5vw 1vw;
+    font-size: 1.5vw;
     background:#f5f1f100;
 }
 .mainCities{
@@ -290,6 +291,9 @@ input{
     text-align: center;
 }
 .citiesGr a div{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -301,6 +305,12 @@ input{
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
     color:#000;
     text-decoration: none;
+}
+.citiesGr a div h3{
+    flex-grow: 1;
+    padding: .5vw;
+    background: #d3d0c96e;
+
 }
 .citiesGr a{
     text-decoration: none;
@@ -314,7 +324,6 @@ input{
 .citiesGr a:nth-child(3n){
     grid-column: 2;
 }
-
 
 /* ERROR */
 .error{
@@ -358,7 +367,7 @@ input{
 }
 .cityOnly button{
     border:none;
-    font-size: 4vw;
+    font-size: 3vw;
     padding: 0.5vw;
     margin: 1vw;
     background-color: #ec555500 ;  
@@ -373,7 +382,10 @@ input{
     flex-direction: column;
     align-items: center;
     padding: 10vw;
-    font-size:7vw;
+    font-size:6vw;
+}
+.errorInfo a{
+    text-decoration: none;
 }
 
 @media screen and (max-width: 700px){
