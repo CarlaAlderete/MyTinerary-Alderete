@@ -45,6 +45,7 @@ const CardCity = () =>{
     //          </Link>
     //     )
     // })
+    
     if(loading.condition){
         return (
             <div className='mainCities'>
