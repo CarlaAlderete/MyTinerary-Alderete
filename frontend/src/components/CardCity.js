@@ -35,6 +35,16 @@ const CardCity = () =>{
     const emptyCity = (value) => {
         return typeof value === 'boolean'
     }
+
+    // const city = newcities.filter(obj => !filteredCity ? obj : obj.city.toLowerCase().replace(/\s+/g, '').startsWith(filteredCity)).map((obj, index)=>{
+    //     return(
+    //         <Link to={`/itinerary/${obj._id}`} key={index}>
+    //             <div className={`item${index}`} data-aos="zoom-in-up" style={{backgroundImage:`url("/assets/${obj.photo}")`}}>
+    //                 <h3>{`${obj.city.toUpperCase()} - ${obj.country.toUpperCase()}`}</h3>
+    //             </div>
+    //          </Link>
+    //     )
+    // })
     if(loading.condition){
         return (
             <div className='mainCities'>
@@ -50,6 +60,7 @@ const CardCity = () =>{
             <input type='text' placeholder='Search' onChange={filterCityHandler}/>
             <div className='citiesGr'>
                 {city.every(emptyCity) ? <h1>Sorry, there are no hits.</h1> : city}
+                {/* {city.length == 0 ? <h1>Sorry, there are no hits.</h1> : city} */}
             </div>
         </div>
     )
