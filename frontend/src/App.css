@@ -215,6 +215,9 @@ input{
     font-size: 3.5vw;
     font-family: 'Acme', sans-serif;
 }
+.callAction p{
+    font-size: 2vw;
+}
 .callAction button{
     margin-top: 1.5vw;
     font-size: 2.5vw;
