@@ -385,10 +385,14 @@ input{
     flex-direction: column;
     align-items: center;
     padding: 10vw;
-    font-size:6vw;
+    font-size:5vw;
 }
 .errorInfo a{
     text-decoration: none;
+    font-size: 3vw;
+}
+.errorInfo p{
+    font-size: 1.5vw;
 }
 
 @media screen and (max-width: 700px){

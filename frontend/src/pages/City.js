@@ -9,6 +9,7 @@ export default class City extends Component{
             city: {},
             loading: true,
             title: 'Loading...',
+            error: '',
             back: ''
         }
     
@@ -19,9 +20,10 @@ export default class City extends Component{
             if(res.data.success){
                 this.setState({city:res.data.res, loading:false})
             }else{
-                this.setState({title:'No information to show '+ res.data.res, back:'Back to the Cities'})}
+                console.log(res.data.res)
+                this.setState({title:'No information to show', error:`Error: ${res.data.res}`, back:'Back to the Cities'})}
         })
-        .catch(err=> this.setState({title:err.message, back:'Back to the Cities'}))
+        .catch(err=> this.setState({title:'No information to show', error:err.message, back:'Back to the Cities'}))
     };
 
     render(){
@@ -29,6 +31,7 @@ export default class City extends Component{
             return(
                 <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoFooter.jpg")`}}>
                 <h1>{this.state.title}</h1>
+                <p>{this.state.error}</p>
                 <Link to='/cities'>{this.state.back}</Link>
                 </div>
             )

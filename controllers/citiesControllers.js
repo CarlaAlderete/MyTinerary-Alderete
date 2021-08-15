@@ -44,7 +44,7 @@ const citiesControllers = {
             var cityDelete = await City.findOneAndDelete({_id : req.params.id})
             res.json({success: true, res: cityDelete})
         }catch(err){
-            res.json({sucess: false, res:err.message})
+            res.json({success: false, res:err.message})
         }
     },
 
@@ -53,7 +53,7 @@ const citiesControllers = {
             var changedCity = await City.findOneAndUpdate({_id : req.params.id}, {...req.body})
             res.json({success : true, res: changedCity})
         }catch(err){
-            res.json({sucess: false, res:err.message})
+            res.json({success: false, res:err.message})
         }
     }
 
