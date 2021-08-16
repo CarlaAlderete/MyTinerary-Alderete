@@ -6,7 +6,7 @@ router.route('/cities')
 .get(citiesControllers.showCities)
 .post(citiesControllers.addNewCities)
 
-router.route('/cities/:id')
+router.route('/city/:id')
 .get(citiesControllers.showCity)
 .delete(citiesControllers.removeCity)
 .put(citiesControllers.changeCity)
