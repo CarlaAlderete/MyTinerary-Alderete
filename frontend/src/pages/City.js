@@ -20,7 +20,6 @@ export default class City extends Component{
             if(res.data.success){
                 this.setState({city:res.data.res, loading:false})
             }else{
-                console.log(res.data.res)
                 this.setState({title:'No information to show', error:`Error: ${res.data.res}`, back:'Back to the Cities'})}
         })
         .catch(err=> this.setState({title:'No information to show', error:err.message, back:'Back to the Cities'}))

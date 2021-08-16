@@ -356,6 +356,10 @@ input{
     margin: 3vw;
     width: 40vw;
 }
+.cityOnly h2{
+ text-align: center;
+ padding: 0 1vw;
+}
 .cityOnly{
     display: flex;
     flex-direction: column;
@@ -434,6 +438,10 @@ input{
     }
     .citiesGr a:nth-child(3n){
         grid-column: 1;
+    }
+    .mainCities input{
+        padding: 0.5vw 1vw;
+        font-size: 2.5vw;
     }
     footer{
         justify-content: center;

@@ -15,7 +15,7 @@ const citiesControllers = {
             if(city){
                 res.json({success: true, res:city})
             }else{
-                res.json({success: false, res:city})
+                throw new Error('The pleace you are looking for does not exist')
             }
         }catch (err){
             res.json({success:false, res:err.message})
@@ -56,7 +56,6 @@ const citiesControllers = {
             res.json({success: false, res:err.message})
         }
     }
-
 }
 
 module.exports = citiesControllers

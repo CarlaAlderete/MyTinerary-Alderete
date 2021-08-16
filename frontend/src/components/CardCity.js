@@ -58,7 +58,7 @@ const CardCity = () =>{
         <div className='mainCities'>
             <h2>Destinations</h2>
             <p>In our tours we try to show you the best of each area for our clients in a unique LGTBIQ+ experience.</p>
-            <input type='text' placeholder='Search' onChange={filterCityHandler}/>
+            <input type='text' placeholder='Search for a city' onChange={filterCityHandler}/>
             <div className='citiesGr'>
                 {city.every(emptyCity) ? <h1>Sorry, there are no hits.</h1> : city}
                 {/* {city.length == 0 ? <h1>Sorry, there are no hits.</h1> : city} */}
