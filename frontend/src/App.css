@@ -383,7 +383,8 @@ input{
     font-size: 3vw;
     padding: 0.5vw;
     margin: 1vw;
-    background-color: #5855552d ;  
+    background-color: #5855551e ; 
+    border-radius: 10%;
 }
 /*Info error*/
 .errorInfo{

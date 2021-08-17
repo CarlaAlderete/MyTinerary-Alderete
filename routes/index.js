@@ -3,11 +3,11 @@ const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
 
 router.route('/cities')
-.get(citiesControllers.showCities)
-.post(citiesControllers.addNewCities)
+.get(citiesControllers.getAllCities)
+.post(citiesControllers.addNewCity)
 
 router.route('/city/:id')
-.get(citiesControllers.showCity)
+.get(citiesControllers.getOneCity)
 .delete(citiesControllers.removeCity)
 .put(citiesControllers.changeCity)
 

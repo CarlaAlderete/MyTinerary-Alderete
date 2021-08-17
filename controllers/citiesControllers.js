@@ -1,7 +1,7 @@
 const City = require('../models/City')
 
 const citiesControllers = {
-    showCities : async (req, res)=>{
+    getAllCities : async (req, res)=>{
         try {
             var cities = await City.find()
             res.json({success: true, res:cities})
@@ -9,28 +9,21 @@ const citiesControllers = {
             res.json({success:false, res: err.message})
         }
     },
-    showCity : async (req, res)=>{
+    getOneCity : async (req, res)=>{
         try {
             var city = await City.findOne({_id:req.params.id})
             if(city){
                 res.json({success: true, res:city})
             }else{
-                throw new Error('The pleace you are looking for does not exist')
+                throw new Error()
             }
-        }catch (err){
-            res.json({success:false, res:err.message})
+        }catch{
+            res.json({success:false, res:'The place you are looking for does not exist'})
         }
     },
 
-    addNewCities : async (req, res)=>{
-        const cityNew = new City ({
-            photo: req.body.photo,
-            city: req.body.city,
-            country: req.body.country,
-            description: req.body.description,
-            photoDescription: req.body.photoDescription,
-            flag: req.body.flag
-        })
+    addNewCity : async (req, res)=>{
+        const cityNew = new City ({...req.body})
         try{
             await cityNew.save()
             res.json({success: true, res:cityNew})
@@ -42,7 +35,11 @@ const citiesControllers = {
     removeCity: async (req, res)=>{
         try{
             var cityDelete = await City.findOneAndDelete({_id : req.params.id})
-            res.json({success: true, res: cityDelete})
+            if(cityDelete){
+                res.json({success: true, res: cityDelete})
+            }else{
+                throw new Error()
+            }
         }catch(err){
             res.json({success: false, res:err.message})
         }
@@ -50,8 +47,12 @@ const citiesControllers = {
 
     changeCity: async (req, res)=>{
         try{
-            var changedCity = await City.findOneAndUpdate({_id : req.params.id}, {...req.body})
-            res.json({success : true, res: changedCity})
+            var changedCity = await City.findOneAndUpdate({_id : req.params.id}, {...req.body}, {new:true})
+            if(changedCity){
+                res.json({success : true, res:changedCity})
+            }else{
+                throw new Error()
+            } 
         }catch(err){
             res.json({success: false, res:err.message})
         }
