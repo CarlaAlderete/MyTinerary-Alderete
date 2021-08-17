@@ -10,7 +10,8 @@ export default class City extends Component{
             loading: true,
             title: 'Loading...',
             error: '',
-            back: ''
+            back: '',
+            src:''
         }
     
     componentDidMount() {
@@ -28,20 +29,22 @@ export default class City extends Component{
     render(){
         if(this.state.loading){
             return(
-                <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoFooter.jpg")`}}>
-                <h1>{this.state.title}</h1>
-                <p>{this.state.error}</p>
-                <Link to='/cities'>{this.state.back}</Link>
+                <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}>
+                <div className='error'>
+                    <h1>{this.state.title}</h1>
+                    <p>{this.state.error}</p>
+                    <Link to='/cities'>{this.state.back}</Link>
+                </div>
                 </div>
             )
         }
         return(
-            <>
+            <div className='cityAll'>
             <div className='cityFoto' style={{backgroundImage:`url("/assets/${this.state.city.photo}")`,}}>
                 <Header/>
                 <div className='herocitiesLogo'></div>
             </div>
-            <div className='cityOnly'>
+            <div className='cityOnly' style={{backgroundImage:`url("/assets/fondomain2.png")`,}}>
                 <h1>{this.state.city.city}</h1>
                 <div className='descrGr'>
                     <p data-aos="fade-right">{this.state.city.description}</p>
@@ -53,7 +56,7 @@ export default class City extends Component{
                 </Link>
             </div>
             <Footer/>
-            </>
+            </div>
         )
     }
 }

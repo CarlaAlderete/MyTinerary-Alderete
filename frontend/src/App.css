@@ -350,6 +350,11 @@ input{
     font-family: 'Acme', sans-serif;
 }
 /* CITIONLY */
+.cityAll{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vw;
+}
 .descrGr p{
     align-self: center;
     font-size: 2vw;
@@ -361,6 +366,7 @@ input{
  padding: 0 1vw;
 }
 .cityOnly{
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -388,8 +394,16 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
     padding: 10vw;
     font-size:5vw;
+    font-weight: bold;
+}
+.error{
+    text-align: center;
+    height: 45%;
+    width: 70%;
+    background: rgba(216, 213, 205, 0.671);
 }
 .errorInfo a{
     text-decoration: none;

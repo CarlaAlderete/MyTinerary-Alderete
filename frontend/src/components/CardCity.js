@@ -5,7 +5,7 @@ import axios from 'axios'
 const CardCity = () =>{
     const [newcities, setNewCities] = useState([])
     const [filteredCity, setFilteredCity] = useState('')
-    const [loading, setLoading] = useState({condition: true, text: 'Loading..', back: ''})
+    const [loading, setLoading] = useState({condition: true, text: 'Loading...', back: ''})
 
     useEffect(()=>{
         axios.get('http://localhost:4000/api/cities')
@@ -14,12 +14,13 @@ const CardCity = () =>{
             setNewCities(res.data.res)
             setLoading({condition: false})
         }else{
-            setLoading({text: 'No information to show', back: 'Back Home'})}
+            setLoading({...loading, text: 'No information to show', back: 'Back Home'})}
     })
-        .catch(err=> setLoading({condition: true, text: err.message, back: 'Back Home'}))
+        .catch(err=> setLoading({ ...loading, text: err.message, back: 'Back Home'}))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const filterCityHandler = (e) => setFilteredCity(e.target.value.toLowerCase().trim().replace(/\s+/g, ''));
+    const chooseCityHandler = (e) => setFilteredCity(e.target.value.toLowerCase().trim().replace(/\s+/g, ''));
 
     const city = newcities.map((obj, index) =>{
         return(
@@ -58,7 +59,7 @@ const CardCity = () =>{
         <div className='mainCities'>
             <h2>Destinations</h2>
             <p>In our tours we try to show you the best of each area for our clients in a unique LGTBIQ+ experience.</p>
-            <input type='text' placeholder='Search for a city' onChange={filterCityHandler}/>
+            <input type='text' placeholder='Search for a city' onChange={chooseCityHandler}/>
             <div className='citiesGr'>
                 {city.every(emptyCity) ? <h1>Sorry, there are no hits.</h1> : city}
                 {/* {city.length == 0 ? <h1>Sorry, there are no hits.</h1> : city} */}
