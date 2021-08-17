@@ -13,7 +13,6 @@ export default class City extends Component{
             back: '',
             src:''
         }
-    
     componentDidMount() {
         window.scroll(0, 0)
         axios.get(`http://localhost:4000/api/city/${this.props.match.params.id}`)

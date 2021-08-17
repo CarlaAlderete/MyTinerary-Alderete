@@ -20,7 +20,7 @@ const CardCity = () =>{
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const chooseCityHandler = (e) => setFilteredCity(e.target.value.toLowerCase().trim().replace(/\s+/g, ''));
+    const chooseCityHandler = (e) => setFilteredCity(e.target.value.toLowerCase().replace(/\s+/g, ''));
 
     const city = newcities.map((obj, index) =>{
         return(
