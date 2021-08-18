@@ -2,6 +2,7 @@ import { Component } from "react"
 import {Link} from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Itinerary from "../components/Itinerary"
 import axios from 'axios'
 
 export default class City extends Component{
@@ -49,7 +50,7 @@ export default class City extends Component{
                     <p data-aos="fade-right">{this.state.city.description}</p>
                     <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.state.city.photoDescription}")`,}}></div>
                 </div>
-                <h2>Under construction, itinerary soon</h2>
+                <Itinerary/>
                 <Link to='/cities'>
                     <button>Back to the Cities</button>
                 </Link>
