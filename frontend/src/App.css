@@ -370,13 +370,18 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ec555550 ; 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.cityOnly h1{
+.cityOnly h1, .cityOnly h2{
     font-family: 'Acme', sans-serif;
     font-size: 4.5vw;
     padding: 1vw;
     text-transform: uppercase;
+}
+.cityOnly h2{
+    font-size: 3.5vw;
 }
 .cityOnly button{
     border:none;
@@ -412,7 +417,75 @@ input{
 .errorInfo p{
     font-size: 1.5vw;
 }
+/*Itinerary*/
+.itineratyGr{
+    border:1px solid black;
+    margin: 1.5vw;
+    width: 80%;
+    box-shadow: 1px 1px 4px 4px #cac9c9b7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+.user p{
+    text-align: center;
+}
+.itineratyGr button{
+    width: 50%;
+    font-size: 2vw;
+    margin: 0.5vw;
+}
+.itinerary{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.infoItinerary{
+    padding-left: 1vw;
+    width: 57%;
+}
+.info{
+    padding: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info div:last-child{
+    width: 70%;
+}
+.infoItinerary div p{
+    padding: 0 1vw 1vw;
+}
+.infoItinerary div p:hover{
+    cursor: pointer;
+}
+.infoItinerary h3{
+    font-family: 'Acme', sans-serif;
+    font-size: 3.5vw;
+    text-transform: uppercase;
+}
+.photoItinerary{
+    width: 43%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
 
+.photouser{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+}
 @media screen and (max-width: 700px){
     .callAction{
         height: 40vh;

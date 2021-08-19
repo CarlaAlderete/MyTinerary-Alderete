@@ -29,6 +29,18 @@ const itinerariesControllers ={
         }catch(err){
             res.json({success:false, res:err.message})
         }
+    },
+    changeOneItinerary: async(req,res)=>{
+        try{
+            var changedItinerary = Itinerary.findOneAndUpdate({_id: req.params.id},{...req.body},{new:true})
+            if(changedItinerary){
+                res.json({success:true, res:changedItinerary})
+            }else{
+                throw new Error()
+            }
+        }catch(err){
+            res.json({success:false, res: err.message})
+        }
     }
 }
 
