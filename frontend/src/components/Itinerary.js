@@ -30,7 +30,7 @@ const Itinerary = (props) =>{
                         </div>
                         <div>
                             <p>Price:{' 💵'.repeat(parseInt(info.price))}</p>
-                            <p>Time:{' ⌚'.repeat(parseInt(info.time))}</p>
+                            <p>Time:{'⌚ '+info.time+'hrs'}</p>
                         </div>
                     </div>
                     <p>{description}</p>
