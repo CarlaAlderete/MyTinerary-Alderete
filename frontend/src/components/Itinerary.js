@@ -1,9 +1,8 @@
 import {useState} from "react"
 import ItineraryInfo from './ItineraryInfo'
 
-
 const Itinerary = (props) =>{
-    const {name, photo, user, description, info}= props.itinerary
+    const {name, photo, user, description, info,hashtag}= props.itinerary
     const [view, setView] = useState ({condition: false, text:'Read More'})
     const [heart, setHeart] = useState ({condition:false, text:'🤍'})
 
@@ -13,6 +12,8 @@ const Itinerary = (props) =>{
     const heartHandler = ()=>{
         !heart.condition ? setHeart({condition: true, text:'❤️'}) : setHeart({condition: false,text:'🤍'})
     }
+    console.log(props.itinerary)
+    const twitter = hashtag.map((obj,index) => <a key={index} href='' target='_blank' rel='noreferrer'>#{obj} </a>)
     return(
         <div className='itineratyGr'>
             <div className='itinerary'>
@@ -33,6 +34,7 @@ const Itinerary = (props) =>{
                         </div>
                     </div>
                     <p>{description}</p>
+                    {twitter}
                 </div>
             </div>
         {view.condition && <ItineraryInfo/>}

@@ -419,9 +419,12 @@ input{
 }
 /*Itinerary*/
 .itineratyGr{
-    border:1px solid black;
+    /* border:1px solid black; */
+    border: 5px solid transparent;
+    border-image: linear-gradient(to right, red,orange, yellow, green, blue, purple) 1;
+    padding: 0.5vw;
     margin: 1.5vw;
-    width: 80%;
+    width: 85%;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
     display: flex;
     flex-direction: column;
@@ -429,6 +432,7 @@ input{
 }
 .user{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     width: 30%;
@@ -444,11 +448,15 @@ input{
 .itinerary{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
 }
 .infoItinerary{
     padding-left: 1vw;
     width: 57%;
+}
+.infoItinerary a{
+    text-decoration: none;
 }
 .info{
     padding: 0.5vw;
@@ -467,7 +475,7 @@ input{
 }
 .infoItinerary h3{
     font-family: 'Acme', sans-serif;
-    font-size: 3.5vw;
+    font-size: 3vw;
     text-transform: uppercase;
 }
 .photoItinerary{
@@ -559,5 +567,14 @@ input{
         margin: 1.5vw;
         width: 55vw;
         font-size: 3vw;
+    }
+}
+@media screen and (max-width: 600px){
+    .photoItinerary{
+        width: 100%;
+        height: 30vw;
+    }
+    .infoItinerary{
+        width: 100%;
     }
 }

@@ -32,7 +32,7 @@ const itinerariesControllers ={
     },
     changeOneItinerary: async(req,res)=>{
         try{
-            var changedItinerary = Itinerary.findOneAndUpdate({_id: req.params.id},{...req.body},{new:true})
+            var changedItinerary = await Itinerary.findOneAndUpdate({_id: req.params.id},{...req.body},{new:true})
             if(changedItinerary){
                 res.json({success:true, res:changedItinerary})
             }else{
