@@ -3,14 +3,26 @@ const Itinerary = require('../models/Itineray')
 const itinerariesControllers ={
     getAllItineraries: async(req, res)=>{
         try{
-            var itineraries = await Itinerary.find()
-            res.json({success:true, res:itineraries})
+            let allItineraries = await Itinerary.find()
+            res.json({success:true, res:allItineraries})
+        }catch(err){
+            res.json({success:false, res:err.message })
+        }
+    },
+    getItineraries: async(req, res)=>{
+        try{
+            let itineraries = await Itinerary.find({cityId:req.params.id})
+            if(itineraries.length){
+                res.json({success:true, res:itineraries})
+            }else{
+               throw new Error()
+            }
         }catch(err){
             res.json({success:false, res:err.message })
         }
     },
     addNewItinerary: async(req,res)=>{
-        var newItinerary = new Itinerary({...req.body})
+        let newItinerary = new Itinerary({...req.body})
         try{
             await newItinerary.save()
             res.json({success:true, res:newItinerary})
@@ -20,7 +32,7 @@ const itinerariesControllers ={
     },
     getOneItinerary:async(req,res)=>{
         try{
-            var itinerary = await Itinerary.findOne({_id:req.params.id})
+            let itinerary = await Itinerary.findOne({_id:req.params.id})
             if(itinerary){
                 res.json({success:true, res:itinerary})
             }else{
@@ -32,7 +44,7 @@ const itinerariesControllers ={
     },
     removeItinerary: async(req, res)=>{
         try{
-            var itineraryRemove = await Itinerary.findOneAndDelete({_id : req.params.id})
+            let itineraryRemove = await Itinerary.findOneAndDelete({_id : req.params.id})
             if(itineraryRemove){
                 res.json({success:true, res:itineraryRemove})
             }else{
@@ -44,7 +56,7 @@ const itinerariesControllers ={
     },
     changeOneItinerary: async(req,res)=>{
         try{
-            var changedItinerary = await Itinerary.findOneAndUpdate({_id: req.params.id},{...req.body},{new:true})
+            let changedItinerary = await Itinerary.findOneAndUpdate({_id: req.params.id},{...req.body},{new:true})
             if(changedItinerary){
                 res.json({success:true, res:changedItinerary})
             }else{

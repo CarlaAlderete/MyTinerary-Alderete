@@ -6,7 +6,8 @@ import citiesActions from "../redux/actions/citiesActions"
 const CardCity = (props) =>{
     const [loading, setLoading] = useState({condition:true, text:'Loading...', back:''})
     useEffect(()=>{
-        props.getCities()
+        if(!props.newcities.length){
+            props.getCities()
         .then(res=>{
             if(res.success){
                 setLoading({...loading, condition:false})
@@ -14,6 +15,9 @@ const CardCity = (props) =>{
                 setLoading({condition:true, text:'Oop! '+res.res, back:'Back to Home'})
             }
         })
+        }else{
+            setLoading({...loading, condition:false})
+        }
     },[])
 
     const chooseCityHandler = (e) => {props.filterCities(e.target.value)};

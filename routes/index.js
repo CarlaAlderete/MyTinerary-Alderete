@@ -13,8 +13,11 @@ router.route('/city/:id')
 .put(citiesControllers.changeCity)
 
 router.route('/itineraries')
-.get(itinerariesControllers.getAllItineraries)
 .post(itinerariesControllers.addNewItinerary)
+.get(itinerariesControllers.getAllItineraries)
+
+router.route('/itineraries/:id')
+.get(itinerariesControllers.getItineraries)
 
 router.route('/itinerary/:id')
 .delete(itinerariesControllers.removeItinerary)

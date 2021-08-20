@@ -305,6 +305,7 @@ input{
     margin:1vw;
     font-size: 30px;
     border: 1px solid black;
+    border-radius: 2%;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
     color:#000;
     text-decoration: none;
@@ -421,6 +422,7 @@ input{
 .itineratyGr{
     /* border:1px solid black; */
     border: 3px solid transparent;
+    border-radius: 2%;
     border-image: linear-gradient(to right, red,orange, yellow, green, blue, purple) 1;
     padding: 0.5vw;
     margin: 1.5vw;
@@ -484,6 +486,7 @@ input{
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: cover;
+    border-radius: 2%;
 }
 
 .photouser{
@@ -493,6 +496,22 @@ input{
     width: 5vw;
     height: 5vw;
     border-radius: 50%;
+}
+.nullItineraries{
+    width: 80%;
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    background-position: 50% 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    box-shadow: 1px 1px 4px 4px #cac9c9b7;
+    border-radius: 2%;
+}
+.nullItineraries h2{
+    flex-grow: 1;
+    background: #d3d0c96e;
 }
 @media screen and (max-width: 700px){
     .callAction{

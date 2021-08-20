@@ -13,7 +13,8 @@ class City extends Component{
             title: 'Loading...',
             error: '',
             back: '',
-            src:''
+            src:'',
+            nullItineraries: false
     }
     componentDidMount() {
         window.scroll(0, 0)
@@ -27,13 +28,12 @@ class City extends Component{
         }else{
             this.props.getOneCity(this.props.match.params.id)
         }
-        this.props.getAllItineraries()
+        this.props.getItineraries(this.props.match.params.id)
         .then(res=>{
-            if(res.success){
-                this.setState({loading:false})
-            }else{
-                this.setState({title:'No information to show', error:`Error: ${res.res}`, back:'Back to the Cities'})
-            } 
+            this.setState({loading:false})
+            if(!res.success){
+                this.setState({nullItineraries:true})
+            }
         })
     };
     render(){
@@ -61,7 +61,8 @@ class City extends Component{
                     <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.props.city.photoDescription}")`,}}></div>
                 </div>
                 <h2>Here's some of our Itineraries!</h2>
-                {this.props.itineraries.map((obj,index) => <Itinerary key={index}itinerary={obj}/>)}
+                {this.state.nullItineraries ? <div className='nullItineraries' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}><h2>There is not itinerary yet!</h2></div>
+                :this.props.itineraries.map((obj,index) => <Itinerary key={index}itinerary={obj}/>)}
                 <Link to='/cities'>
                     <button>Back to the Cities</button>
                 </Link>
@@ -81,6 +82,6 @@ const mapStateToProps= (state)=>{
 const mapDispatchToProps={
     getOneCity:citiesActions.getOneCity,
     takeOneCity:citiesActions.takeOneCity,
-    getAllItineraries:itinerariesActions.getAllItineraries
+    getItineraries:itinerariesActions.getItineraries
 }
 export default connect(mapStateToProps, mapDispatchToProps)(City)
