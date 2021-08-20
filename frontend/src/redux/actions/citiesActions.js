@@ -3,9 +3,18 @@ import axios from 'axios'
 const citiesActions = {
     getAllCities:()=>{
         return async(dispatch,getStates)=>{
-            let res = await axios.get('http://localhost:4000/api/cities')
-            let info = res.data.res
-            dispatch({type:'GET_ALL_CITIES', payload:info})
+            try{
+                let res = await axios.get('http://localhost:4000/api/cities')
+                if(res.data.success){
+                    let info = res.data.res
+                    dispatch({type:'GET_ALL_CITIES', payload:info})
+                    return({success:true})
+                }else{
+                    throw new Error
+                }
+            }catch(err){
+                return({success:false, res: err.message})
+            }
         }
     },
     filterCities:(value)=>{
@@ -16,6 +25,22 @@ const citiesActions = {
     getOneCity:(id)=>{
         return(dispatch,getState)=>{
             dispatch({type:'GET_ONE_CITY', payload:id})
+        }
+    },
+    takeOneCity:(id)=>{
+        return async(dispatch,getStates)=>{
+            try{
+                let res = await axios.get(`http://localhost:4000/api/city/${id}`)
+                if(res.data.success){
+                    let info = res.data.res
+                    dispatch({type:'TAKE_ONE_CITY', payload:info})
+                    return({success:true})
+                }else{
+                    throw new Error
+                } 
+            }catch(err){
+                return({success:false, res: err.message})
+            }
         }
     }
 }

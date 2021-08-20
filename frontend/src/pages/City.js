@@ -17,24 +17,24 @@ class City extends Component{
     }
     componentDidMount() {
         window.scroll(0, 0)
-        this.props.getOneCity(this.props.match.params.id)
-        this.props.getAllItineraries()
-        this.setState({loading:false})
         if(!this.props.newcities.length){
-            this.props.history.push('/cities')
-            return false
+            this.props.takeOneCity(this.props.match.params.id)
+            .then(res =>{
+                if(!res.success){
+                    this.setState({title:'No information to show', error:`Error: ${res.res}`, back:'Back to the Cities'})
+                }
+            })
+        }else{
+            this.props.getOneCity(this.props.match.params.id)
         }
-        // axios.get(`http://localhost:4000/api/city/${this.props.match.params.id}`)
-        // .then(res => {
-        //     if(res.data.success){
-        //         this.setState({city:res.data.res, loading:false})
-        //     }else{
-        //         this.setState({title:'No information to show', error:`Error: ${res.data.res}`, back:'Back to the Cities'})}
-        // })
-        // .catch(err=> this.setState({title:'No information to show', error:err.message, back:'Back to the Cities'}))
-        // axios.get('http://localhost:4000/api/itineraries')
-        // .then(res=>this.setState({itineraries:res.data.res}))
-        // .catch(err=> console.log(err))
+        this.props.getAllItineraries()
+        .then(res=>{
+            if(res.success){
+                this.setState({loading:false})
+            }else{
+                this.setState({title:'No information to show', error:`Error: ${res.res}`, back:'Back to the Cities'})
+            } 
+        })
     };
     render(){
         if(this.state.loading){
@@ -80,6 +80,7 @@ const mapStateToProps= (state)=>{
 }
 const mapDispatchToProps={
     getOneCity:citiesActions.getOneCity,
+    takeOneCity:citiesActions.takeOneCity,
     getAllItineraries:itinerariesActions.getAllItineraries
 }
 export default connect(mapStateToProps, mapDispatchToProps)(City)

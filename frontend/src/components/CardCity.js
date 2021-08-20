@@ -4,12 +4,16 @@ import { connect } from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 
 const CardCity = (props) =>{
-    const [loading, setLoading] = useState({condition: true, text: 'Loading...', back: ''})
+    const [loading, setLoading] = useState({condition:true, text:'Loading...', back:''})
     useEffect(()=>{
         props.getCities()
-        setLoading({...loading, condition:false})
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        .then(res=>{
+            if(res.success){
+                setLoading({...loading, condition:false})
+            }else{
+                setLoading({condition:true, text:'Oop! '+res.res, back:'Back to Home'})
+            }
+        })
     },[])
 
     const chooseCityHandler = (e) => {props.filterCities(e.target.value)};

@@ -16,6 +16,11 @@ const citiesReducer = (state ={cities:[],filteredCity:[],city:{}}, action) => {
                 ...state,
                 city:state.cities.find(obj => obj._id === action.payload)
             }
+        case'TAKE_ONE_CITY':
+            return{
+                ...state,
+                city:action.payload
+            }
         default:
             return state 
     } 

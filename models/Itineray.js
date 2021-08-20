@@ -4,8 +4,15 @@ const itinerarySchema = new mongoose.Schema({
     name:{type:String, required:true},
     photo:{type:String, required:true},
     description:{type:String, required:true},
-    user:{type:Object,required:true},
-    info:{type:Object,required:true},
+    user:{
+        name:{type:String, required:true},
+        photo:{type:String, required:true}
+    },
+    info:{
+        price:{type:Number,required:true},
+        time:{type:Number,required:true},
+        like:{type:Number,required:true}
+    },
     hashtag:{type:Array,required:true},
     commentary:{type:Array}
 })
