@@ -4,15 +4,11 @@ import ItineraryInfo from './ItineraryInfo'
 const Itinerary = (props) =>{
     const {name, photo, user, description, info,hashtag}= props.itinerary
     const [view, setView] = useState ({condition: false, text:'View More'})
-    const [heart, setHeart] = useState ({condition:false, text:'🤍'})
-
+    
     const viewInfoHandler = ()=>{
         !view.condition ? setView({condition: true, text:'View Less'}) : setView({condition: false,text:'View More'})
     }
-    const heartHandler = ()=>{
-        !heart.condition ? setHeart({condition: true, text:'❤️'}) : setHeart({condition: false,text:'🤍'})
-    }
-    const twitter = hashtag.map((obj,index) => <a key={index} href='' target='_blank' rel='noreferrer'>#{obj} </a>)
+    const twitter = hashtag.map((obj,index) => <a key={index} href='#' target='_blank' rel='noreferrer'>#{obj} </a>)
     return(
         <div className='itineratyGr'>
             <div className='itinerary'>
@@ -20,7 +16,7 @@ const Itinerary = (props) =>{
                 <div className='infoItinerary'>
                     <div className='info'>
                         <h3>{name}</h3>
-                        <p onClick={heartHandler}>{heart.text}</p>
+                        <p>🤍{info.like}</p>
                     </div>
                     <div className='info'>
                         <div className='user'>

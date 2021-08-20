@@ -13,9 +13,8 @@ class City extends Component{
             title: 'Loading...',
             error: '',
             back: '',
-            src:'',
-            itineraries:[]
-        }
+            src:''
+    }
     componentDidMount() {
         window.scroll(0, 0)
         this.props.getOneCity(this.props.match.params.id)
@@ -23,7 +22,7 @@ class City extends Component{
         this.setState({loading:false})
         if(!this.props.newcities.length){
             this.props.history.push('/cities')
-            return (false)
+            return false
         }
         // axios.get(`http://localhost:4000/api/city/${this.props.match.params.id}`)
         // .then(res => {

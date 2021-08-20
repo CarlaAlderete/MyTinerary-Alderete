@@ -18,6 +18,18 @@ const itinerariesControllers ={
             res.json({success:false, res:err.message})
         }
     },
+    getOneItinerary:async(req,res)=>{
+        try{
+            var itinerary = await Itinerary.findOne({_id:req.params.id})
+            if(itinerary){
+                res.json({success:true, res:itinerary})
+            }else{
+                throw new Error()
+            }
+        }catch(err){
+            res.json({success:false, res:err.message})
+        }
+    },
     removeItinerary: async(req, res)=>{
         try{
             var itineraryRemove = await Itinerary.findOneAndDelete({_id : req.params.id})

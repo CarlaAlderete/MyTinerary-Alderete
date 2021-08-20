@@ -8,6 +8,7 @@ const CardCity = (props) =>{
     useEffect(()=>{
         props.getCities()
         setLoading({...loading, condition:false})
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -45,7 +46,7 @@ const CardCity = (props) =>{
 
 const mapStateToProps=(state)=>{
     return {
-        newcities : state.cities.copiaCities
+        newcities : state.cities.filteredCity
     }
 }
 
