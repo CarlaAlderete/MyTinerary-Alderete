@@ -10,11 +10,13 @@ const citiesActions = {
     },
     filterCities:(value)=>{
         return(dispatch, getStates)=>{
-            dispatch({type:'FILTER_CITIES',
-            payload: value
-        })
+            dispatch({type:'FILTER_CITIES',payload: value})
         }
-        
+    },
+    getOneCity:(id)=>{
+        return(dispatch,getState)=>{
+            dispatch({type:'GET_ONE_CITY', payload:id})
+        }
     }
 }
 export default citiesActions
