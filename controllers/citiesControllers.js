@@ -21,7 +21,6 @@ const citiesControllers = {
             res.json({success:false, res:'The place you are looking for does not exist'})
         }
     },
-
     addNewCity : async (req, res)=>{
         const cityNew = new City ({...req.body})
         try{
@@ -31,7 +30,6 @@ const citiesControllers = {
             res.json({ success: false, res:err.message})
         }
     },
-    
     removeCity: async (req, res)=>{
         try{
             var cityDelete = await City.findOneAndDelete({_id : req.params.id})
@@ -44,7 +42,6 @@ const citiesControllers = {
             res.json({success: false, res:err.message})
         }
     },
-
     changeCity: async (req, res)=>{
         try{
             var changedCity = await City.findOneAndUpdate({_id : req.params.id}, {...req.body}, {new:true})

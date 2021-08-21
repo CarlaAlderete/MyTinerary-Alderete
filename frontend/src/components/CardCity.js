@@ -18,6 +18,7 @@ const CardCity = (props) =>{
         }else{
             setLoading({...loading, condition:false})
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const chooseCityHandler = (e) => {props.filterCities(e.target.value)};
@@ -46,7 +47,7 @@ const CardCity = (props) =>{
             <p>In our tours we try to show you the best of each area for our clients in a unique LGTBIQ+ experience.</p>
             <input type='text' placeholder='Search for a city' onChange={chooseCityHandler}/>
             <div className='citiesGr'>
-                {city.length == 0 ? <h1>Sorry, there are no hits.</h1> : city}
+                {!city.length ? <h1>Sorry, there are no hits.</h1> : city}
             </div>
         </div>
     )

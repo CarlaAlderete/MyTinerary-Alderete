@@ -10,7 +10,7 @@ const citiesActions = {
                     dispatch({type:'GET_ALL_CITIES', payload:info})
                     return({success:true})
                 }else{
-                    throw new Error
+                    throw new Error()
                 }
             }catch(err){
                 return({success:false, res: err.message})
@@ -36,7 +36,7 @@ const citiesActions = {
                     dispatch({type:'TAKE_ONE_CITY', payload:info})
                     return({success:true})
                 }else{
-                    throw new Error
+                    throw new Error()
                 } 
             }catch(err){
                 return({success:false, res: err.message})

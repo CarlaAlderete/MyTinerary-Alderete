@@ -56,7 +56,6 @@ const MyCarousel = () => {
                     <h3>{obj.city}</h3>
                   </div>
               )}
-
             </div>
           </div>
       </CarouselItem>
