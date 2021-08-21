@@ -14,7 +14,6 @@ class City extends Component{
             error: '',
             back: '',
             src:'',
-            nullItineraries: false
     }
     componentDidMount() {
         window.scroll(0, 0)
@@ -30,10 +29,8 @@ class City extends Component{
         }
         this.props.getItineraries(this.props.match.params.id)
         .then(res=>{
+
             this.setState({loading:false})
-            if(!res.success){
-                this.setState({nullItineraries:true})
-            }
         })
     };
     render(){
@@ -48,6 +45,9 @@ class City extends Component{
                 </div>
             )
         }
+        let itineraries =!this.props.itineraries.length
+            ? <div className='nullItineraries' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}><h2>There are not itinerary yet!</h2></div>
+            :this.props.itineraries.map((obj,index) => <Itinerary key={index}itinerary={obj}/>)
         return(
             <div className='cityAll'>
             <div className='cityFoto' style={{backgroundImage:`url("/assets/${this.props.city.photo}")`,}}>
@@ -60,9 +60,8 @@ class City extends Component{
                     <p data-aos="fade-right">{this.props.city.description}</p>
                     <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.props.city.photoDescription}")`,}}></div>
                 </div>
-                <h2>Here's some of our Itineraries!</h2>
-                {this.state.nullItineraries ? <div className='nullItineraries' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}><h2>There is not itinerary yet!</h2></div>
-                :this.props.itineraries.map((obj,index) => <Itinerary key={index}itinerary={obj}/>)}
+                <h2>Here are some of our Itineraries!</h2>
+                {itineraries}
                 <Link to='/cities'>
                     <button>Back to the Cities</button>
                 </Link>
