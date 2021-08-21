@@ -16,6 +16,7 @@ const CardCity = (props) =>{
             }
         })
         }else{
+            console.log('hola')
             setLoading({...loading, condition:false})
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
