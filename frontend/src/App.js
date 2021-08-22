@@ -18,7 +18,7 @@ const App = () =>{
     <BrowserRouter>
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/cities' component={Cities}/>
+        <Route exact path='/cities' component={Cities}/>
         <Route path='/itinerary/:id' component={City}/>
         <Route path='/Error404' component={Pag404}/>
         <Redirect to='/Error404'/>

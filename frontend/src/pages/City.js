@@ -1,9 +1,9 @@
-import { Component } from "react"
+import {Component} from "react"
 import {Link} from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Itinerary from "../components/Itinerary"
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 import itinerariesActions from "../redux/actions/itinerariesActions"
 
@@ -12,8 +12,7 @@ class City extends Component{
             loading: true,
             title: 'Loading...',
             error: '',
-            back: '',
-            src:'',
+            back: ''
     }
     componentDidMount() {
         window.scroll(0, 0)
@@ -22,51 +21,54 @@ class City extends Component{
             .then(res =>{
                 if(!res.success){
                     this.setState({title:'No information to show', error:`Error: ${res.res}`, back:'Back to the Cities'})
+                }else{
+                    this.props.getItineraries(this.props.match.params.id)
+                    .then(()=> this.setState({loading:false}))
                 }
             })
         }else{
             this.props.getOneCity(this.props.match.params.id)
+            this.props.getItineraries(this.props.match.params.id)
+            .then(()=> this.setState({loading:false}))
         }
-        this.props.getItineraries(this.props.match.params.id)
-        .then(res=>{
-
-            this.setState({loading:false})
-        })
     };
     render(){
         if(this.state.loading){
             return(
                 <div className='errorInfo' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}>
-                <div className='error'>
-                    <h1>{this.state.title}</h1>
-                    <p>{this.state.error}</p>
-                    <Link to='/cities'>{this.state.back}</Link>
-                </div>
+                    <div className='error'>
+                        <h1>{this.state.title}</h1>
+                        <p>{this.state.error}</p>
+                        <Link to='/cities'>{this.state.back}</Link>
+                    </div>
                 </div>
             )
         }
+        document.title=`Mytinerary - ${this.props.city.city}`
         let itineraries =!this.props.itineraries.length
             ? <div className='nullItineraries' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}><h2>There are not itinerary yet!</h2></div>
             :this.props.itineraries.map((obj,index) => <Itinerary key={index}itinerary={obj}/>)
         return(
             <div className='cityAll'>
-            <div className='cityFoto' style={{backgroundImage:`url("/assets/${this.props.city.photo}")`,}}>
-                <Header/>
-                <div className='herocitiesLogo'></div>
-            </div>
-            <div className='cityOnly' style={{backgroundImage:`url("/assets/fondomain2.png")`,}}>
-                <h1>{this.props.city.city}</h1>
-                <div className='descrGr'>
-                    <p data-aos="fade-right">{this.props.city.description}</p>
-                    <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.props.city.photoDescription}")`,}}></div>
+                <div className='heroCities' style={{backgroundImage:`url("/assets/${this.props.city.photo}")`,}}>
+                    <Header/>
+                    <div className='herocitiesLogo'>
+                        <img src='/assets/logo.png' alt='logo'/>
+                    </div>
                 </div>
-                <h2>Here are some of our Itineraries!</h2>
-                {itineraries}
-                <Link to='/cities'>
-                    <button>Back to the Cities</button>
-                </Link>
-            </div>
-            <Footer/>
+                <div className='cityOnly' style={{backgroundImage:`url("/assets/fondomain2.png")`,}}>
+                    <h1>{this.props.city.city}</h1>
+                    <div className='descrGr'>
+                        <p data-aos="fade-right">{this.props.city.description}</p>
+                        <div className='descr' data-aos="fade-left" style={{backgroundImage:`url("/assets/${this.props.city.photoDescription}")`,}}></div>
+                    </div>
+                    <h2>Here are some of our Itineraries!</h2>
+                    {itineraries}
+                    <Link to='/cities'>
+                        <button>Back to the Cities</button>
+                    </Link>
+                </div>
+                <Footer/>
             </div>
         )
     }

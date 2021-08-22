@@ -6,6 +6,7 @@ import {Component} from "react"
 export default class Cities extends Component{
     componentDidMount() {
        window.scroll(0, 0)
+       document.title='Mytinerary - Cities'
     }
     render(){
         return(

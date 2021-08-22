@@ -17,11 +17,11 @@ router.route('/itineraries')
 .get(itinerariesControllers.getAllItineraries)
 
 router.route('/itineraries/:id')
-.get(itinerariesControllers.getItineraries)
+.get(itinerariesControllers.getItinerariesByCity)
 
 router.route('/itinerary/:id')
 .delete(itinerariesControllers.removeItinerary)
 .put(itinerariesControllers.changeOneItinerary)
-.get(itinerariesControllers.getOneItinerary)
+.get(itinerariesControllers.getOneItineraryById)
 
 module.exports = router

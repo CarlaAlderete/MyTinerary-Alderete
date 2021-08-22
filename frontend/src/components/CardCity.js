@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import {useState, useEffect} from "react"
 import {Link} from 'react-router-dom'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 
 const CardCity = (props) =>{
@@ -8,15 +8,14 @@ const CardCity = (props) =>{
     useEffect(()=>{
         if(!props.newcities.length){
             props.getCities()
-        .then(res=>{
-            if(res.success){
-                setLoading({...loading, condition:false})
-            }else{
-                setLoading({condition:true, text:'Oop! '+res.res, back:'Back to Home'})
+            .then(res=>{
+                if(res.success){
+                    setLoading({...loading, condition:false})
+                }else{
+                    setLoading({...loading, text:'Oop! '+res.res, back:'Back to Home'})
             }
         })
         }else{
-            console.log('hola')
             setLoading({...loading, condition:false})
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,8 +36,8 @@ const CardCity = (props) =>{
     if(loading.condition){
         return (
             <div className='mainCities'>
-            <h1>{loading.text}</h1>
-            <Link to='/'>{loading.back}</Link>
+                <h1>{loading.text}</h1>
+                <Link to='/'>{loading.back}</Link>
             </div>
             )
         }
@@ -62,7 +61,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps ={
     getCities:citiesActions.getAllCities,
-    filterCities:citiesActions.filterCities,
+    filterCities:citiesActions.filterCities
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardCity)

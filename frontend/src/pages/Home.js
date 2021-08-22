@@ -9,6 +9,7 @@ import React from 'react'
 export default class Home extends React.Component{
     componentDidMount(){
         window.scroll(0, 0)
+        document.title='Mytinerary - Home'
     }
     render(){
         return(

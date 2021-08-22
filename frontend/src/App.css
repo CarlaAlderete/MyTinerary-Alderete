@@ -232,7 +232,7 @@ input{
     transform: scale(1.2);
 }
 /* CITIES */
-.heroCities, .cityFoto{
+.heroCities{
     background-position:50% 25%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -330,7 +330,7 @@ input{
 }
 
 /* ERROR */
-.error{
+.error404{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -338,10 +338,10 @@ input{
     justify-content: center;
     align-items: center;
 }
-.error img{
+.error404 img{
     width: 20%;
 }
-.error button{
+.error404 button{
     margin:2vw;
     border: 1px solid yellow;
     background: black;
@@ -385,11 +385,13 @@ input{
     font-size: 3.5vw;
 }
 .cityOnly button{
-    border:none;
     font-size: 3vw;
     padding: 0.5vw;
     margin: 1vw;
     background-color: #5855551e ;
+    border: 1px solid #5855551e;
+    border-radius: 2%;
+    box-shadow: 1px 1px 4px 4px #cac9c9b7;
 }
 /*Info error*/
 .errorInfo{
@@ -406,6 +408,9 @@ input{
     font-weight: bold;
 }
 .error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     height: 45%;
     width: 70%;

@@ -6,27 +6,18 @@ const itinerariesControllers ={
             let allItineraries = await Itinerary.find()
             res.json({success:true, res:allItineraries})
         }catch(err){
-            res.json({success:false, res:err.message })
+            res.json({success:false, res:err.message})
         }
     },
-    getItineraries: async(req, res)=>{
+    getItinerariesByCity: async(req, res)=>{
         try{
             let itineraries = await Itinerary.find({cityId:req.params.id})
             res.json({success:true, res:itineraries})
         }catch(err){
-            res.json({success:false, res:err.message })
-        }
-    },
-    addNewItinerary: async(req,res)=>{
-        let newItinerary = new Itinerary({...req.body})
-        try{
-            await newItinerary.save()
-            res.json({success:true, res:newItinerary})
-        }catch(err){
             res.json({success:false, res:err.message})
         }
     },
-    getOneItinerary:async(req,res)=>{
+    getOneItineraryById:async(req,res)=>{
         try{
             let itinerary = await Itinerary.findOne({_id:req.params.id})
             if(itinerary){
@@ -34,6 +25,15 @@ const itinerariesControllers ={
             }else{
                 throw new Error()
             }
+        }catch(err){
+            res.json({success:false, res:err.message})
+        }
+    },
+    addNewItinerary: async(req,res)=>{
+        let newItinerary = new Itinerary({...req.body})
+        try{
+            await newItinerary.save()
+            res.json({success:true, res:newItinerary})
         }catch(err){
             res.json({success:false, res:err.message})
         }

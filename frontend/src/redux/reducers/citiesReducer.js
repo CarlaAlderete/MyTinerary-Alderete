@@ -9,7 +9,7 @@ const citiesReducer = (state ={cities:[],filteredCity:[],city:{}}, action) => {
         case'FILTER_CITIES':
             return{
                 ...state,
-                filteredCity:state.cities.filter(obj => !action.payload ? obj : obj.city.toLowerCase().replace(/\s+/g, '').startsWith(action.payload.toLowerCase().replace(/\s+/g, '')))
+                filteredCity:state.cities.filter(obj => obj.city.toLowerCase().replace(/\s+/g, '').startsWith(action.payload.toLowerCase().replace(/\s+/g, '')))
             }
         case'GET_ONE_CITY':
             return{

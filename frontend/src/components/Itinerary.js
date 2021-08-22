@@ -8,7 +8,7 @@ const Itinerary = (props) =>{
     const viewInfoHandler = ()=>{
         !view.condition ? setView({condition: true, text:'View Less'}) : setView({condition: false,text:'View More'})
     }
-    const twitter = hashtag.map((obj,index) => <a key={index} href='#' target='_blank' rel='noreferrer'>#{obj} </a>)
+    const twitter = hashtag.map((obj,index) => <a key={index} href='https://twitter.com' target='_blank' rel='noreferrer'>#{obj} </a>)
     return(
         <div className='itineratyGr'>
             <div className='itinerary'>
