@@ -3,12 +3,16 @@ import ItineraryInfo from './ItineraryInfo'
 
 const Itinerary = ({itinerary}) =>{
     const {name, photo, user, description, info,hashtag}=itinerary
+
     const [view, setView] = useState ({condition: false, text:'View More'})
-    
+
     const viewInfoHandler = ()=>{
         !view.condition ? setView({condition: true, text:'View Less'}) : setView({condition: false,text:'View More'})
     }
-    const twitter = hashtag.map((obj,index) => <a key={index} href='https://twitter.com' target='_blank' rel='noreferrer'>#{obj} </a>)
+
+    const twitter = hashtag.map(obj => <a key={obj} href='https://twitter.com' target='_blank' rel='noreferrer'>#{obj}</a>)
+
+    const icon = [...Array(parseInt(info.price))].map((obj, index) => <img src='/assets/money.png' alt='money' key={index}/>)
     return(
         <div className='itineratyGr'>
             <div className='itinerary'>
@@ -24,8 +28,11 @@ const Itinerary = ({itinerary}) =>{
                             <p>{user.name}</p>
                         </div>
                         <div>
-                            <p>Price:{' 💵'.repeat(parseInt(info.price))}</p>
-                            <p>Time:{'🕗 '+info.time+'hrs'}</p>
+                            <div className='icon'>
+                                <p>Price:</p>
+                                {icon}
+                            </div>
+                            <p>Time:{' 🕗'+info.time+'hrs'}</p>
                         </div>
                     </div>
                     <p>{description}</p>

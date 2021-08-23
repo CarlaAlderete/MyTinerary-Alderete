@@ -521,6 +521,18 @@ input{
 .loading{
     width: 12vw;
 }
+.icon{
+    display: flex;
+    align-items: center;
+}
+.icon p{
+    margin-top: 1vw;
+}
+.icon img{
+    margin-right: .5vw;
+    width: 2.5vw;
+    height: 2.5vw;
+}
 @media screen and (max-width: 700px){
     .callAction{
         height: 40vh;

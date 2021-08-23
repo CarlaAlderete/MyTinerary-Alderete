@@ -33,7 +33,7 @@ const CardCity = ({newCities,filterCities,getCities}) =>{
             </Link>
         )  
     });
-    
+
     if(loading.condition){
         return (
             <div className='mainCities'>
