@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Itinerary from "../components/Itinerary"
+import HeroPag from "../components/HeroPag"
 import {connect} from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 import itinerariesActions from "../redux/actions/itinerariesActions"
@@ -50,12 +51,7 @@ class City extends Component{
             :this.props.itineraries.map((obj,index) => <Itinerary key={index}itinerary={obj}/>)
         return(
             <div className='cityAll'>
-                <div className='heroCities' style={{backgroundImage:`url("/assets/${this.props.city.photo}")`,}}>
-                    <Header/>
-                    <div className='herocitiesLogo'>
-                        <img src='/assets/logo.png' alt='logo'/>
-                    </div>
-                </div>
+                <HeroPag photo={this.props.city.photo}/>
                 <div className='cityOnly' style={{backgroundImage:`url("/assets/fondomain2.png")`,}}>
                     <h1>{this.props.city.city}</h1>
                     <div className='descrGr'>
