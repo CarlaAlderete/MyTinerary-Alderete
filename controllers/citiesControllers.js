@@ -27,7 +27,7 @@ const citiesControllers = {
             await cityNew.save()
             res.json({success: true, res:cityNew})
         }catch(err){
-            res.json({ success: false, res:err.message})
+            res.json({success: false, res:err.message})
         }
     },
     removeCity: async (req, res)=>{

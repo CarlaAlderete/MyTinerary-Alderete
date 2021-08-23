@@ -1,4 +1,3 @@
-import Header from "../components/Header"
 import Footer from "../components/Footer"
 import HeroPag from "../components/HeroPag"
 import CardCity from "../components/CardCity"

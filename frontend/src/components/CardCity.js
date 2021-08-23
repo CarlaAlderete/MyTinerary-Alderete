@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 
 const CardCity = ({newCities,filterCities,getCities}) =>{
-    const [loading, setLoading] = useState({condition:true, text:'Loading...', back:''})
+    const [loading, setLoading] = useState({condition:true, text:'', back:''})
     useEffect(()=>{
         if(!newCities.length){
             getCities()
@@ -22,7 +22,7 @@ const CardCity = ({newCities,filterCities,getCities}) =>{
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const chooseCityHandler = (e) => {filterCities(e.target.value)};
+    const chooseCityHandler = (e) => filterCities(e.target.value)
 
     const city = newCities.map((obj, index) =>{
         return(
@@ -37,7 +37,9 @@ const CardCity = ({newCities,filterCities,getCities}) =>{
     if(loading.condition){
         return (
             <div className='mainCities'>
-                <h1>{loading.text}</h1>
+                {loading.text === ''
+                ?<img  className='loading' src='/assets/loading.gif' alt='loading...'/>
+                :<h1>{loading.text}</h1>}
                 <Link to='/'>{loading.back}</Link>
             </div>
             )
