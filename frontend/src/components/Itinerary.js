@@ -1,8 +1,8 @@
 import {useState} from "react"
 import ItineraryInfo from './ItineraryInfo'
 
-const Itinerary = (props) =>{
-    const {name, photo, user, description, info,hashtag}= props.itinerary
+const Itinerary = ({itinerary}) =>{
+    const {name, photo, user, description, info,hashtag}=itinerary
     const [view, setView] = useState ({condition: false, text:'View More'})
     
     const viewInfoHandler = ()=>{

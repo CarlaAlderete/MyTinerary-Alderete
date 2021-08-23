@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 
-const CardCity = (props) =>{
+const CardCity = ({newCities,filterCities,getCities}) =>{
     const [loading, setLoading] = useState({condition:true, text:'Loading...', back:''})
     useEffect(()=>{
-        if(!props.newcities.length){
-            props.getCities()
+        if(!newCities.length){
+            getCities()
             .then(res=>{
                 if(res.success){
                     setLoading({...loading, condition:false})
@@ -16,14 +16,15 @@ const CardCity = (props) =>{
             }
         })
         }else{
+            filterCities('')
             setLoading({...loading, condition:false})
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const chooseCityHandler = (e) => {props.filterCities(e.target.value)};
+    const chooseCityHandler = (e) => {filterCities(e.target.value)};
 
-    const city = props.newcities.map((obj, index) =>{
+    const city = newCities.map((obj, index) =>{
         return(
             <Link to={`/itinerary/${obj._id}`} key={index}>
                 <div className={`item${index}`} data-aos="zoom-in-up" style={{backgroundImage:`url("/assets/${obj.photo}")`}}>
@@ -55,7 +56,7 @@ const CardCity = (props) =>{
 
 const mapStateToProps=(state)=>{
     return {
-        newcities : state.cities.filteredCity
+        newCities : state.cities.filteredCity
     }
 }
 
