@@ -3,9 +3,9 @@ const bcryptjs = require('bcryptjs')
 
 const userControllers={
     addNewUser:async(req,res)=>{
-        const {name, lastName, mail, password, src, coutry} = req.body
+        const {name, lastName, mail, password, src, country} = req.body
         const hashedPassword = bcryptjs.hashSync(password)
-        const newUser = new User({name, lastName, mail, password:hashedPassword , src, coutry})
+        const newUser = new User({name, lastName, mail, password:hashedPassword , src, country})
         try{
             let repeatUser = await User.findOne({mail: mail})
             if(repeatUser){

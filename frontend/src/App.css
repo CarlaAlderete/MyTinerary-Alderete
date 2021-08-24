@@ -12,7 +12,7 @@ header{
     background: #8b8b8b62;
     height: 13vh;
 }
-header a , header p{
+header a{
     text-decoration: none;
     color: #fff;
     margin: 1vw;
@@ -23,11 +23,19 @@ nav{
     justify-content: space-between;
     padding: 1vw;
 }
-nav div {
+nav div{
     display: flex;
+    align-items: center;
 }
-nav .bi{
-    width: 4vw;
+nav .iconUser{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 3.5vw;
+    height: 3.5vw;
+}
+nav .iconUser:hover{
+    cursor: pointer;
 }
 nav .active{
     color:  #302f2f;
@@ -533,6 +541,45 @@ input{
     width: 2.5vw;
     height: 2.5vw;
 }
+/*FORMULARIOS*/
+.mainform{
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+}
+.mainSing{
+    flex-grow: 1;
+    background: #8b8b8b62;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.cardForm{
+    padding: 1vw;
+    margin: 1vw auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    border: 1px solid black;
+    background: #f5d2d2de;
+}
+.formsignup{
+    padding: 0, 1vw;
+    display:flex;
+    flex-direction: column;
+    width: 90%;
+}
+.formsignup select{
+    margin: 1vw;
+}
+.formsignup button{
+    padding: 1vw;
+    background: #f5d2d2de;
+}
 @media screen and (max-width: 700px){
     .callAction{
         height: 40vh;
@@ -540,8 +587,9 @@ input{
     .callAction button{
         font-size: 5vw;
     }
-    nav .bi{
+    nav .iconUser{
         width: 5vw;
+        height: 5vw;
     }
     .logo img{
         width: 25vw;
@@ -606,6 +654,9 @@ input{
         margin: 1.5vw;
         width: 55vw;
         font-size: 3vw;
+    }
+    .cardForm{
+        width: 80%;
     }
 }
 @media screen and (max-width: 600px){
