@@ -1,13 +1,15 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import {BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
-import Home from './pages/Home';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+import {BrowserRouter, Route, Switch,Redirect} from 'react-router-dom'
+import Home from './pages/Home'
 import Cities from './pages/Cities'
 import Pag404 from './pages/Pag404'
+import SignIn from './pages/SignIn'
+import SingUp from './pages/SingUp'
 import City from './pages/City'
-import {useEffect} from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import {useEffect} from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const App = () =>{
   useEffect(() =>{
@@ -21,6 +23,8 @@ const App = () =>{
         <Route exact path='/cities' component={Cities}/>
         <Route path='/itinerary/:id' component={City}/>
         <Route path='/Error404' component={Pag404}/>
+        <Route path='/signin' component={SignIn}/>
+        <Route path='/signup' component={SingUp}/>
         <Redirect to='/Error404'/>
       </Switch>
     </BrowserRouter>
