@@ -30,6 +30,14 @@ const userControllers={
         }catch(err){
             res.json({success:false, res:err.message})
         }
+    },
+    getUsers:async(req,res)=>{
+        try{
+            let allUsers = await User.find()
+            res.json({success:true, res:allUsers})
+        }catch(err){
+            res.json({success:false, res:err.message})
+        }
     }
 }
 

@@ -567,18 +567,16 @@ input{
     border: 1px solid black;
     background: #f5d2d2de;
 }
-.formsignup{
-    padding: 0, 1vw;
-    display:flex;
-    flex-direction: column;
-    width: 90%;
-}
-.formsignup select{
+.cardForm select, .cardForm input{
     margin: 1vw;
+    width: 85%;
+    padding-left: 1vw;
 }
-.formsignup button{
-    padding: 1vw;
-    background: #f5d2d2de;
+.cardForm button{
+    padding: .5vw;
+    background: #f8c2c2de;
+    border: 1px solid #f8c2c2;
+    font-weight: bold;
 }
 @media screen and (max-width: 700px){
     .callAction{

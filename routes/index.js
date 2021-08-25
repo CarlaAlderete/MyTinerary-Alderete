@@ -25,6 +25,9 @@ router.route('/itinerary/:id')
 .put(itinerariesControllers.changeOneItinerary)
 .get(itinerariesControllers.getOneItineraryById)
 
+router.route('/users')
+.get(userControllers.getUsers)
+
 router.route('/user/signup')
 .post(userControllers.addNewUser)
 
