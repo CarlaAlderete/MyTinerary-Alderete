@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Swal from 'sweetalert2'
-import axios from "axios"
+import userActions from '../redux/actions/userActions'
+import {connect} from 'react-redux'
 
 class SingUp extends Component{
     state={
@@ -13,13 +14,11 @@ class SingUp extends Component{
     componentDidMount(){
         window.scroll(0, 0)
         document.title='Mytinerary - SingUp'
-        axios.get('https://restcountries.eu/rest/v2/all?fields=name')
-        .then(res =>this.setState({country:res.data}))
-        .catch(err => console.log(err))
+        this.props.getcountries()
     }
   
     render(){
-        let opCountry = this.state.country.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
+        let opCountry = this.props.countries.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
         const addDataUserHandler=(e)=>{
             this.setState((state)=>({
                 data:{...this.state.data,[e.target.name]: e.target.value}}))
@@ -38,16 +37,14 @@ class SingUp extends Component{
             if(Object.values(this.state.data).some((value)=> value === '')){
                 message('Missing data')
             }else{
-                axios.post('http://localhost:4000/api/user/signup', this.state.data)
+                this.props.postNewUser(this.state.data)
                 .then(res=>{
-                    if(res.data.success){
+                    if(res.success){
                         message('User created')
-                        this.setState({data:{}})
                     }else{
-                        message(res.data.res)
+                        message(res.res)  
                     }
                 })
-                .catch(()=>message('Oops! There is an error, try again later'))
             }
         }
 
@@ -56,7 +53,7 @@ class SingUp extends Component{
                 <Header/>
                 <div className='mainSing'>
                     <div className='cardForm'>
-                        <h2>Join to our World of Adventures!</h2>
+                        <h2>Sign up! It is fast and easy.</h2>
                         <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
                         <input type='text' placeholder='Name' name='name' onChange={addDataUserHandler}/>
                         <input type='text' placeholder='Last Name' name='lastName' onChange={addDataUserHandler}/>
@@ -75,4 +72,13 @@ class SingUp extends Component{
         )
     }
 }
-export default SingUp
+const mapStateToProps=(state)=>{
+    return{
+        countries:state.user.countries,
+    }
+}
+const mapDispatchToProps={
+    getcountries:userActions.getcountries,
+    postNewUser:userActions.postNewUser
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SingUp)

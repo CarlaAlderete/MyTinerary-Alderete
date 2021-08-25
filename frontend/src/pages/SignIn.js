@@ -2,7 +2,8 @@ import {Component} from "react"
 import {Link} from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import axios from "axios"
+import {connect} from "react-redux"
+import userActions from "../redux/actions/userActions"
 import Swal from 'sweetalert2'
 
 
@@ -35,17 +36,13 @@ class SingIn extends Component{
             if(!this.state.data.mail || !this.state.data.password){
                 message('Missing data')
             }else{
-                axios.post('http://localhost:4000/api/user/signin', this.state.data)
+                this.props.singInUser(this.state.data)
                 .then(res=>{
-                    if(res.data.success){
+                    if(res.success){
                         message('Sing in ok')
-                        this.setState({data:{mail:'', password:''}})
                     }else{
-                        message(res.data.res)
+                        message(res.res)
                     }
-                })
-                .catch(()=>{
-                    message('Oops! There is an error, try again later')
                 })
             }
         }
@@ -66,4 +63,7 @@ class SingIn extends Component{
         )
     }
 }
-export default SingIn
+const mapDispatchToProps={
+    singInUser:userActions.singInUser
+}
+export default connect(null, mapDispatchToProps)(SingIn)

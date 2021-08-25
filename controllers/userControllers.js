@@ -26,15 +26,7 @@ const userControllers={
             let match=bcryptjs.compareSync(password,userExist.password)
             if(!match){
                 throw new Error('The data entered is not valid. Please, try again.')}
-            res.json({success:true})
-        }catch(err){
-            res.json({success:false, res:err.message})
-        }
-    },
-    getUsers:async(req,res)=>{
-        try{
-            let allUsers = await User.find()
-            res.json({success:true, res:allUsers})
+            res.json({success:true, res:userExist})
         }catch(err){
             res.json({success:false, res:err.message})
         }
