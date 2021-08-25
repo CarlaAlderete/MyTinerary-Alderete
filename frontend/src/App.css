@@ -567,6 +567,9 @@ input{
     border: 1px solid black;
     background: #f5d2d2de;
 }
+.cardForm h2{
+    text-align: center;
+}
 .cardForm select, .cardForm input{
     margin: 1vw;
     width: 85%;
