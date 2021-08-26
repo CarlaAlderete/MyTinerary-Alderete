@@ -38,9 +38,7 @@ class SingIn extends Component{
             }else{
                 this.props.singInUser(this.state.data)
                 .then(res=>{
-                    if(res.success){
-                        message('Sing in ok')
-                    }else{
+                    if(!res.success){
                         message(res.res)
                     }
                 })

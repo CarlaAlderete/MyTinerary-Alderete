@@ -2,23 +2,28 @@ import React from 'react'
 import {NavLink, Link} from 'react-router-dom'
 import {useState} from 'react'
 import {connect} from 'react-redux'
+import userActions from '../redux/actions/userActions'
 
 const Header = (props) =>{
     const [sign,setSign] = useState(false)
-    const {user}=props
-    const login =()=>{
+    const {user, singOut}=props
+    const loginHandler =()=>{
         setSign(!sign)    
     }
-const userNull= <div>
-                    {sign && <Link to='/signin' onClick={login}>SIGN IN</Link>}
-                    {sign && <Link to='/signup' onClick={login}>SIGN UP</Link>}
-                    <div className='iconUser' onClick={login} style={{backgroundImage:`url("/assets/iconuser.png")`}}></div>
-                </div>
-const userSignIn=<div>
-                    {sign && <p onClick={login}>SIGN OUT</p>}
-                    {!sign && <p>HI {user.name.toUpperCase()}</p>}
-                    <div className='iconUser' onClick={login} style={{backgroundImage:`url("${user.photo}")`}}></div>
-                </div>
+    const singOutHandler=()=>{
+        singOut()
+    }
+
+    const userNull= <div>
+                        {sign && <Link to='/signin' onClick={loginHandler}>SIGN IN</Link>}
+                        {sign && <Link to='/signup' onClick={loginHandler}>SIGN UP</Link>}
+                        <div className='iconUser' onClick={loginHandler} style={{backgroundImage:`url("/assets/iconuser.png")`}}></div>
+                    </div>
+    const userSignIn=<div>
+                        {sign && <p onClick={singOutHandler}>SIGN OUT</p>}
+                        {!sign  && <p onClick={loginHandler}>HI! {user.name.toUpperCase()}</p>}
+                        <div className='iconUser' onClick={loginHandler} style={{backgroundImage:`url("${user.photo}")`}}></div>
+                    </div>
     return(
         <header>
             <nav>
@@ -36,4 +41,7 @@ const mapStateToProps =(state)=>{
         user:state.user.user
     }
 }
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps={
+    singOut:userActions.singOut
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

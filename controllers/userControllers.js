@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcryptjs = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userControllers={
     addNewUser:async(req,res)=>{
@@ -11,7 +12,8 @@ const userControllers={
             if(repeatUser){
                 throw new Error('mail is being used with another account')
             }await newUser.save()
-            res.json({success:true, res:newUser})
+            let token = jwt.sign({...newUser}, process.env.SECRETOKEN)
+            res.json({success:true, res:{name:newUser.name,photo:newUser.src,token}})
         }catch(err){
             res.json({success:false, res:err.message})
         }
@@ -26,7 +28,8 @@ const userControllers={
             let match=bcryptjs.compareSync(password,userExist.password)
             if(!match){
                 throw new Error('The data entered is not valid. Please, try again.')}
-            res.json({success:true, res:userExist})
+            let token = jwt.sign({...userExist}, process.env.SECRETOKEN)
+            res.json({success:true, res:{name:userExist.name,photo:userExist.src,token}})
         }catch(err){
             res.json({success:false, res:err.message})
         }

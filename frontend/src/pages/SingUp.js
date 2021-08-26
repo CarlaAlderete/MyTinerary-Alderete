@@ -39,10 +39,8 @@ class SingUp extends Component{
             }else{
                 this.props.postNewUser(this.state.data)
                 .then(res=>{
-                    if(res.success){
-                        message('User created')
-                    }else{
-                        message(res.res)  
+                    if(!res.success){
+                        message(res.res) 
                     }
                 })
             }
