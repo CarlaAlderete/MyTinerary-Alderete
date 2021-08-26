@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import citiesActions from "../redux/actions/citiesActions"
 
-const CardCity = ({newCities,filterCities,getCities}) =>{
+const CardCity = ({newCities,filterCities,getCities,userToken}) =>{
     const [loading, setLoading] = useState({condition:true, text:'', back:''})
+
     useEffect(()=>{
         if(!newCities.length){
-            getCities()
+            getCities(userToken)
             .then(res=>{
                 if(res.success){
                     setLoading({...loading, condition:false})
@@ -19,8 +20,7 @@ const CardCity = ({newCities,filterCities,getCities}) =>{
             filterCities('')
             setLoading({...loading, condition:false})
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[userToken])
 
     const chooseCityHandler = (e) => filterCities(e.target.value)
 
@@ -58,7 +58,8 @@ const CardCity = ({newCities,filterCities,getCities}) =>{
 
 const mapStateToProps=(state)=>{
     return {
-        newCities : state.cities.filteredCity
+        newCities:state.cities.filteredCity,
+        userToken:state.user.user.token // no pedir esto y sacarle parametro a la accion y al array de dependecia vacia
     }
 }
 

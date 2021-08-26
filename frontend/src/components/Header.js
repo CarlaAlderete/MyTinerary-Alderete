@@ -12,8 +12,9 @@ const Header = (props) =>{
     }
     const singOutHandler=()=>{
         singOut()
+        loginHandler()
     }
-
+ 
     const userNull= <div>
                         {sign && <Link to='/signin' onClick={loginHandler}>SIGN IN</Link>}
                         {sign && <Link to='/signup' onClick={loginHandler}>SIGN UP</Link>}

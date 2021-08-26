@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const passport= require('passport')
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesControllers = require('../controllers/itinerariesControllers')
 const userControllers = require('../controllers/userControllers')
 
 router.route('/cities')
-.get(citiesControllers.getAllCities)
+.get(passport.authenticate('jwt',{session:false}),citiesControllers.getAllCities)
 .post(citiesControllers.addNewCity)
 
 router.route('/city/:id')

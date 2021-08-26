@@ -9,7 +9,7 @@ p{
 /* HEADER */
 header{
     color: #fff;
-    background: #8b8b8b62;
+    background: #7070704d;
     height: 13vh;
 }
 header a, header p{
@@ -64,7 +64,7 @@ nav .active{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #8b8b8b62;
+    background: #7070704d;
     height: 87vh;
     width: 100%;
 }
@@ -248,7 +248,7 @@ input{
     height: 70vh;
 }
 .herocitiesLogo{
-    background-color: #8b8b8b62;
+    background-color: #7070704d;
     height: 57vh;
     display: flex;
     justify-content: flex-end;
@@ -553,7 +553,7 @@ input{
 }
 .mainSing{
     flex-grow: 1;
-    background: #8b8b8b62;
+    background: #7070704d;
     width: 100%;
     display: flex;
     align-items: center;
@@ -565,10 +565,11 @@ input{
     flex-direction: column;
     align-items: center;
     width: 50%;
-    border: 1px solid black;
-    background: #f5d2d2de;
+    border: 3px solid transparent;
+    border-image: linear-gradient(to right, red,orange, yellow, green, blue, purple) 1;
+    background: #c2bfbfd2;
 }
-.cardForm h2{
+.cardForm h2,.cardForm h4{
     text-align: center;
 }
 .cardForm h4{

@@ -26,6 +26,8 @@ class SingUp extends Component{
         const addNewUserHandler=()=>{
             if(Object.values(this.state.data).some((value)=> value === '')){
                 this.setState({error:'*Data is missing, fill in all data'})
+            }else if(!this.state.data.mail.includes('@')){
+                this.setState({error:'*Mail no valid'})
             }else{
                 this.props.postNewUser(this.state.data)
                 .then(res=>{

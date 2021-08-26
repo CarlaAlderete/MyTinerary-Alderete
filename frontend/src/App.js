@@ -19,6 +19,7 @@ const App = ({tokenUser, forcedSignIn}) =>{
     if(localStorage.getItem('data')){
       forcedSignIn(JSON.parse(localStorage.getItem('data')))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
   return (
     <BrowserRouter>
