@@ -6,17 +6,18 @@ const userReducer = (state={countries:[], user:{name:'',photo:'',token:''}},acti
             countries:action.payload
         }
         case'SIGN_IN_USER':
-        localStorage.setItem('name',action.payload.name)
-        localStorage.setItem('photo',action.payload.photo)
-        localStorage.setItem('token',action.payload.token)
+        localStorage.setItem('data',JSON.stringify(action.payload))
         return{
             ...state,
             user:action.payload
         }
         case'SIGN_OUT_USER':
-        localStorage.removeItem('name')
-        localStorage.removeItem('photo')
-        localStorage.removeItem('token')
+        localStorage.removeItem('data')
+        return{
+            ...state,
+            user:action.payload
+        }
+        case'SIGN_IN':
         return{
             ...state,
             user:action.payload

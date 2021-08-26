@@ -46,9 +46,9 @@ const userActions ={
            dispatch({type:'SIGN_OUT_USER', payload:{name:'', photo:'', token:''}})
        }
     },
-    forcedSignIn:(name, photo, token)=>{
+    forcedSignIn:(data)=>{
         return(dispatch,getState)=>{
-            dispatch({type:'SIGN_IN_USER', payload:{name, photo, token}})
+            dispatch({type:'SIGN_IN', payload:data})
         }
     }
 }

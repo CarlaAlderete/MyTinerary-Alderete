@@ -16,8 +16,8 @@ import userActions from './redux/actions/userActions'
 const App = ({tokenUser, forcedSignIn}) =>{
   useEffect(() =>{
     AOS.init({duration: 2600})
-    if(localStorage.getItem('token')){
-      forcedSignIn(localStorage.getItem('name'),localStorage.getItem('photo'),localStorage.getItem('token'))
+    if(localStorage.getItem('data')){
+      forcedSignIn(JSON.parse(localStorage.getItem('data')))
     }
 },[])
   return (

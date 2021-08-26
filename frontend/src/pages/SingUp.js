@@ -2,14 +2,14 @@ import { Component } from "react"
 import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import Swal from 'sweetalert2'
 import userActions from '../redux/actions/userActions'
 import {connect} from 'react-redux'
 
 class SingUp extends Component{
     state={
         country:[],
-        data:{name:'',lastName:'',mail:'',password:'',src:'',country:''}
+        data:{name:'',lastName:'',mail:'',password:'',src:'',country:''},
+        error:''
     }
     componentDidMount(){
         window.scroll(0, 0)
@@ -23,24 +23,14 @@ class SingUp extends Component{
             this.setState((state)=>({
                 data:{...this.state.data,[e.target.name]: e.target.value}}))
         }
-        const message = (text) =>{
-            return(
-                Swal.fire({
-                    title: text,
-                    width: 400,
-                    padding: '1em',
-                    background: 'url(/assets/fondomain2.png)',
-                })
-            )
-        }
         const addNewUserHandler=()=>{
             if(Object.values(this.state.data).some((value)=> value === '')){
-                message('Missing data')
+                this.setState({error:'*Data is missing, fill in all data'})
             }else{
                 this.props.postNewUser(this.state.data)
                 .then(res=>{
                     if(!res.success){
-                        message(res.res) 
+                        this.setState({error:'*'+res.res})
                     }
                 })
             }
@@ -53,6 +43,7 @@ class SingUp extends Component{
                     <div className='cardForm'>
                         <h2>Sign up! It is fast and easy.</h2>
                         <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
+                        <h4>{this.state.error}</h4>
                         <input type='text' placeholder='Name' name='name' onChange={addDataUserHandler}/>
                         <input type='text' placeholder='Last Name' name='lastName' onChange={addDataUserHandler}/>
                         <input type='email' placeholder='E-mail' name='mail' onChange={addDataUserHandler}/>

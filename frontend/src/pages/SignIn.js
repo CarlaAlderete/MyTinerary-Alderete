@@ -4,13 +4,12 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import {connect} from "react-redux"
 import userActions from "../redux/actions/userActions"
-import Swal from 'sweetalert2'
-
 
 class SingIn extends Component{
     state={
         data:{mail:'', password:''},
-        sign:false
+        sign:false,
+        error:''
     }
     componentDidMount(){
         window.scroll(0, 0)
@@ -22,24 +21,15 @@ class SingIn extends Component{
             this.setState((state)=>({
                 data:{...this.state.data,[e.target.name]: e.target.value}}))
         }
-        const message = (text) =>{
-            return(
-                Swal.fire({
-                    title: text,
-                    width: 400,
-                    padding: '1em',
-                    background: 'url(/assets/fondomain2.png)',
-                })
-            )
-        }
+    
         const signInUserHandler=()=>{
             if(!this.state.data.mail || !this.state.data.password){
-                message('Missing data')
+                this.setState({error:'*Data is missing, fill in all data'})
             }else{
                 this.props.singInUser(this.state.data)
                 .then(res=>{
                     if(!res.success){
-                        message(res.res)
+                        this.setState({error:'*'+res.res})
                     }
                 })
             }
@@ -51,6 +41,7 @@ class SingIn extends Component{
                     <div className='cardForm'>  
                         <h2>Singn In with your account!</h2>
                         <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
+                        <h4>{this.state.error}</h4>
                         <input type='email' value={this.state.data.mail} placeholder='E-mail' name='mail' onChange={addDataUserHandler}/>
                         <input type='password' value={this.state.data.password} placeholder='Password' name='password' onChange={addDataUserHandler}/>
                         <button onClick={signInUserHandler}>Sing In</button>
