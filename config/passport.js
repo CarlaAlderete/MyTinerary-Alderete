@@ -6,24 +6,15 @@ const User = require('../models/User')
 module.exports = passport.use(new jwtStrategy({
     jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.SECRETOKEN
-},(payload,done)=>{
-    // try{
-    //     let res = await User.findOne({_id: payload._doc._id})
-    //     if(!res){
-    //         return done(null,false)
-    //     }else{
-    //         return done(null,false)
-    //     }
-    // }catch(err){
-    //     return done(err,false)
-    // }
-    User.findOne({_id: payload._doc._id})
-    .then(res=>{
+},async(payload,done)=>{
+    try{
+        let res = await User.findOne({_id: payload._doc._id})
         if(!res){
             return done(null,false)
         }else{
             return done(null,res)
         }
-    })
-    .catch(err=>done(err, false))
+    }catch(err){
+        return done(err,false)
+    }
 }))

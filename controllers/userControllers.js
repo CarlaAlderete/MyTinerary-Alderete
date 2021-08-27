@@ -10,7 +10,7 @@ const userControllers={
         try{
             let repeatUser = await User.findOne({mail: mail})
             if(repeatUser){
-                throw new Error('mail is being used with another account')
+                throw new Error('Mail is being used with another account')
             }await newUser.save()
             let token = jwt.sign({...newUser}, process.env.SECRETOKEN)
             res.json({success:true, res:{name:newUser.name,photo:newUser.src,token}})

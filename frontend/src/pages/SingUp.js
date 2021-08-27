@@ -9,14 +9,19 @@ class SingUp extends Component{
     state={
         country:[],
         data:{name:'',lastName:'',mail:'',password:'',src:'',country:''},
-        error:''
+        errorfront:'',
+        error:[],
+        message:{}
     }
     componentDidMount(){
         window.scroll(0, 0)
         document.title='Mytinerary - SingUp'
         this.props.getcountries()
     }
-  
+    // this.state.error.map(obj=>{this.setState((state)=>({
+    //     message:{...this.state.message,[obj.path[0]]: obj.message}}))})  
+    // console.log(this.state.message)
+
     render(){
         let opCountry = this.props.countries.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
         const addDataUserHandler=(e)=>{
@@ -24,20 +29,22 @@ class SingUp extends Component{
                 data:{...this.state.data,[e.target.name]: e.target.value}}))
         }
         const addNewUserHandler=()=>{
-            if(Object.values(this.state.data).some((value)=> value === '')){
-                this.setState({error:'*Data is missing, fill in all data'})
+            if(Object.values(this.state.data).some((value)=> !value)){
+                this.setState({errorfront:'*Data is missing, fill in all data'})
             }else if(!this.state.data.mail.includes('@')){
-                this.setState({error:'*Mail no valid'})
+                this.setState({errorfront:'*Mail no valid'})
             }else{
+                this.setState({errorfront:''})
                 this.props.postNewUser(this.state.data)
                 .then(res=>{
                     if(!res.success){
-                        this.setState({error:'*'+res.res})
+                        this.setState({error:res.res})
                     }
                 })
             }
         }
-
+        const message = this.state.error.map((obj, index)=><p key={index}>{obj.path[0]}-{obj.message}</p>)
+        
         return(
             <div className='mainform' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}>
                 <Header/>
@@ -45,7 +52,7 @@ class SingUp extends Component{
                     <div className='cardForm'>
                         <h2>Sign up! It is fast and easy.</h2>
                         <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
-                        <h4>{this.state.error}</h4>
+                        <h4>{this.state.errorfront}</h4>
                         <input type='text' placeholder='Name' name='name' onChange={addDataUserHandler}/>
                         <input type='text' placeholder='Last Name' name='lastName' onChange={addDataUserHandler}/>
                         <input type='email' placeholder='E-mail' name='mail' onChange={addDataUserHandler}/>
@@ -56,6 +63,7 @@ class SingUp extends Component{
                             {opCountry}
                         </select>
                         <button onClick={addNewUserHandler}>Sing Up</button>
+                        {message}
                     </div>
                 </div>
                 <Footer/>
