@@ -18,10 +18,7 @@ class SingUp extends Component{
         document.title='Mytinerary - SingUp'
         this.props.getcountries()
     }
-    // this.state.error.map(obj=>{this.setState((state)=>({
-    //     message:{...this.state.message,[obj.path[0]]: obj.message}}))})  
-    // console.log(this.state.message)
-
+    
     render(){
         let opCountry = this.props.countries.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
         const addDataUserHandler=(e)=>{
@@ -38,12 +35,17 @@ class SingUp extends Component{
                 this.props.postNewUser(this.state.data)
                 .then(res=>{
                     if(!res.success){
-                        this.setState({error:res.res})
+                        console.log(res)
+                        if(res.res === "Mail is being used with another account"){
+                            this.setState({errorfront:res.res})
+                        }else{
+                            res.res.map(obj=>this.setState((state)=>({
+                            message:{...this.state.message,[obj.path[0]]: obj.message}})))
+                        }  
                     }
                 })
             }
         }
-        const message = this.state.error.map((obj, index)=><p key={index}>{obj.path[0]}-{obj.message}</p>)
         
         return(
             <div className='mainform' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}>
@@ -53,17 +55,21 @@ class SingUp extends Component{
                         <h2>Sign up! It is fast and easy.</h2>
                         <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
                         <h4>{this.state.errorfront}</h4>
-                        <input type='text' placeholder='Name' name='name' onChange={addDataUserHandler}/>
-                        <input type='text' placeholder='Last Name' name='lastName' onChange={addDataUserHandler}/>
-                        <input type='email' placeholder='E-mail' name='mail' onChange={addDataUserHandler}/>
-                        <input type='password' placeholder='Password' name='password' onChange={addDataUserHandler}/>
+                        {this.state.message.name && <p className='inputError'>Name-{this.state.message.name}</p>}
+                        <input type='text' placeholder='Name' className={this.state.message.name && 'borderError'} name='name' onChange={addDataUserHandler}/>
+                        {this.state.message.lastName && <p className='inputError'>Name-{this.state.message.lastName}</p>}
+                        <input type='text' placeholder='Last Name' className={this.state.message.lastName && 'borderError'} name='lastName' onChange={addDataUserHandler}/>
+                        {this.state.message.mail && <p className='inputError'>E-mail-{this.state.message.mail}</p>}
+                        <input type='email' placeholder='E-mail' className={this.state.message.mail && 'borderError'} name='mail' onChange={addDataUserHandler}/>
+                        {this.state.message.password && <p className='inputError'>Password-{this.state.message.password}</p>}
+                        <input type='password' placeholder='Password' className={this.state.message.password && 'borderError'} name='password' onChange={addDataUserHandler}/>
+                        {this.state.message.src && <p className='inputError'>URL-{this.state.message.src}</p>}
                         <input type='url' placeholder='Url' name='src' onChange={addDataUserHandler}/>
                         <select name='country' required onChange={addDataUserHandler}>
                             <option>Country</option>
                             {opCountry}
                         </select>
-                        <button onClick={addNewUserHandler}>Sing Up</button>
-                        {message}
+                        <button onClick={addNewUserHandler}>Sign Up</button>
                     </div>
                 </div>
                 <Footer/>

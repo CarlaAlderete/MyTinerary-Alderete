@@ -3,18 +3,16 @@ import {NavLink, Link} from 'react-router-dom'
 import {useState} from 'react'
 import {connect} from 'react-redux'
 import userActions from '../redux/actions/userActions'
-import citiesActions from '../redux/actions/citiesActions'
 
 const Header = (props) =>{
     const [sign,setSign] = useState(false)
-    const {user, singOut,deleteCities}=props
+    const {user, singOut}=props
     const loginHandler =()=>{
         setSign(!sign)    
     }
     const singOutHandler=()=>{
         singOut()
         loginHandler()
-        deleteCities()//borrar de las props y de las 
     }
  
     const userNull= <div>
@@ -46,7 +44,5 @@ const mapStateToProps =(state)=>{
 }
 const mapDispatchToProps={
     singOut:userActions.singOut,
-    deleteCities:citiesActions.deleteCities // borrar
-
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

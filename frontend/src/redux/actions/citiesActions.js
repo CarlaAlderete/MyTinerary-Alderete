@@ -46,11 +46,6 @@ const citiesActions = {
                 return({success:false, res: err.message})
             }
         }
-    },
-    deleteCities:()=>{
-        return(dispatch,getState)=>{
-            dispatch({type:'DELETE_CITIES', payload:[]})
-        }
     }
 }
 export default citiesActions

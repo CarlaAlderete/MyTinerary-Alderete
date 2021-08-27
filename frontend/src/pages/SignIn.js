@@ -44,7 +44,7 @@ class SingIn extends Component{
                         <h4>{this.state.error}</h4>
                         <input type='email' value={this.state.data.mail} placeholder='E-mail' name='mail' onChange={addDataUserHandler}/>
                         <input type='password' value={this.state.data.password} placeholder='Password' name='password' onChange={addDataUserHandler}/>
-                        <button onClick={signInUserHandler}>Sing In</button>
+                        <button onClick={signInUserHandler}>Sign In</button>
                     </div>
                 </div>
                 <Footer/>

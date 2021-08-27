@@ -574,17 +574,27 @@ input{
 }
 .cardForm h4{
     color:#ff0000;
+    margin-bottom: 1vw;
 }
 .cardForm select, .cardForm input{
-    margin: 1vw;
     width: 85%;
     padding-left: 1vw;
+}
+.inputError{
+    color:red;
+    font-size: small;
+}
+.cardForm select{
+    margin: 1vw
 }
 .cardForm button{
     padding: .5vw;
     background: #f8c2c2de;
     border: 1px solid #f8c2c2;
     font-weight: bold;
+}
+.borderError{
+    border:2px solid red;
 }
 @media screen and (max-width: 700px){
     .callAction{

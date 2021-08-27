@@ -21,11 +21,6 @@ const citiesReducer = (state ={cities:[],filteredCity:[],city:{}}, action) => {
                 ...state,
                 city:action.payload
             }
-        case'DELETE_CITIES'://borrar
-            return{
-                ...state,
-                cities:action.payload
-            }
         default:
             return state 
     } 
