@@ -18,6 +18,10 @@ header a, header p{
     margin: 1vw;
     font-size: x-large;
 }
+header a:hover,header p:hover{
+    color:rgb(78, 77, 77);
+    font-weight: bold;
+}
 nav{
     display: flex;
     justify-content: space-between;
@@ -230,14 +234,15 @@ input{
 .callAction button{
     margin-top: 1.5vw;
     font-size: 2.5vw;
-    border-radius: 50%;
-    border:1px solid #3635359a;
+    background-color: #5855551e;
+    border: 1px solid #5855551e;
+    border-radius: 4%;
+    box-shadow: 1px 1px 4px 4px #cac9c9b7;
     padding: 1vw;
     transition: all 500ms;
-    background-color: #fa9e9e;
 }
 .callAction button:hover{
-    background: #fc3c3c;
+    background: #b8b6b6;
     transform: scale(1.2);
 }
 /* CITIES */
@@ -590,16 +595,26 @@ input{
     margin:0vw 1vw 1.5vw;
 }
 .cardForm select{
-    margin: 1vw
+    margin: 0 1vw 1vw;
 }
 .cardForm button{
-    padding: .5vw;
-    background: #f8c2c2de;
-    border: 1px solid #f8c2c2;
+    background: #f8d9d9e1 ;
+    border: 1px solid #a3a2a2e1 ;
     font-weight: bold;
+    margin: 1vw;
+    width: 20vw;
+    padding: .5vw;
+    box-shadow: 1px 1px 4px 4px #cac9c9c9;
+}
+.cardForm button span,.cardForm button div{
+    font-weight: bold !important;
+    color: black !important;
 }
 .borderError{
     border:2px solid red;
+}
+button:hover{
+    background: #b8b6b6;
 }
 @media screen and (max-width: 700px){
     .callAction{
@@ -678,6 +693,9 @@ input{
     }
     .cardForm{
         width: 80%;
+    }
+    .cardForm button{
+        width: 40vw;
     }
 }
 @media screen and (max-width: 600px){

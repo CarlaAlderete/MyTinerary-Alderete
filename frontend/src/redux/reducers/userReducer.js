@@ -1,7 +1,5 @@
 const userReducer = (state={user:{name:'',photo:'',token:''}},action) =>{
     switch(action.type){
-        case'GET_COUNTRIES':
-        return state
         case'SIGN_IN_USER':
         localStorage.setItem('token',action.payload.token)
         return{

@@ -2,10 +2,9 @@ import axios from 'axios'
 
 const userActions ={
     getcountries:()=>{
-        return async(dispatch,getState)=>{
+        return async()=>{
             try{
                 let country = await axios.get('https://restcountries.eu/rest/v2/all?fields=name')
-                dispatch({type:'GET_COUNTRIES'})
                 return({res:country.data})
             }catch(err){
                 console.log(err)

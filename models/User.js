@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
     mail:String,
     password:String,
     src:String,
-    country:String
+    country:String,
+    google :{type:Boolean, default:false}
 })
 
 const User = mongoose.model('user', userSchema)

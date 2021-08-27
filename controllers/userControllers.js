@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken')
 
 const userControllers={
     addNewUser:async(req,res)=>{
-        const {name, lastName, mail, password, src, country} = req.body
+        const {name, lastName, mail, password, src, country, google} = req.body
         const hashedPassword = bcryptjs.hashSync(password)
-        const newUser = new User({name, lastName, mail, password:hashedPassword , src, country})
+        const newUser = new User({name, lastName, mail, password:hashedPassword , src, country, google})
         try{
             let repeatUser = await User.findOne({mail: mail})
             if(repeatUser){
@@ -19,15 +19,13 @@ const userControllers={
         }
     },
     singInUser:async(req,res)=>{
-        const {mail, password} = req.body
+        const {mail, password, flagGoogle} = req.body
         try{
             let userExist = await User.findOne({mail: mail})
-            if(!userExist){
-                throw new Error('The data entered is not valid. Please, try again.') 
-            }
+            if(!userExist) throw new Error('The data entered is not valid. Please, try again.')
+            if(userExist.google && !flagGoogle) throw new Error('Sign in with Google.')
             let match=bcryptjs.compareSync(password,userExist.password)
-            if(!match){
-                throw new Error('The data entered is not valid. Please, try again.')}
+            if(!match)throw new Error('The data entered is not valid. Please, try again.')
             let token = jwt.sign({...userExist}, process.env.SECRETOKEN)
             res.json({success:true, res:{name:userExist.name,photo:userExist.src,token}})
         }catch(err){

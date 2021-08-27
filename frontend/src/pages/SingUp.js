@@ -4,6 +4,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import userActions from '../redux/actions/userActions'
 import {connect} from 'react-redux'
+import GoogleLogin from 'react-google-login'
 
 class SingUp extends Component{
     state={
@@ -24,6 +25,7 @@ class SingUp extends Component{
     render(){
         let opCountry = this.state.country.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
         const addDataUserHandler=(e)=>{
+            e.target.name !== 'url' && e.target.value.toLowerCase()
             this.setState((state)=>({
                 data:{...this.state.data,[e.target.name]: e.target.value}}))
         }
@@ -48,7 +50,28 @@ class SingUp extends Component{
                 })
             }
         }
-        
+        const responseGoogle= res =>{
+            let userGoogle ={
+                name: res.profileObj.givenName,
+                lastName: res.profileObj.familyName,
+                mail: res.profileObj.email,
+                password: res.profileObj.googleId,
+                src: res.profileObj.imageUrl,
+                country: 'null',
+                google: true
+            }
+            this.props.postNewUser(userGoogle)
+            .then(res=>{
+                if(!res.success){
+                    if(res.res === "Mail is being used with another account"){
+                        this.setState({errorfront:res.res})
+                    }else{
+                        res.res.map(obj=>this.setState((state)=>({
+                        message:{...this.state.message,[obj.path[0]]: obj.message}})))
+                    }  
+                }
+            })
+        }
         return(
             <div className='mainform' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}>
                 <Header/>
@@ -66,12 +89,19 @@ class SingUp extends Component{
                         {this.state.message.password && <p className='inputError'>{this.state.message.password}</p>}
                         <input type='password' placeholder='Password' className={this.state.message.password && 'borderError'} name='password' onChange={addDataUserHandler}/>
                         {this.state.message.src && <p className='inputError'>{this.state.message.src}</p>}
-                        <input type='url' placeholder='Url' name='src' onChange={addDataUserHandler}/>
+                        <input type='url' placeholder='Url' className={this.state.message.src && 'borderError'} name='src' onChange={addDataUserHandler}/>
                         <select name='country' required onChange={addDataUserHandler}>
                             <option>Country</option>
                             {opCountry}
                         </select>
                         <button onClick={addNewUserHandler}>Sign Up</button>
+                        <GoogleLogin
+                            clientId="352346524724-udc9tro8j6e2g1qlqdf25suduuult5hm.apps.googleusercontent.com"
+                            buttonText="Sing Up with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
                     </div>
                 </div>
                 <Footer/>
