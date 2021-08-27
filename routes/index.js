@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const passport= require('passport')
 const validator = require('../controllers/validator')
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesControllers = require('../controllers/itinerariesControllers')
@@ -31,5 +32,6 @@ router.route('/user/signup')
 
 router.route('/user/signin')
 .post(userControllers.singInUser)
+.get(passport.authenticate('jwt',{session:false}), userControllers.forcedSignIn)
 
 module.exports = router

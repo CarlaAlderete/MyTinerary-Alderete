@@ -582,7 +582,12 @@ input{
 }
 .inputError{
     color:red;
+}
+.requiered,.inputError{
     font-size: small;
+}
+.cardForm input{
+    margin:0vw 1vw 1.5vw;
 }
 .cardForm select{
     margin: 1vw
