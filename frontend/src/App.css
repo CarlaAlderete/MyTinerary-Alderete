@@ -602,7 +602,7 @@ input{
     border: 1px solid #a3a2a2e1 ;
     font-weight: bold;
     margin: 1vw;
-    width: 20vw;
+    width: 30vw;
     padding: .5vw;
     box-shadow: 1px 1px 4px 4px #cac9c9c9;
 }
@@ -692,10 +692,14 @@ button:hover{
         font-size: 3vw;
     }
     .cardForm{
-        width: 80%;
+        width: 90%;
     }
     .cardForm button{
         width: 40vw;
+    }
+    .cardForm select, .cardForm input{
+        width: 95%;
+        height: 8vw;
     }
 }
 @media screen and (max-width: 600px){

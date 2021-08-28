@@ -9,10 +9,11 @@ import GoogleLogin from 'react-google-login'
 class SingUp extends Component{
     state={
         country:[],
-        data:{name:'',lastName:'',mail:'',password:'',src:'',country:''},
+        data:{name:'',lastName:'',mail:'',password:'',src:'',country:'', verifyPassword:null},
         errorfront:'',
         error:[],
-        message:{}
+        message:{},
+        verifyPassword: null
     }
     componentDidMount(){
         window.scroll(0, 0)
@@ -21,20 +22,23 @@ class SingUp extends Component{
         .then(res=> 
             this.setState({country:res.res}))
     }
-    
     render(){
         let opCountry = this.state.country.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
         const addDataUserHandler=(e)=>{
-            e.target.name !== 'url' && e.target.value.toLowerCase()
-            this.setState((state)=>({
-                data:{...this.state.data,[e.target.name]: e.target.value}}))
+            if(e.target.name === 'name' || e.target.name === 'lastName'){
+                this.setState({data:{...this.state.data,[e.target.name]: e.target.value.charAt(0).toUpperCase()+e.target.value.slice(1)}})
+            }else{
+                this.setState({data:{...this.state.data,[e.target.name]: e.target.value}})
+            }
         }
         const addNewUserHandler=()=>{
             this.setState({message:{}})
-            if(Object.values(this.state.data).some((value)=> !value)){
+            if(Object.values(this.state.data).some((value) => !value)){
                 this.setState({errorfront:'*Data is missing, fill in all data'})
             }else if(!this.state.data.mail.includes('@')){
                 this.setState({errorfront:'*Mail no valid'})
+            }else if(this.state.verifyPassword){
+                this.setState({errorfront:''})
             }else{
                 this.setState({errorfront:''})
                 this.props.postNewUser(this.state.data)
@@ -43,8 +47,7 @@ class SingUp extends Component{
                         if(res.res === "Mail is being used with another account"){
                             this.setState({errorfront:res.res})
                         }else{
-                            res.res.map(obj=>this.setState((state)=>({
-                            message:{...this.state.message,[obj.path[0]]: obj.message}})))
+                            res.res.map(obj=>this.setState({message:{...this.state.message,[obj.path[0]]: obj.message}}))
                         }  
                     }
                 })
@@ -72,6 +75,10 @@ class SingUp extends Component{
                 }
             })
         }
+        const verifyPasswordHandler= (e)=>{
+            this.setState({errorfront:''})
+            e.target.value !== this.state.data.password ? this.setState({verifyPassword:true}) : this.setState({verifyPassword: null}) 
+        }
         return(
             <div className='mainform' style={{backgroundImage:`url("/assets/fondoerror.jpg")`}}>
                 <Header/>
@@ -81,13 +88,16 @@ class SingUp extends Component{
                         <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
                         <h4>{this.state.errorfront}</h4>
                         {this.state.message.name && <p className='inputError'>{this.state.message.name}</p>}
-                        <input type='text' placeholder='Name' className={this.state.message.name && 'borderError'} name='name' onChange={addDataUserHandler}/>
+                        <input type='text' placeholder='First Name' className={this.state.message.name && 'borderError'} name='name' onChange={addDataUserHandler}/>
                         {this.state.message.lastName && <p className='inputError'>{this.state.message.lastName}</p>}
                         <input type='text' placeholder='Last Name' className={this.state.message.lastName && 'borderError'} name='lastName' onChange={addDataUserHandler}/>
                         {this.state.message.mail && <p className='inputError'>{this.state.message.mail}</p>}
                         <input type='email' placeholder='E-mail' className={this.state.message.mail && 'borderError'} name='mail' onChange={addDataUserHandler}/>
                         {this.state.message.password && <p className='inputError'>{this.state.message.password}</p>}
-                        <input type='password' placeholder='Password' className={this.state.message.password && 'borderError'} name='password' onChange={addDataUserHandler}/>
+                        {this.state.verifyPassword && <p className='inputError'>Passwords does not match</p>}
+                        <input type='password' placeholder='Password at least 5 characters' className={this.state.message.password || this.state.verifyPassword  && 'borderError'} name='password' onChange={addDataUserHandler}/>
+                        {this.state.verifyPassword && <p className='inputError'>Passwords does not match</p>}
+                        <input type='password' placeholder='Repeat Password' className={this.state.verifyPassword && 'borderError'} name='verifyPassword' onChange={addDataUserHandler} onBlur={verifyPasswordHandler} />
                         {this.state.message.src && <p className='inputError'>{this.state.message.src}</p>}
                         <input type='url' placeholder='Url' className={this.state.message.src && 'borderError'} name='src' onChange={addDataUserHandler}/>
                         <select name='country' required onChange={addDataUserHandler}>

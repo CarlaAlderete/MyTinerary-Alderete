@@ -26,17 +26,20 @@ const validator = (req, res, next)=>{
         }),
         src: joi.string().trim().min(10).required().messages({
             'string.min': 'This field must be at least 10 characters long',
+            'string.pattern.base': 'The URL is not valid',
             'string.empty':'Data cannot be empty',
         }),
         country: joi.string().trim().required().messages({
             'string.empty':'Data cannot be empty'
         }),
-        google: joi.boolean()
+        google: joi.boolean(),
+        verifyPassword: joi.string().trim()
     })
     const validation = schema.validate(req.body,{abortEarly:false})
     if(!validation.error){
         next()
     }else{
+        console.log(validation.error.details)
         res.json({success:false, res:validation.error.details})
     }
 }

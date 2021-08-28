@@ -19,8 +19,7 @@ class SingIn extends Component{
   
     render(){
         const addDataUserHandler=(e)=>{
-            this.setState((state)=>({
-                data:{...this.state.data,[e.target.name]: e.target.value}}))
+            this.setState({data:{...this.state.data,[e.target.name]: e.target.value}})
         }
     
         const signInUserHandler=()=>{
