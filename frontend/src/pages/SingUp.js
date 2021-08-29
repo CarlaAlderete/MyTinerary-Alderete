@@ -69,8 +69,7 @@ class SingUp extends Component{
                     if(res.res === "Mail is being used with another account"){
                         this.setState({errorfront:res.res})
                     }else{
-                        res.res.map(obj=>this.setState((state)=>({
-                        message:{...this.state.message,[obj.path[0]]: obj.message}})))
+                        res.res.map(obj=>this.setState({message:{...this.state.message,[obj.path[0]]: obj.message}}))
                     }  
                 }
             })
@@ -92,15 +91,15 @@ class SingUp extends Component{
                         {this.state.message.lastName && <p className='inputError'>{this.state.message.lastName}</p>}
                         <input type='text' placeholder='Last Name' className={this.state.message.lastName && 'borderError'} name='lastName' onChange={addDataUserHandler}/>
                         {this.state.message.mail && <p className='inputError'>{this.state.message.mail}</p>}
-                        <input type='email' placeholder='E-mail' className={this.state.message.mail && 'borderError'} name='mail' onChange={addDataUserHandler}/>
+                        <input type='email' placeholder='E-mail' className={(this.state.message.mail || this.state.errorfront === '*Mail no valid') ? 'borderError' : undefined} name='mail' onChange={addDataUserHandler}/>
                         {this.state.message.password && <p className='inputError'>{this.state.message.password}</p>}
                         {this.state.verifyPassword && <p className='inputError'>Passwords does not match</p>}
-                        <input type='password' placeholder='Password at least 5 characters' className={this.state.message.password || this.state.verifyPassword  && 'borderError'} name='password' onChange={addDataUserHandler}/>
+                        <input type='password' placeholder='Password at least 5 characters' className={(this.state.message.password || this.state.verifyPassword ) ? 'borderError': undefined} name='password' onChange={addDataUserHandler}/>
                         {this.state.verifyPassword && <p className='inputError'>Passwords does not match</p>}
                         <input type='password' placeholder='Repeat Password' className={this.state.verifyPassword && 'borderError'} name='verifyPassword' onChange={addDataUserHandler} onBlur={verifyPasswordHandler} />
                         {this.state.message.src && <p className='inputError'>{this.state.message.src}</p>}
                         <input type='url' placeholder='Url' className={this.state.message.src && 'borderError'} name='src' onChange={addDataUserHandler}/>
-                        <select name='country' required onChange={addDataUserHandler}>
+                        <select name='country' onChange={addDataUserHandler}>
                             <option>Country</option>
                             {opCountry}
                         </select>

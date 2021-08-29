@@ -23,7 +23,7 @@ const Header = (props) =>{
     const userSignIn=<div>
                         {sign && <p onClick={singOutHandler}>SIGN OUT</p>}
                         {!sign  && <p onClick={loginHandler}>HI! {user.name.toUpperCase()}</p>}
-                        <div className='iconUser' onClick={loginHandler} style={{backgroundImage:`url("${user.photo}")`}}></div>
+                        <div className='iconUser sinIcon' onClick={loginHandler} style={{backgroundImage:`url("${user.photo}")`}}></div>
                     </div>
     return(
         <header>

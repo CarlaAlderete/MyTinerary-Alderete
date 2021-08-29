@@ -19,9 +19,8 @@ const validator = (req, res, next)=>{
             'string.empty':'Data cannot be empty'
         }),
         password: joi.string().trim().min(5).required().messages({
-            'string.min': 'This field must be at least 8 characters long',
+            'string.min': 'This field must be at least 5 characters long',
             'string.max': 'This field must have a max of 15 characters',
-            'string.pattern.base': 'Min 5 characters',
             'string.empty':'Data cannot be empty'
         }),
         src: joi.string().trim().min(10).required().messages({

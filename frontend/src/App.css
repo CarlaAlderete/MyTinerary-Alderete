@@ -39,6 +39,9 @@ nav .iconUser{
     height: 3.5vw;
     border-radius: 50%;
 }
+nav .sinIcon{
+    background-color: #a5a3a3;
+}
 nav .iconUser:hover, header p:hover{
     cursor: pointer;
 }

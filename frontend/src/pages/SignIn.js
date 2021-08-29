@@ -52,7 +52,7 @@ class SingIn extends Component{
                 <Header/>
                 <div className='mainSing'>
                     <div className='cardForm'>  
-                        <h2>Singn In with your account!</h2>
+                        <h2>Sign in with your account!</h2>
                         <p>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
                         <h4>{this.state.error}</h4>
                         <input type='email' value={this.state.data.mail} placeholder='E-mail' name='mail' onChange={addDataUserHandler}/>
