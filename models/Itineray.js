@@ -11,9 +11,9 @@ const itinerarySchema = new mongoose.Schema({
     info:{
         price:{type:Number,required:true},
         time:{type:Number,required:true},
-        like:{type:Number,required:true}
+        hashtag:{type:Array,required:true}
     },
-    hashtag:{type:Array,required:true},
+    like:{type:Array,required:true},
     cityId:{type: mongoose.Types.ObjectId, ref: 'city'},
     commentary:{type:Array}
 })

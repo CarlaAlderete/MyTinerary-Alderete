@@ -22,6 +22,7 @@ router.route('/itineraries')
 
 router.route('/itineraries/:id')
 .get(itinerariesControllers.getItinerariesByCity)
+.put(passport.authenticate('jwt',{session:false}), itinerariesControllers.changeOneItineraryLike)
 
 router.route('/itinerary/:id')
 .delete(itinerariesControllers.removeItinerary)

@@ -61,6 +61,20 @@ const itinerariesControllers ={
         }catch(err){
             res.json({success:false, res: err.message})
         }
+    },
+    changeOneItineraryLike:async(req,res)=>{
+        try{
+            let userLike=await Itinerary.findOne({_id: req.params.id})
+            if(userLike.like.includes(req.user.mail)){
+                let changedItineraryLike = await Itinerary.findOneAndUpdate({_id: req.params.id},{$pull:{like:req.user.mail}},{new:true})
+                res.json({success:true, res:changedItineraryLike})
+            }else{
+                let changedItineraryLike = await Itinerary.findOneAndUpdate({_id: req.params.id},{$push:{like:req.user.mail}},{new:true})
+                res.json({success:true, res:changedItineraryLike})
+            }
+        }catch(err){
+            res.json({success:false, res:err.message})
+        }
     }
 }
 module.exports= itinerariesControllers
