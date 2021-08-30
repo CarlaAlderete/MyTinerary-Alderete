@@ -38,7 +38,6 @@ const validator = (req, res, next)=>{
     if(!validation.error){
         next()
     }else{
-        console.log(validation.error.details)
         res.json({success:false, res:validation.error.details})
     }
 }

@@ -1,4 +1,4 @@
-const userReducer = (state={user:{name:'',photo:'',token:''}},action) =>{
+const userReducer = (state={user:{name:'',photo:'',token:'',id:''}},action) =>{
     switch(action.type){
         case'SIGN_IN_USER':
         localStorage.setItem('token',action.payload.token)
@@ -10,7 +10,7 @@ const userReducer = (state={user:{name:'',photo:'',token:''}},action) =>{
         localStorage.removeItem('token')
         return{
             ...state,
-            user:{name:'', photo:'', token:''}
+            user:{name:'', photo:'', token:'',id:''}
         }
         case'FORCED_SIGN_IN':
         return{

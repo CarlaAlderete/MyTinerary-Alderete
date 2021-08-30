@@ -33,12 +33,12 @@ const itinerariesActions ={
     changeOneItineraryLike:(id,user)=>{
         return async(dispatch,getStates)=>{
             try{
-                let res = await axios.put(`http://localhost:4000/api/itineraries/${id}`, {
+                let res = await axios.put(`http://localhost:4000/api/itineraries/${id}`,{}, {
                     headers: {
                         Authorization: 'Bearer '+ user
                     }
                 })
-                return ({success:true, res:res})
+                return ({success:true, res:res.data.res.like})
             }catch(err){
                 return ({success:false, res:err.message})
             }

@@ -1,12 +1,13 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import ItineraryInfo from './ItineraryInfo'
 import { connect } from 'react-redux'
 import itinerariesActions from '../redux/actions/itinerariesActions'
+import { set } from 'mongoose'
 
-const Itinerary = ({itinerary,usertoken,changeOneItineraryLike}) =>{
+const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
     const {name, photo, user, description, info, like, _id}=itinerary
     const [view, setView] = useState ({condition: false, text:'View More'})
-    const [likeIcon, setLikeIcon] = useState ('🤍')
+    const [likeIcon, setLikeIcon] = useState ({cant:like.length, text:''})
 
     const viewInfoHandler = ()=>{
         !view.condition ? setView({condition: true, text:'View Less'}) : setView({condition: false, text:'View More'})
@@ -14,17 +15,20 @@ const Itinerary = ({itinerary,usertoken,changeOneItineraryLike}) =>{
     const twitter = info.hashtag.map(obj => <a key={obj} href='https://twitter.com' target='_blank' rel='noreferrer'>#{obj} </a>)
 
     const icon = [...Array(parseInt(info.price))].map((obj, index) => <img src='/assets/money.png' alt='money' key={index}/>)
-    // const pushLikeHandler=()=>{
-    //     if(usertoken){
-    //         console.log('estoy antes de mandar '+ _id)
-    //         console.log('estoy antes de mandar'+ usertoken)
-    //         setLikeIcon('❤️')
-    //         changeOneItineraryLike(_id, usertoken)
-    //         .then(res=>console.log(res))
-    //     }else{
-    //         alert('no podes')
-    //     }
-    // }
+    const pushLikeHandler=()=>{
+        if(usertoken){
+            changeOneItineraryLike(_id, usertoken)
+            .then(res=>{
+                likeIcon.text === '🤍' ? setLikeIcon({cant:res.res.length, text:'❤️'}) : setLikeIcon({cant:res.res.length, text:'🤍'})
+            })
+        }else{
+            alert('no podes')
+        }
+    }
+    useEffect(()=>{
+        like.includes(userId) ? setLikeIcon({...likeIcon, text:'❤️'}) : setLikeIcon({...likeIcon, text:'🤍'})
+    },[userId])
+
     return(
         <div className='itineratyGr'>
             <div className='itinerary'>
@@ -32,8 +36,7 @@ const Itinerary = ({itinerary,usertoken,changeOneItineraryLike}) =>{
                 <div className='infoItinerary'>
                     <div className='info'>
                         <h3>{name}</h3>
-                        <p>{likeIcon}{like.length}</p>
-                        {/* ]<p onClick={pushLikeHandler}>{likeIcon}{like.length}</p> */}
+                        <p onClick={pushLikeHandler}>{likeIcon.text}{likeIcon.cant}</p>
                     </div>
                     <div className='info'>
                         <div className='user'>
@@ -52,7 +55,6 @@ const Itinerary = ({itinerary,usertoken,changeOneItineraryLike}) =>{
                     {twitter}
                 </div>
             </div>
-        {/* {view.condition && <ItineraryInfo/>} */}
         {view.condition && <ItineraryInfo itineraryId={_id}/>}
         <button onClick={viewInfoHandler}>{view.text}</button>
         </div>
@@ -60,7 +62,8 @@ const Itinerary = ({itinerary,usertoken,changeOneItineraryLike}) =>{
 }
 const mapStateToProps= (state)=>{
     return{
-        usertoken:state.user.user.token
+        usertoken:state.user.user.token,
+        userId:state.user.user.id
     }
 }
 const mapDispatchToProps={

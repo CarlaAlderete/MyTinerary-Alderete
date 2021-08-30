@@ -14,7 +14,7 @@ class City extends Component{
             error: '',
             back: ''
     }
-    componentDidMount() {
+    componentDidMount(){
         window.scroll(0, 0)
         if(!this.props.newcities.length){
             this.props.takeOneCity(this.props.match.params.id)

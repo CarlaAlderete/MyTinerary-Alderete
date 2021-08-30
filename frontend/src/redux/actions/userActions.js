@@ -54,7 +54,7 @@ const userActions ={
                         Authorization: 'Bearer '+ data
                     }
                 })
-                dispatch({type:'SIGN_IN_USER',payload:{name:res.data.name, photo:res.data.photo, token:data}})
+                dispatch({type:'SIGN_IN_USER',payload:{name:res.data.name, photo:res.data.photo, id:res.data.id, token:data}})
             }catch(err){
                 dispatch({type:'SIGN_OUT_USER'})
             }
