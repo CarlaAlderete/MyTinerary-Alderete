@@ -650,6 +650,29 @@ button:hover{
     background: #d3d0c96e;
     min-height: 11vw;
 }
+/*COMMENTARIES*/
+.comentaries{
+    width: 100%;
+}
+.comentaries textarea,.divComentaries{
+    margin: 1.5vw, auto;
+    padding: .5vw;
+    
+}
+.comentaries textarea{
+    max-height: 5vw;
+    min-height: 5vw;
+}
+.divComentaries{
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 35vh;
+    min-height: 5vh;
+    background-color: yellow;
+}
+.divEnviar{
+    display: flex;
+}
 @media screen and (max-width: 700px){
     .callAction{
         height: 40vh;

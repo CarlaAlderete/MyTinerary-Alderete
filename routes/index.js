@@ -29,6 +29,9 @@ router.route('/itinerary/:id')
 .put(itinerariesControllers.changeOneItinerary)
 .get(itinerariesControllers.getOneItineraryById)
 
+router.route('/itinerary/comment/:id')
+.post(passport.authenticate('jwt',{session:false}), itinerariesControllers.addComment)
+
 router.route('/user/signup')
 .post(validator, userControllers.addNewUser)
 

@@ -31,7 +31,7 @@ const itinerariesActions ={
         }
     },
     changeOneItineraryLike:(id,user)=>{
-        return async(dispatch,getStates)=>{
+        return async()=>{
             try{
                 let res = await axios.put(`http://localhost:4000/api/itineraries/${id}`,{}, {
                     headers: {
@@ -39,6 +39,21 @@ const itinerariesActions ={
                     }
                 })
                 return ({success:true, res:res.data.res.like})
+            }catch(err){
+                return ({success:false, res:err.message})
+            }
+        }
+    },
+    addComment:(user,itineraryId,text)=>{
+        return async()=>{
+            try{
+                let res = await axios.post(`http://localhost:4000/api/itinerary/comment/${itineraryId}`,{text}, {
+                    headers: {
+                        Authorization: 'Bearer '+ user
+                    }
+                })
+                console.log(res)
+                return ({success:true, res:res.data.res})
             }catch(err){
                 return ({success:false, res:err.message})
             }

@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react'
 import ItineraryInfo from './ItineraryInfo'
+import Commentaries from './Comments'
 import { connect } from 'react-redux'
 import itinerariesActions from '../redux/actions/itinerariesActions'
-import { set } from 'mongoose'
 
 const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
-    const {name, photo, user, description, info, like, _id}=itinerary
+    const {name, photo, user, description, info, like, _id, comments}=itinerary
     const [view, setView] = useState ({condition: false, text:'View More'})
     const [likeIcon, setLikeIcon] = useState ({cant:like.length, text:''})
 
@@ -13,7 +13,6 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
         !view.condition ? setView({condition: true, text:'View Less'}) : setView({condition: false, text:'View More'})
     }
     const twitter = info.hashtag.map(obj => <a key={obj} href='https://twitter.com' target='_blank' rel='noreferrer'>#{obj} </a>)
-
     const icon = [...Array(parseInt(info.price))].map((obj, index) => <img src='/assets/money.png' alt='money' key={index}/>)
     const pushLikeHandler=()=>{
         if(usertoken){
@@ -56,6 +55,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                 </div>
             </div>
         {view.condition && <ItineraryInfo itineraryId={_id}/>}
+        {view.condition && <Commentaries comments={comments} itineraryId={_id}/>}
         <button onClick={viewInfoHandler}>{view.text}</button>
         </div>
     )

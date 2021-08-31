@@ -64,8 +64,8 @@ const itinerariesControllers ={
     },
     changeOneItineraryLike:async(req,res)=>{
         try{
-            let userLike=await Itinerary.findOne({_id: req.params.id})
-            if(userLike.like.includes(req.user._id)){
+            let userLike=await Itinerary.findOne({_id: req.params.id, like:req.user._id})
+            if(userLike){
                 let changedItineraryLike = await Itinerary.findOneAndUpdate({_id: req.params.id},{$pull:{like:req.user._id}},{new:true})
                 res.json({success:true, res:changedItineraryLike})
             }else{
@@ -74,6 +74,14 @@ const itinerariesControllers ={
             }
         }catch(err){
             res.json({success:false, res:err.message})
+        }
+    },
+    addComment:async(req,res)=>{
+        try{
+            let newComment=await Itinerary.findOneAndUpdate({_id: req.params.id},{$push:{comments:{userId:req.user._id, text:req.body.text}}},{new:true}).populate('comments.userId')
+            res.json({success:true, res:newComment.comments})
+        }catch(err){
+            res.jon({success:false, res:err.message})
         }
     }
 }
