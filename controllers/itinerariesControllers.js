@@ -11,7 +11,7 @@ const itinerariesControllers ={
     },
     getItinerariesByCity: async(req, res)=>{
         try{
-            let itineraries = await Itinerary.find({cityId:req.params.id})
+            let itineraries = await Itinerary.find({cityId:req.params.id}).populate('comments.userId')
             res.json({success:true, res:itineraries})
         }catch(err){
             res.json({success:false, res:err.message})

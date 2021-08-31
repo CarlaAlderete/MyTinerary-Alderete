@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import ItineraryInfo from './ItineraryInfo'
-import Commentaries from './Comments'
+import Comments from './Comments'
 import { connect } from 'react-redux'
 import itinerariesActions from '../redux/actions/itinerariesActions'
 
@@ -55,7 +55,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                 </div>
             </div>
         {view.condition && <ItineraryInfo itineraryId={_id}/>}
-        {view.condition && <Commentaries comments={comments} itineraryId={_id}/>}
+        {view.condition && <Comments comments={comments} itineraryId={_id}/>}
         <button onClick={viewInfoHandler}>{view.text}</button>
         </div>
     )

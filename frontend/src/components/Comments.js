@@ -1,19 +1,22 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import {connect} from 'react-redux'
 import itinerariesActionsActions from '../redux/actions/itinerariesActions'
 
 const Comments=({comments,addComment,userToken,itineraryId})=>{
     const [text, setText] = useState('')
     const toWriteHandler=(e)=> setText(e.target.value)
-   
+    const [newComments, setNewComments] = useState(comments)
+
+
     const addCommentHandler=()=>{
         setText('')
         addComment(userToken,itineraryId,text)
-        .then(res=>console.log(res))
+        .then(res=>setNewComments([...newComments, res.res[res.res.length -1]]))
     }
-    comment= comments.map((obj,index)=>{
+
+    const comment= newComments.map((obj,index)=>{
         return(<div key={index}>
-            
+            <input defaultValue={obj.text}/>
         </div>)
     })
     return(

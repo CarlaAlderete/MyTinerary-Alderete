@@ -665,7 +665,7 @@ button:hover{
 }
 .divComentaries{
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 35vh;
     min-height: 5vh;
     background-color: yellow;
