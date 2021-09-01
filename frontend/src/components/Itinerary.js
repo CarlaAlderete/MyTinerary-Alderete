@@ -14,6 +14,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
     }
     const twitter = info.hashtag.map(obj => <a key={obj} href='https://twitter.com' target='_blank' rel='noreferrer'>#{obj} </a>)
     const icon = [...Array(parseInt(info.price))].map((obj, index) => <img src='/assets/money.png' alt='money' key={index}/>)
+    
     const pushLikeHandler=()=>{
         if(usertoken){
             changeOneItineraryLike(_id, usertoken)

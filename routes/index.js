@@ -31,6 +31,7 @@ router.route('/itinerary/:id')
 
 router.route('/itinerary/comment/:id')
 .post(passport.authenticate('jwt',{session:false}), itinerariesControllers.addComment)
+.put(passport.authenticate('jwt',{session:false}), itinerariesControllers.deleteComment)
 
 router.route('/user/signup')
 .post(validator, userControllers.addNewUser)

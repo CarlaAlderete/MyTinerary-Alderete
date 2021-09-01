@@ -52,11 +52,29 @@ const itinerariesActions ={
                         Authorization: 'Bearer '+ user
                     }
                 })
-                console.log(res)
                 return ({success:true, res:res.data.res})
             }catch(err){
                 return ({success:false, res:err.message})
             }
+        }
+    },
+    deleteComment:(comentId, user)=>{
+        return async()=>{
+            try{
+                let res = await axios.put(`http://localhost:4000/api/itinerary/comment/${comentId}`, {},{
+                    headers: {
+                        Authorization: 'Bearer '+ user
+                    }  
+                })
+                return({success:true, res:res.data.res})
+            }catch(err){
+                return({success:false, res:err}) 
+            }
+        }
+    },
+    editComment:()=>{
+        return()=>{
+
         }
     }
 }

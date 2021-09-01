@@ -650,7 +650,7 @@ button:hover{
     background: #d3d0c96e;
     min-height: 11vw;
 }
-/*COMMENTARIES*/
+/*COMMENTS*/
 .comentaries{
     width: 100%;
 }
@@ -672,6 +672,35 @@ button:hover{
 }
 .divEnviar{
     display: flex;
+}
+button img{
+    width: 4vw;
+}
+/*EVERYCOMENT*/
+.everyComment{
+    width: 100%;
+    border:1px solid black;
+    margin:0.5vw;
+}
+.everyComment textarea{
+    width: 90%;
+    margin: 1vw;
+}
+.everyComment div{
+    display: flex;
+}
+.everyComment img{
+    margin: 1vw;
+    width: 3vw;
+}
+.userComment{
+    margin: .5vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
 }
 @media screen and (max-width: 700px){
     .callAction{

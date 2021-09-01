@@ -11,7 +11,7 @@ const itinerariesControllers ={
     },
     getItinerariesByCity: async(req, res)=>{
         try{
-            let itineraries = await Itinerary.find({cityId:req.params.id}).populate('comments.userId')
+            let itineraries = await Itinerary.find({cityId:req.params.id}).populate('comments.userId', { name:1, lastName:1, src:1})
             res.json({success:true, res:itineraries})
         }catch(err){
             res.json({success:false, res:err.message})
@@ -78,11 +78,20 @@ const itinerariesControllers ={
     },
     addComment:async(req,res)=>{
         try{
-            let newComment=await Itinerary.findOneAndUpdate({_id: req.params.id},{$push:{comments:{userId:req.user._id, text:req.body.text}}},{new:true}).populate('comments.userId')
+            let newComment=await Itinerary.findOneAndUpdate({_id: req.params.id},{$push:{comments:{userId:req.user._id, text:req.body.text}}},{new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
             res.json({success:true, res:newComment.comments})
         }catch(err){
             res.jon({success:false, res:err.message})
         }
+    },
+    deleteComment:async(req,res)=>{
+        try{
+            let deletedComment = await Itinerary.findOneAndUpdate({'comments._id': req.params.id},{$pull:{comments:{_id: req.params.id}}}, {new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
+            res.json({success:true, res:deletedComment.comments})
+        }catch(err){
+            res.json({success:false, res:err.message})
+        }
     }
 }
 module.exports= itinerariesControllers
+// 
