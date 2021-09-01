@@ -42,7 +42,7 @@ nav .iconUser{
 nav .sinIcon{
     background-color: #a5a3a3;
 }
-nav .iconUser:hover, header p:hover{
+nav .iconUser:hover, header p:hover, .iconComment:hover{
     cursor: pointer;
 }
 nav .active{

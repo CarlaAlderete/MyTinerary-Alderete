@@ -72,9 +72,28 @@ const itinerariesActions ={
             }
         }
     },
-    editComment:()=>{
-        return()=>{
-
+    editComment:(comentId, text, user)=>{
+        return async()=>{
+            try{
+                let res = await axios.put(`http://localhost:4000/api/itinerary/editcomment/${comentId}`,{text},{
+                    headers: {
+                    Authorization: 'Bearer '+ user
+                }
+            })
+                return ({success:true, res:res.data.res})
+            }catch(err){
+                return({success:false, res:err.message})
+            }
+        }
+    },
+    getComments:(itineraryId)=>{
+        return async()=>{
+            try{
+                let res = await axios.get(`http://localhost:4000/api/itinerary/${itineraryId}`)
+                return ({success:true, res:res.data.res.comments})
+            }catch(err){
+                return({success:false, res:err.message})
+            }
         }
     }
 }

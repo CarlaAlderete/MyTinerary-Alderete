@@ -56,7 +56,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                 </div>
             </div>
         {view.condition && <ItineraryInfo itineraryId={_id}/>}
-        {view.condition && <Comments comments={comments} itineraryId={_id}/>}
+        {view.condition && <Comments itineraryId={_id}/>}
         <button onClick={viewInfoHandler}>{view.text}</button>
         </div>
     )

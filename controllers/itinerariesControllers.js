@@ -19,7 +19,7 @@ const itinerariesControllers ={
     },
     getOneItineraryById:async(req,res)=>{
         try{
-            let itinerary = await Itinerary.findOne({_id:req.params.id})
+            let itinerary = await Itinerary.findOne({_id:req.params.id}).populate('comments.userId', { name:1, lastName:1, src:1})
             if(itinerary){
                 res.json({success:true, res:itinerary})
             }else{
@@ -90,6 +90,15 @@ const itinerariesControllers ={
             res.json({success:true, res:deletedComment.comments})
         }catch(err){
             res.json({success:false, res:err.message})
+        }
+        
+    },
+    editComment:async(req,res)=>{
+        try{
+            let editComment = await Itinerary.findOneAndUpdate({'comments._id': req.params.id},{$set:{'comments.$.text': req.body.text}},{new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
+            res.json({success:true, res:editComment.comments})
+        }catch(err){
+            res.json({success:true, res:err.message})
         }
     }
 }

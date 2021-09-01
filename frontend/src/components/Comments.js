@@ -3,13 +3,15 @@ import {connect} from 'react-redux'
 import itinerariesActionsActions from '../redux/actions/itinerariesActions'
 import EveryComment from './EveryComment'
 
-const Comments=({comments,userId,addComment,deleteComment,userToken,itineraryId})=>{
+const Comments=({userId,addComment,deleteComment,userToken,getComments,itineraryId})=>{
     const [text, setText] = useState('')
-    const [newComments, setNewComments] = useState(comments)
+    const [newComments, setNewComments] = useState([])
 
-    // useEffect(()=>{
-    //     if()
-    // },[])
+    useEffect(()=>{
+        getComments(itineraryId)
+        .then(res=>setNewComments(res.res))
+        .catch(err=>console.log(err))
+    },[])
 
     const toWriteHandler=(e)=> setText(e.target.value)
 
@@ -37,7 +39,8 @@ const Comments=({comments,userId,addComment,deleteComment,userToken,itineraryId}
             }
         })
     }
-    const everyComment =newComments.map(obj =><EveryComment key={obj._id} comment={obj} user={userId} userToken={userToken} deleteCommentHandler={deleteCommentHandler}/>)
+    
+    const everyComment =newComments.map(obj =><EveryComment key={obj._id} comment={obj} user={userId} userToken={userToken} deleteCommentHandler={deleteCommentHandler} userToken={userToken}/>)
     return(
         <div className='comentaries'>
             <div className='divComentaries'>
@@ -57,7 +60,9 @@ const mapStateToProps=(state)=>{
     }
 }
 const mapDispatchToProps ={
+    getComments:itinerariesActionsActions.getComments,
     addComment:itinerariesActionsActions.addComment,
-    deleteComment:itinerariesActionsActions.deleteComment
+    deleteComment:itinerariesActionsActions.deleteComment,
+    
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Comments)
