@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import itinerariesActionsActions from '../redux/actions/itinerariesActions'
 import EveryComment from './EveryComment'
@@ -6,6 +6,10 @@ import EveryComment from './EveryComment'
 const Comments=({comments,userId,addComment,deleteComment,userToken,itineraryId})=>{
     const [text, setText] = useState('')
     const [newComments, setNewComments] = useState(comments)
+
+    // useEffect(()=>{
+    //     if()
+    // },[])
 
     const toWriteHandler=(e)=> setText(e.target.value)
 
@@ -27,15 +31,13 @@ const Comments=({comments,userId,addComment,deleteComment,userToken,itineraryId}
         deleteComment(id ,userToken)
         .then(res=>{
             if(res.success){
-                console.log(newComments)
-                console.log(res.res)
                 setNewComments(res.res)
             }else{
                 alert('no se pudo borrar')
             }
         })
     }
-    const everyComment =newComments.map((obj,index) => <EveryComment key={index} comment={obj} user={userId} userToken={userToken} deleteCommentHandler={deleteCommentHandler}/>)
+    const everyComment =newComments.map(obj =><EveryComment key={obj._id} comment={obj} user={userId} userToken={userToken} deleteCommentHandler={deleteCommentHandler}/>)
     return(
         <div className='comentaries'>
             <div className='divComentaries'>

@@ -5,7 +5,7 @@ import itinerariesActions from '../redux/actions/itinerariesActions'
 
 const EveryComment = ({comment,user,userToken,deleteCommentHandler,editComment})=>{
     const {text, userId,_id}=comment
-    const [newText, setNewText]=useState({oldText:text})
+    const [newText, setNewText]=useState({comment:text , edit:false, editcomment:text})
     const [edit, setEdit]= useState(false)
     const [enable, setEnable] = useState(false)
 
@@ -18,11 +18,11 @@ const EveryComment = ({comment,user,userToken,deleteCommentHandler,editComment})
         !enable ? setEnable(true) : setEnable(false)
     }
     const editText=(e)=>{
-        setNewText(e.target.value)
-        console.log(e.target.value)
+        setNewText({...newText, edit: !edit})
+        setNewText({...newText, editcomment:e.target.value})
     }
     const editCommentHandler=()=>{
-        editComment(_id, newText)
+        editComment(_id, newText, userToken)
     }
 
     const editComments= !edit ? null 
@@ -40,7 +40,8 @@ const EveryComment = ({comment,user,userToken,deleteCommentHandler,editComment})
             </div>
             <div>
                 <div>
-                    <textarea defaultValue={newText} onChange={editText} disabled={!enable}/>
+                    {!enable && <p>{newText.comment}</p>}
+                    {enable && <textarea defaultValue={newText.comment} onChange={editText} disabled={!enable}/>}
                     {enable && <img className='iconComment' src='/assets/send.png' alt='delete' onClick={editCommentHandler}/>}
                 </div>
                 {editComments}
