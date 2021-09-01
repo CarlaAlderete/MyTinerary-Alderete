@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import itinerariesActionsActions from '../redux/actions/itinerariesActions'
+import itinerariesActions from '../redux/actions/itinerariesActions'
 import EveryComment from './EveryComment'
 
-const Comments=({userId,addComment,deleteComment,userToken,getComments,itineraryId})=>{
+const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId})=>{
     const [text, setText] = useState('')
     const [newComments, setNewComments] = useState([])
 
@@ -30,7 +30,7 @@ const Comments=({userId,addComment,deleteComment,userToken,getComments,itinerary
         }
     }
     const deleteCommentHandler=(id)=>{
-        deleteComment(id ,userToken)
+        editComment(id ,userToken)
         .then(res=>{
             if(res.success){
                 setNewComments(res.res)
@@ -60,9 +60,9 @@ const mapStateToProps=(state)=>{
     }
 }
 const mapDispatchToProps ={
-    getComments:itinerariesActionsActions.getComments,
-    addComment:itinerariesActionsActions.addComment,
-    deleteComment:itinerariesActionsActions.deleteComment,
+    getComments:itinerariesActions.getComments,
+    addComment:itinerariesActions.addComment,
+    editComment:itinerariesActions.editComment
     
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Comments)

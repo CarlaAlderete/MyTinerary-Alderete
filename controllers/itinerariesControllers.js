@@ -84,22 +84,17 @@ const itinerariesControllers ={
             res.jon({success:false, res:err.message})
         }
     },
-    deleteComment:async(req,res)=>{
-        try{
-            let deletedComment = await Itinerary.findOneAndUpdate({'comments._id': req.params.id},{$pull:{comments:{_id: req.params.id}}}, {new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
-            res.json({success:true, res:deletedComment.comments})
-        }catch(err){
-            res.json({success:false, res:err.message})
-        }
-        
-    },
     editComment:async(req,res)=>{
         try{
-            let editComment = await Itinerary.findOneAndUpdate({'comments._id': req.params.id},{$set:{'comments.$.text': req.body.text}},{new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
+            if(req.body.text){
+                var editComment = await Itinerary.findOneAndUpdate({'comments._id': req.params.id},{$set:{'comments.$.text': req.body.text}},{new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
+            }else{
+                var editComment = await Itinerary.findOneAndUpdate({'comments._id': req.params.id},{$pull:{comments:{_id: req.params.id}}}, {new:true}).populate('comments.userId', {name:1, lastName:1, src:1})
+            }
             res.json({success:true, res:editComment.comments})
         }catch(err){
             res.json({success:true, res:err.message})
-        }
+        } 
     }
 }
 module.exports= itinerariesControllers

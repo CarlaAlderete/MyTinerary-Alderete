@@ -26,7 +26,7 @@ const EveryComment = ({comment,user,deleteCommentHandler,userToken,editComment})
         setEnable({...enable, delete:true})
     }
     const editCommentHandler=(text)=>{
-        editComment(_id, text, userToken)
+        editComment(_id, userToken, text)
         .then(res=>{
             if(res.success){
                 let obj = res.res.find(obj => obj._id === _id)

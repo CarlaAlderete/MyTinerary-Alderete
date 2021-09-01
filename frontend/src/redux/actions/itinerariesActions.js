@@ -58,24 +58,10 @@ const itinerariesActions ={
             }
         }
     },
-    deleteComment:(comentId, user)=>{
+    editComment:(comentId, user, text)=>{
         return async()=>{
             try{
-                let res = await axios.put(`http://localhost:4000/api/itinerary/comment/${comentId}`, {},{
-                    headers: {
-                        Authorization: 'Bearer '+ user
-                    }  
-                })
-                return({success:true, res:res.data.res})
-            }catch(err){
-                return({success:false, res:err}) 
-            }
-        }
-    },
-    editComment:(comentId, text, user)=>{
-        return async()=>{
-            try{
-                let res = await axios.put(`http://localhost:4000/api/itinerary/editcomment/${comentId}`,{text},{
+                let res = await axios.put(`http://localhost:4000/api/itinerary/comment/${comentId}`,{text},{
                     headers: {
                     Authorization: 'Bearer '+ user
                 }

@@ -646,9 +646,12 @@ button:hover{
     border-radius: 2%;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
 }
+.activity:hover{
+    transition: all 600ms;
+    transform: scale(1.2);
+}
 .activity div{
     background: #d3d0c96e;
-    min-height: 11vw;
 }
 /*COMMENTS*/
 .comentaries{

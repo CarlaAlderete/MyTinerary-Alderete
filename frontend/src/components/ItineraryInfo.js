@@ -22,10 +22,7 @@ const ItineraryInfo =({itineraryId,getActivitiesByItinerary})=>{
     let activity=activities.map((obj, index)=>{
         return(
             <div className='activity' key={index} style={{backgroundImage:`url("${obj.src}")`}}>
-                <div>
-                    <h4>{obj.name}</h4>
-                    <p>{obj.description}</p>
-                </div>
+                <h4>{obj.name}</h4>
             </div>
         )
     })
@@ -34,9 +31,12 @@ if(loading){
     return <img  className='loading' src='/assets/loading.gif' alt='loading...'/>
 }
 return (
-    <div className='activities'>
-        {!activities.length ? <h2>There are not activity yet!</h2> : activity}
-    </div>
+    <>
+        <h2>Activities to do</h2>
+        <div className='activities'>
+            {!activities.length ? <h2>There are not activity yet!</h2> : activity}
+        </div>
+    </>
 )
 }
 const mapDispatcToProps={
