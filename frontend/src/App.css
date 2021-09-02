@@ -6,6 +6,11 @@
 p{
     margin: 0;
 }
+nav .iconUser, .homeDiv, .contenido, .cityOnly, .carouselDiv,.errorInfo, .photoItinerary, .card, .descr, .carouselFondo,.photouser, footer, .userComment, .cities, .mainform, .citiesGr a div, .activity{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* HEADER */
 header{
     color: #fff;
@@ -32,9 +37,6 @@ nav div{
     align-items: center;
 }
 nav .iconUser{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 3.5vw;
     height: 3.5vw;
     border-radius: 50%;
@@ -83,11 +85,6 @@ nav .active{
     text-align: center;
 }
 /* INFO */
-.contenido{
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .cardGr, .descrGr{
     display: flex;
     justify-content: space-evenly;
@@ -99,9 +96,6 @@ nav .active{
     border: 1vw solid #fff;
     border-bottom: 3vw solid #fff;
     box-shadow: 1px 1px 5px 5px #cac9c9b7;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 .cardInfo{
     display: flex;
@@ -122,9 +116,6 @@ nav .active{
 }
 /* CAROUSER */
 .carouselFondo{
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 95vh;
 }
 .carouselTodo{
@@ -153,8 +144,6 @@ nav .active{
     width: 33vw;
     display: flex;
     align-items: flex-end;
-    background-position: center;
-    background-size: cover;
     margin: 1.5vw auto;
     border:1px solid #080707;
     border-radius: 2%;
@@ -175,8 +164,6 @@ nav .active{
 /* FOOTER */
 footer{
     display: flex;
-    background-position: center;
-    background-size: cover;
     justify-content: space-between;
     align-items: center;
 }
@@ -211,7 +198,6 @@ input{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: #f8afca85;
 }
 .callActionTotal img{
     width: 18vw;
@@ -270,9 +256,6 @@ input{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     /* background: #ec555550; */
     color: #000;
 }
@@ -314,9 +297,6 @@ input{
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     text-align: center;
     height: 40vh;
     margin:1vw;
@@ -345,7 +325,13 @@ input{
 .citiesGr a:nth-child(3n){
     grid-column: 2;
 }
-
+.mainCities a{
+    justify-items: flex-end;
+}
+#scroll{
+    width: 2vw;
+    height: 2vw;
+}
 /* ERROR */
 .error404{
     width: 100vw;
@@ -388,9 +374,6 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 .cityOnly h1, .cityOnly h2{
     font-family: 'Acme', sans-serif;
@@ -412,9 +395,6 @@ input{
 }
 /*Info error*/
 .errorInfo{
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -504,9 +484,6 @@ input{
 }
 .photoItinerary{
     width: 43%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     object-fit: cover;
     border-radius: 2%;
     border: 1px solid black;
@@ -515,9 +492,6 @@ input{
 }
 
 .photouser{
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     width: 5vw;
     height: 5vw;
     border-radius: 50%;
@@ -558,9 +532,6 @@ input{
 .mainform{
     display: flex;
     flex-direction: column;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     min-height: 100vh;
 }
 .mainSing{
@@ -624,6 +595,14 @@ button:hover{
     background: #b8b6b6;
 }
 /*ACTIVITY*/
+#error{
+    padding-right: 2vw;
+    font-weight: bolder;
+    align-self: flex-end;
+    text-transform: uppercase;
+    font-size: small;
+    text-decoration: none;
+}
 .activities{
     width: 100%;
     display: flex;
@@ -637,9 +616,6 @@ button:hover{
     display: flex;
     align-items: flex-end;
     text-align: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     height: 40vw;
     width: 30%;
     flex-grow: 1;
@@ -703,14 +679,13 @@ textarea{
     min-height: 3.5vw;
     font-family: Arial, Helvetica, sans-serif;
 }
-.divComentaries{
+.divComentaries,.styles_scrollable-div__prSCv{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    overflow-y: auto;
     overflow-x: hidden;
-    max-height: 45vh;
+    max-height: 45vh !important;
     min-height: 5vh;
     resize:none;
 }
@@ -724,12 +699,15 @@ button img{
     width: 95%;
     margin:0.5vw;
 }
-.commentTextGr{
+.commentTextGr, .userCommentTextGr{
     flex-grow: 1;
     max-width: 92%;
     background-color: #9393942c;
     border-radius: 30px;
     align-items: center;
+}
+.userCommentTextGr{
+    background-color: #f848db2c;
 }
 .commentText{
     flex-grow: 1;
@@ -759,18 +737,16 @@ span{
 }
 .userComment{
     margin: .5vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 5vw;
     height: 5vw;
     border-radius: 50%;
     position: relative;
     z-index: 2;
 }
+
 @media screen and (max-width: 850px){
     .activity{
-        height: 25vw;
+        height: 28vw;
         width: 95%;
     }
 }

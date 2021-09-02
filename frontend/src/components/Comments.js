@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import itinerariesActions from '../redux/actions/itinerariesActions'
 import EveryComment from './EveryComment'
+import ScrollableFeed from 'react-scrollable-feed'
 
 const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId})=>{
     const [text, setText] = useState('')
@@ -42,9 +43,9 @@ const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId
     const everyComment =newComments.map(obj =><EveryComment key={obj._id} comment={obj} user={userId} userToken={userToken} deleteCommentHandler={deleteCommentHandler} userToken={userToken}/>)
     return(
         <div className='comentaries'>
-            <div className='divComentaries'>
+            <ScrollableFeed className='divComentaries'>
                 {everyComment}
-            </div>
+            </ScrollableFeed>
             <span>{error}</span>
             <div className='divEnviar'>
                 <textarea placeholder={!userToken ? 'Create an account and add your comment' : 'Add a comment...'} disabled={!userToken} maxLength='200' value={text} onChange={toWriteHandler}/>

@@ -16,11 +16,13 @@ export default class Home extends React.Component{
             <>
             <Header/>
             <Hero />
-            <Info/>
-            <div className='carouselFondo'style={{backgroundImage:`url("/assets/fondo2.png")`,}}>
-                <MyCarousel/>
+            <div className='homeDiv' style={{backgroundImage:`url("/assets/fondomain2.png")`,}}>
+                <Info/>
+                <div className='carouselFondo'style={{backgroundImage:`url("/assets/fondo2.png")`,}}>
+                    <MyCarousel/>
+                </div>
+                <CallAction/>
             </div>
-            <CallAction/>
             <Footer/>
             </>
         )

@@ -18,7 +18,7 @@ const Info = () =>{
     });
 
     return(
-        <div className='contenido' style={{backgroundImage:`url("/assets/fondomain2.png")`,}}>
+        <div className='contenido'>
             {infoContenido}
         </div>   
     )

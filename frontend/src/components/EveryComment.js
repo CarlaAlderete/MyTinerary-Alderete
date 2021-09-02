@@ -13,7 +13,6 @@ const EveryComment = ({comment,user,deleteCommentHandler,userToken,editComment})
     useEffect(()=>{
         user === userId._id ? setEdit(true) : setEdit(false)
     },[user])
-
     
     const enableEditHandler=(icon)=>{
         icon === 'cruz' && setEnable({delete:false, edit:false})
@@ -54,15 +53,15 @@ const EveryComment = ({comment,user,deleteCommentHandler,userToken,editComment})
     return(
         <div className='everyComment'>
             <div className='userComment' style={{backgroundImage:`url("${userId.src}")`}}></div>
-            <div className='commentTextGr'>
+            <div className={!edit ? 'commentTextGr': 'userCommentTextGr'}>
                 <div className='commentText'>
                     <h6>{userId.name} {userId.lastName}</h6>
-                    <div className='chat'>
+                    <div>
                         {!enable.edit && <p>{newText.comment}</p>}
                         {enable.edit && <textarea maxLength='200' defaultValue={newText.comment} onChange={editText} disabled={!enable}/>}
                     </div>
                 </div>
-                {editComments}
+                {editComments}{}
             </div>
             <span>{error}</span>
         </div>

@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
 import ItineraryInfo from './ItineraryInfo'
 import Comments from './Comments'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import itinerariesActions from '../redux/actions/itinerariesActions'
+import {Link} from 'react-router-dom'
 
 const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
-    const {name, photo, user, description, info, like, _id, comments}=itinerary
+    const {name, photo, user, description, info, like, _id}=itinerary
     const [view, setView] = useState ({condition: false, text:'View More'})
     const [likeIcon, setLikeIcon] = useState ({cant:like.length, text:''})
     const [error, setError] = useState ('')
@@ -23,15 +24,19 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                 likeIcon.text === '🤍' ? setLikeIcon({cant:res.res.length, text:'❤️'}) : setLikeIcon({cant:res.res.length, text:'🤍'})
             })
         }else{
-            setError('Sign in to comment')
+            setError('Sign in to Like')
+            setTimeout(a, 2500)
         }
     }
     useEffect(()=>{
         like.includes(userId) ? setLikeIcon({...likeIcon, text:'❤️'}) : setLikeIcon({...likeIcon, text:'🤍'})
     },[userId])
+    
+    const a=()=> setError('')
 
     return(
         <div className='itineratyGr'>
+            <Link id='error' to='/signup'>{error}</Link>
             <div className='itinerary'>
                 <div className='photoItinerary' style={{backgroundImage:`url("/assets/${photo}")`}}></div>
                 <div className='infoItinerary'>
@@ -39,7 +44,6 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                         <h3>{name}</h3>
                         <p onClick={pushLikeHandler}>{likeIcon.text}{likeIcon.cant}</p>
                     </div>
-                    <span>{error}</span>
                     <div className='info'>
                         <div className='user'>
                             <div className='photouser' style={{backgroundImage:`url("/assets/${user.photo}")`}}></div>
