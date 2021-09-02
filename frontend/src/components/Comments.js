@@ -6,6 +6,7 @@ import EveryComment from './EveryComment'
 const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId})=>{
     const [text, setText] = useState('')
     const [newComments, setNewComments] = useState([])
+    const [error, setError]= useState('')
 
     useEffect(()=>{
         getComments(itineraryId)
@@ -23,10 +24,8 @@ const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId
                 if(res.success){
                     setNewComments([...newComments, res.res[res.res.length -1]])
                 }else{
-                    alert('oops! algo paso')
+                    setError('Oops! There was a problem, try later')
             }})
-        }else{
-            alert('llena')
         }
     }
     const deleteCommentHandler=(id)=>{
@@ -35,7 +34,7 @@ const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId
             if(res.success){
                 setNewComments(res.res)
             }else{
-                alert('no se pudo borrar')
+                setError("Oops! There's a problem, try later")
             }
         })
     }
@@ -46,9 +45,10 @@ const Comments=({userId,addComment,editComment,userToken,getComments,itineraryId
             <div className='divComentaries'>
                 {everyComment}
             </div>
+            <span>{error}</span>
             <div className='divEnviar'>
-                <textarea placeholder='Comment' disabled={!userToken} maxLength='200' value={text} onChange={toWriteHandler}/>
-                <button disabled={!userToken} onClick={addCommentHandler}><img src='/assets/send.png'/></button>
+                <textarea placeholder={!userToken ? 'Create an account and add your comment' : 'Add a comment...'} disabled={!userToken} maxLength='200' value={text} onChange={toWriteHandler}/>
+                <button className='send' disabled={!userToken} onClick={addCommentHandler}><img src='/assets/send.png'/></button>
             </div>
         </div>
     )

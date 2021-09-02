@@ -627,7 +627,8 @@ button:hover{
 .activities{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .activities h2{
     margin:1vw auto;
@@ -639,51 +640,111 @@ button:hover{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 32%;
     height: 40vw;
-    margin: 1vw 0;
+    width: 30%;
+    flex-grow: 1;
+    margin:.7vw;
     border: 1px solid black;
     border-radius: 2%;
     box-shadow: 1px 1px 4px 4px #cac9c9b7;
 }
-.activity:hover{
-    transition: all 600ms;
-    transform: scale(1.2);
-}
 .activity div{
+    flex-grow: 1;
     background: #d3d0c96e;
+    color: #000;
+}
+.activity div h4{
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.activity div p{
+    display: none;
+}
+.activity div:hover p{
+    display: block;  
 }
 /*COMMENTS*/
 .comentaries{
     width: 100%;
 }
+.divEnviar{
+    display: flex;
+    margin:1vw;
+    padding: 0 .5vw;
+    border: 1px solid gray;
+    align-items: center;
+}
+.send{
+    background: transparent !important;
+    border:none !important;
+    box-shadow: none !important;
+    width: 5% !important;
+}
+textarea{
+    flex-grow: 1;
+    border:none;
+    background: transparent;
+    outline:none;
+    font-size: 3vmin;
+    margin:0vw;
+    resize:none;
+    overflow:hidden;
+}
+.divEnviar button img{
+    width: 3vw;
+}
 .comentaries textarea,.divComentaries{
     margin: 1.5vw, auto;
     padding: .5vw;
-    
 }
-.comentaries textarea{
-    max-height: 5vw;
-    min-height: 5vw;
+textarea{
+    width: 80%;
+    max-height: 3.5vw;
+    min-height: 3.5vw;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .divComentaries{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     overflow-y: auto;
-    max-height: 35vh;
+    overflow-x: hidden;
+    max-height: 45vh;
     min-height: 5vh;
-    background-color: yellow;
-}
-.divEnviar{
-    display: flex;
+    resize:none;
 }
 button img{
     width: 4vw;
 }
 /*EVERYCOMENT*/
 .everyComment{
-    width: 100%;
-    border:1px solid black;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
     margin:0.5vw;
+}
+.commentTextGr{
+    flex-grow: 1;
+    max-width: 92%;
+    background-color: #9393942c;
+    border-radius: 30px;
+    align-items: center;
+}
+.commentText{
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex;
+    border-radius: 3%;
+    padding-left: 1.5vw;
+}
+h6{
+    font-weight: bold;
+}
+span{
+    font-size: x-small;
+    color:red;
+    align-self: center;
 }
 .everyComment textarea{
     width: 90%;
@@ -701,9 +762,17 @@ button img{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     border-radius: 50%;
+    position: relative;
+    z-index: 2;
+}
+@media screen and (max-width: 850px){
+    .activity{
+        height: 25vw;
+        width: 95%;
+    }
 }
 @media screen and (max-width: 700px){
     .callAction{

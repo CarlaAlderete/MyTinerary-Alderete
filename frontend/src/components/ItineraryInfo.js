@@ -22,7 +22,10 @@ const ItineraryInfo =({itineraryId,getActivitiesByItinerary})=>{
     let activity=activities.map((obj, index)=>{
         return(
             <div className='activity' key={index} style={{backgroundImage:`url("${obj.src}")`}}>
-                <h4>{obj.name}</h4>
+                <div>
+                    <h4>{obj.name}</h4>
+                    <p>{obj.description}</p>
+                </div>
             </div>
         )
     })

@@ -8,6 +8,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
     const {name, photo, user, description, info, like, _id, comments}=itinerary
     const [view, setView] = useState ({condition: false, text:'View More'})
     const [likeIcon, setLikeIcon] = useState ({cant:like.length, text:''})
+    const [error, setError] = useState ('')
 
     const viewInfoHandler = ()=>{
         !view.condition ? setView({condition: true, text:'View Less'}) : setView({condition: false, text:'View More'})
@@ -22,7 +23,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                 likeIcon.text === '🤍' ? setLikeIcon({cant:res.res.length, text:'❤️'}) : setLikeIcon({cant:res.res.length, text:'🤍'})
             })
         }else{
-            alert('no podes')
+            setError('Sign in to comment')
         }
     }
     useEffect(()=>{
@@ -38,6 +39,7 @@ const Itinerary = ({itinerary,userId,usertoken,changeOneItineraryLike}) =>{
                         <h3>{name}</h3>
                         <p onClick={pushLikeHandler}>{likeIcon.text}{likeIcon.cant}</p>
                     </div>
+                    <span>{error}</span>
                     <div className='info'>
                         <div className='user'>
                             <div className='photouser' style={{backgroundImage:`url("/assets/${user.photo}")`}}></div>
