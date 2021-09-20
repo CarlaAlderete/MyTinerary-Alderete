@@ -4,7 +4,7 @@ const citiesActions = {
     getAllCities:()=>{
         return async(dispatch,getStates)=>{
             try{
-                let res = await axios.get('http://localhost:4000/api/cities')
+                let res = await axios.get('https://mytinerary-ca.herokuapp.com/api/cities')
                 if(res.data.success){
                     let info = res.data.res
                     dispatch({type:'GET_ALL_CITIES', payload:info})
@@ -30,7 +30,7 @@ const citiesActions = {
     takeOneCity:(id)=>{
         return async(dispatch,getStates)=>{
             try{
-                let res = await axios.get(`http://localhost:4000/api/city/${id}`)
+                let res = await axios.get(`https://mytinerary-ca.herokuapp.com/api/city/${id}`)
                 if(res.data.success){
                     let info = res.data.res
                     dispatch({type:'TAKE_ONE_CITY', payload:info})

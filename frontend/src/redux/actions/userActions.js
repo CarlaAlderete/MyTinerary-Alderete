@@ -14,7 +14,7 @@ const userActions ={
     postNewUser:(data)=>{
         return async(dispatch, getState)=>{
             try{
-                let res = await axios.post('http://localhost:4000/api/user/signup', data)
+                let res = await axios.post('https://mytinerary-ca.herokuapp.com/api/user/signup', data)
                 if(res.data.success){
                     dispatch({type:'SIGN_IN_USER', payload:res.data.res})
                     return({success:true})
@@ -29,7 +29,7 @@ const userActions ={
     singInUser:(data)=>{
         return async(dispatch, getState)=>{
             try{
-                let res = await axios.post('http://localhost:4000/api/user/signin', data)
+                let res = await axios.post('https://mytinerary-ca.herokuapp.com/api/user/signin', data)
                 if(res.data.success){
                     dispatch({type:'SIGN_IN_USER', payload:res.data.res})
                     return({success:true})
@@ -49,7 +49,7 @@ const userActions ={
     forcedSignIn:(data)=>{
         return async(dispatch,getState)=>{
             try{
-                let res = await axios.get('http://localhost:4000/api/user/signin',{
+                let res = await axios.get('https://mytinerary-ca.herokuapp.com/api/user/signin',{
                     headers:{
                         Authorization: 'Bearer '+ data
                     }
