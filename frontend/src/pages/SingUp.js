@@ -8,7 +8,7 @@ import GoogleLogin from 'react-google-login'
 
 class SingUp extends Component{
     state={
-        country:[Argentina,Brazil,Canada,Denmark,Ecuador,France,Germany,Iceland,Mexico,Portugal,Thailand],
+        country:['Argentina','Brazil','Canada','Denmark','Ecuador','France','Germany','Iceland','Mexico','Portugal','Thailand'],
         data:{name:'',lastName:'',mail:'',password:'',src:'',country:'', verifyPassword:null},
         errorfront:'',
         error:[],
@@ -20,7 +20,7 @@ class SingUp extends Component{
         document.title='Mytinerary - SingUp'
     }
     render(){
-        let opCountry = this.state.country.map((obj, index) => <option key={index} value={obj.name}>{obj.name}</option>)
+        let opCountry = this.state.country.map((obj, index) => <option key={index} value={obj}>{obj}</option>)
         const addDataUserHandler=(e)=>{
             if(e.target.name === 'name' || e.target.name === 'lastName'){
                 this.setState({data:{...this.state.data,[e.target.name]: e.target.value.charAt(0).toUpperCase()+e.target.value.slice(1)}})
