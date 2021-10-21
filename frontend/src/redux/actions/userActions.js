@@ -1,16 +1,6 @@
 import axios from 'axios'
 
 const userActions ={
-    getcountries:()=>{
-        return async()=>{
-            try{
-                let country = await axios.get('https://restcountries.eu/rest/v2/all?fields=name')
-                return({res:country.data})
-            }catch(err){
-                console.log(err)
-            }
-        }
-    },
     postNewUser:(data)=>{
         return async(dispatch, getState)=>{
             try{
