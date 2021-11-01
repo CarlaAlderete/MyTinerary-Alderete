@@ -37,7 +37,6 @@ npm start
 * [Joi](https://www.npmjs.com/package/joi) - Form validation
 * [Bcrypt](https://www.npmjs.com/package/bcryptjs) - Password protection
 * [Json Web Token (JWT)](https://jwt.io/) - Security
-* [Boostrap](https://getbootstrap.com/) - CSS library
 
 ---
 
